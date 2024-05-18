@@ -1,0 +1,65 @@
+{
+  /* 공홈 참조 : https://eslint.org/docs/latest/rules/ */
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true
+  },
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:tailwindcss/recommended",
+    "plugin:prettier/recommended" //* 항상 아래에!
+  ],
+  "plugins": ["react", "react-hooks", "tailwindcss", "prettier"],
+  "rules": {
+    // 0: off 1: warn 2: error 로 표기 가능
+    "indent": [
+      "off",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ], // 들여쓰기 몇 칸? 기본 2칸으로 하되, switch문에서는 1칸으로 지정
+    "quotes": ["error", "double"], // 홀따옴표가 아닌 쌍따옴표를 사용
+    "semi": ["error", "always"], // semi colon을 강제함
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0
+      }
+    ],
+    "comma-dangle": ["error", "always-multiline"], // 두 줄 이상의 경우에는 후행 쉼표를 항상 사용, 한 개 일 때는 사용하지 않음
+    "object-curly-spacing": ["error", "always"], // 객체 괄호 앞 뒤 공백 추가
+    "space-in-parens": ["error", "never"], // 일반 괄호 앞 뒤 공백 추가 X
+    "computed-property-spacing": ["error", "never"], // 대괄호 앞 뒤 공백 추가 X
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ], // 반점 앞 뒤 공백: 앞에는 없고, 뒤에는 있게
+    "eol-last": ["error", "always"], // line의 가장 마지막 줄에는 개행 넣기
+    "import/no-named-as-default": 0, // default로 정의되지 않은 아이들을 불러왔음을 알려줌
+    "react/react-in-jsx-scope": "off", // import react from "react" 생략 가능
+    "arrow-parens": ["error", "as-needed"], // 화살표 함수 축약 가능시 축약
+    "curly": ["error", "all"], // if문 중괄호 생략 가능시 생략
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error" // 리액트 의존성 배열 correctness 체크
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  }
+}
