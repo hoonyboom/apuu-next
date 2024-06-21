@@ -1,0 +1,33 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Pull Docker image
+        run: sudo docker pull hyezoprk/apuu-next:latest
+      - name: Delete Old docker container
+        run: sudo docker rm -f apuu-next-container || true
+      - name: Run Docker Container
+        env:
+          PROTOCOL: ${{ secrets.PROTOCOL }}
+          HOST: ${{ secrets.HOST }}
+          PORT: ${{ secrets.PORT }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+        run: >-
+          sudo docker run -d
+          -p $PORT:$PORT
+          -e PORT=$PORT
+          -e PROTOCOL=$PROTOCOL
+          -e HOST=$HOST
+          -e NODE_ENV=$NODE_ENV
+          --network client
+          --name apuu-next-container hyezoprk/apuu-next
+      - name: Check Network Connection
+        run: sudo docker network connect client apuu-next-container || true

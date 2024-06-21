@@ -1,11 +1,21 @@
-import { MaxWidthWrapper } from "@/components";
+import Banner from "@/components/Banner";
+import Card from "@/components/Card";
+import Category from "@/components/Category";
+import Footer from "@/components/Footer";
+
+const data = Array.from({ length: 10 });
 
 export default function Home() {
   return (
-    <div className="container min-h-screen bg-slate-50">
-      <section>
-        <MaxWidthWrapper className="pb-24 pt-10 sm:pb-32 lg:grid lg:grid-cols-3 lg:gap-x-0 lg:pb-52 lg:pt-24 xl:gap-x-8"></MaxWidthWrapper>
-      </section>
-    </div>
+    <>
+      <Banner />
+      <Category />
+      <div className="mx-4 grid grid-cols-3 gap-4 rounded-3xl border p-4">
+        {data.map((_, index) => (
+          <Card key={index} />
+        ))}
+      </div>
+      <Footer />
+    </>
   );
 }

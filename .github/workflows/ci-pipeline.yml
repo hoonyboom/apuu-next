@@ -1,0 +1,26 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Login Dockerhub
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
+        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
+      - name: Build the Docker image
+        env:
+          PORT: ${{secrets.PORT}}
+        run: docker build --build-arg PORT=$PORT -t apuu-next .
+      - name: taging
+        run: docker tag apuu-next:latest ${{secrets.DOCKERHUB_USERNAME}}/apuu-next:latest
+      - name: Push to Dockerhub
+        run: docker push ${{secrets.DOCKERHUB_USERNAME}}/apuu-next:latest
