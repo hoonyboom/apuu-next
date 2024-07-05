@@ -1,7 +1,7 @@
 import { ArrowRightIcon, CheckIcon, StarFilledIcon } from "@radix-ui/react-icons";
 import { IconProps } from "@radix-ui/react-icons/dist/types";
 
-const icons = {
+const Icons = {
   check: (props: IconProps) => <CheckIcon {...props} />,
   star: (props: IconProps) => <StarFilledIcon {...props} />,
   arrowRight: (props: IconProps) => <ArrowRightIcon {...props} />,
@@ -25,4 +25,4 @@ const icons = {
   ),
 };
 
-export default icons;
+export default Icons;

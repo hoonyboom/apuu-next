@@ -12,13 +12,13 @@ import {
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import {
-  createContext,
-  useContext,
-  forwardRef,
-  HTMLAttributes,
-  useId,
-  ElementRef,
   ComponentPropsWithoutRef,
+  ElementRef,
+  HTMLAttributes,
+  createContext,
+  forwardRef,
+  useContext,
+  useId,
 } from "react";
 
 const Form = FormProvider;
@@ -96,7 +96,7 @@ const FormLabel = forwardRef<
   return (
     <Label
       ref={ref}
-      className={cn(error && "text-destructive", className)}
+      className={cn(error && "text-destructive", "text-xs", className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -146,8 +146,8 @@ const FormMessage = forwardRef<
   HTMLAttributes<HTMLParagraphElement>
 >(({ className, children, ...props }, ref) => {
   const { error, formMessageId } = useFormField();
-  const body = error ? String(error?.message) : children;
 
+  const body = error ? String(error?.message) : children;
   if (!body) return null;
 
   return (

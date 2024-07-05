@@ -1,11 +1,11 @@
 export default function Banner() {
   return (
-    <div className="mx-px rounded-3xl bg-blue-500 p-20">
+    <div className="mx-px rounded-3xl p-20">
       <div className="w-20 rounded-3xl bg-amber-300 px-2 py-px text-center capitalize">
         notice
       </div>
-      <h1 className="my-1 text-3xl">Welcome to Apuu</h1>
-      <p>어푸에 오신 걸 환영합니다</p>
+      <h1 className="mb-2 mt-4">수영 실력이 느는 가장 빠른 방법</h1>
+      <p>어푸에서 함께 할 친구들을 찾으세요 🐬</p>
     </div>
   );
 }
