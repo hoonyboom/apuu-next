@@ -20,7 +20,7 @@ export default function Timer({ count, setCount, setIsTimer }: TimerProps) {
       setIsTimer(false);
     }
     return () => clearInterval(id);
-  }, [count]);
+  }, [count, setCount, setIsTimer]);
 
   return <span>{formatTime(count)}</span>;
 }

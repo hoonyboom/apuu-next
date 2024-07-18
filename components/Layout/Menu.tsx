@@ -52,7 +52,7 @@ export default function Menu() {
           >
             <div
               className={clsx(
-                "absolute right-0 top-0 flex h-full w-full max-w-64 flex-col gap-6 bg-white py-6 transition-transform duration-300 ease-in-out sm:max-w-96",
+                "absolute right-0 top-0 flex size-full max-w-64 flex-col gap-6 bg-white py-6 transition-transform duration-300 ease-in-out sm:max-w-96",
                 {
                   "translate-x-0": isMenuOpen,
                   "translate-x-full": !isMenuOpen,

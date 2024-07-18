@@ -32,7 +32,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { DatePickerProps, RegisterCheckBoxProps, RegisterFormFieldProps } from "./types";
 
-export default function RegisterForm({children}: PropsWithChildren) {
+export default function RegisterForm({ children }: PropsWithChildren) {
   const form = useForm<z.infer<typeof registerFormSchema>>({
     resolver: zodResolver(registerFormSchema),
   });
@@ -207,7 +207,7 @@ const DatePicker = ({ form }: DatePickerProps) => {
                   ) : (
                     <span>마감일을 선택해주세요</span>
                   )}
-                  <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                  <CalendarIcon className="ml-auto size-4 opacity-50" />
                 </Button>
               </FormControl>
             </PopoverTrigger>

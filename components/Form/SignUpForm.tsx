@@ -54,7 +54,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
         });
       }
     },
-    [setOpen],
+    [setOpen, toast],
   );
 
   // TODO:  전송을 성공했다는 가정하에 optimistic UI 적용
@@ -95,7 +95,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
         });
       }
     },
-    [form],
+    [form, toast],
   );
 
   const verifyCode: MouseEventHandler = useCallback(
@@ -155,7 +155,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                     )}
                   </Button>
                 )}
-                <FormMessage className="flex-shrink-0" />
+                <FormMessage className="shrink-0" />
               </div>
             </FormItem>
           )}
@@ -179,7 +179,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                     <Button type="button" onClick={verifyCode}>
                       확인
                     </Button>
-                    <FormMessage className="flex-shrink-0" />
+                    <FormMessage className="shrink-0" />
                   </div>
                 </FormItem>
               );
@@ -205,7 +205,6 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                           placeholder="영문, 숫자, 특수문자를 섞어서 만들어주세요"
                         />
                       </FormControl>
-                      {/* <FormMessage className="flex-shrink-0" /> */}
                     </div>
                   </FormItem>
                 );
@@ -226,7 +225,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                           className="bsorder-none bg-transparent px-2 py-4 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                         />
                       </FormControl>
-                      <FormMessage className="flex-shrink-0" />
+                      <FormMessage className="shrink-0" />
                     </div>
                   </FormItem>
                 );

@@ -17,7 +17,7 @@ export default function YoutubeBtn() {
         height: Math.max(180, height) || 480,
       });
     }
-  }, [editor]);
+  }, [editor, height, width]);
 
   return <MenubarBtn onClick={addYoutubeVideo}>Youtube</MenubarBtn>;
 }

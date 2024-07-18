@@ -13,9 +13,8 @@ export default function Landing() {
   const { mount } = useMount();
 
   useEffect(() => {
-    if (isLoading) {
-      document.body.style.overflow = "hidden";
-    } else {
+    if (isLoading) document.body.style.overflow = "hidden";
+    else {
       document.body.style.overflow = "";
       if (!isLoading) {
         const timeout = setTimeout(() => {
@@ -33,7 +32,7 @@ export default function Landing() {
   return createPortal(
     <div
       className={clsx(
-        "fixed inset-0 z-50 flex h-full w-full min-w-full flex-col items-center justify-between bg-orange-50 transition duration-1000",
+        "fixed inset-0 z-50 flex size-full min-w-full flex-col items-center justify-between bg-orange-50 transition duration-1000",
         {
           "animate-in": isLoading,
           "animate-out fade-out-0": !isLoading && !isExiting,
@@ -48,7 +47,7 @@ export default function Landing() {
           className="animate-wiggle"
         />
       </div>
-      <div className="relative flex size-full translate-y-[50%] justify-center">
+      <div className="relative flex size-full translate-y-1/2 justify-center">
         <Image src="/assets/svgs/hand.svg" alt="hand" fill className="animate-up" />
       </div>
     </div>,
