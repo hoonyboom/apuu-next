@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "%/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "%/ui/dialog";
+} from "@/components/ui/dialog";
 import { ModeType } from "@/lib/types";
 import { useUserStore } from "@/store/user.store";
 import { useCallback, useState } from "react";

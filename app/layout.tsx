@@ -1,5 +1,5 @@
-import { Nav } from "%/Layout";
-import { Toaster } from "%/ui/toaster";
+import { Nav } from "@/components/Layout";
+import { Toaster } from "@/components/ui/toaster";
 import { ReactQueryProvider } from "@/contexts";
 import { METADATA, VIEWPORT } from "@/lib/const";
 import "@/styles/globals.css";

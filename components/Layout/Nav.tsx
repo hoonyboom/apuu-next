@@ -1,4 +1,4 @@
-import LoginModal from "%/Form/LoginModal";
+import LoginModal from "@/components/Form/LoginModal";
 import Link from "next/link";
 import { Logo, Menu } from ".";
 

@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "%/ui/button";
-import { Calendar } from "%/ui/calendar";
-import { Card, CardContent, CardHeader, CardTitle } from "%/ui/card";
-import { Checkbox } from "%/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -11,15 +11,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "%/ui/form";
-import { Popover, PopoverContent, PopoverTrigger } from "%/ui/popover";
+} from "@/components/ui/form";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "%/ui/select";
+} from "@/components/ui/select";
 import { useToast } from "@/hooks/useToast";
 import { GOAL, LEVEL, MEMBER_SIZE, PERIOD, STYLE } from "@/lib/const";
 import { cn } from "@/lib/utils";

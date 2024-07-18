@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "%/ui/button";
-import { DialogFooter } from "%/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { DialogFooter } from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -9,8 +9,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "%/ui/form";
-import { Input } from "%/ui/input";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { LoginFormType, UserType, loginFormSchema, userSchema } from "@/lib/zod.schema";
 import { authAPI } from "@/services/auth/AuthService";
 import { useUserStore } from "@/store/user.store";

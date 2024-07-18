@@ -1,7 +1,7 @@
 "use client";
 
-import RegisterForm from "%/Form/RegisterForm";
 import { Tiptap } from "@/components/Editor";
+import RegisterForm from "@/components/Form/RegisterForm";
 
 export default function Page() {
   return (

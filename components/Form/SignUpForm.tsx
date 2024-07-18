@@ -1,8 +1,8 @@
 "use client";
 
-import { Timer } from "%/Transition";
-import { Button } from "%/ui/button";
-import { DialogFooter } from "%/ui/dialog";
+import { Timer } from "@/components/Transition";
+import { Button } from "@/components/ui/button";
+import { DialogFooter } from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -10,9 +10,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "%/ui/form";
-import Icons from "%/ui/Icons";
-import { Input } from "%/ui/input";
+} from "@/components/ui/form";
+import Icons from "@/components/ui/Icons";
+import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/useToast";
 import { api } from "@/lib/api.route";
 import { fetcher } from "@/lib/utils";

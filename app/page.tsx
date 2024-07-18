@@ -1,4 +1,4 @@
-import { Category, Footer } from "%/Layout";
+import { Category, Footer } from "@/components/Layout";
 
 export default function Home() {
   return (
