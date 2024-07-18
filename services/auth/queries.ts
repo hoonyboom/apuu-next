@@ -9,9 +9,9 @@ const mutationKey = {
 };
 
 export const queryOptions = {
-  send_code: (email: string) =>
-    ({
-      mutationKey: mutationKey.send_code,
-      mutationFn: () => authAPI.postSendCode(email),
-    }) satisfies UseMutationOptions,
-};
+  send_code: (email: string) => ({
+    mutationKey: mutationKey.send_code,
+    mutationFn: () => authAPI.postSendCode(email),
+    
+  }),
+} satisfies Record<string, (param: any) => UseMutationOptions>;

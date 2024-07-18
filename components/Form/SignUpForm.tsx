@@ -1,22 +1,8 @@
 "use client";
 
-import { api } from "@/lib/api.route";
-import { fetcher } from "@/lib/utils";
-import { RegisterFormType, UserType, registerFormSchema } from "@/lib/zod.schema";
-import authAPI from "@/services/auth/AuthService";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Dispatch,
-  MouseEventHandler,
-  SetStateAction,
-  useCallback,
-  useState,
-} from "react";
-import { useForm } from "react-hook-form";
-import Icons from "./Icons";
-import Timer from "./Timer";
-import { Button } from "./ui/button";
-import { DialogFooter } from "./ui/dialog";
+import { Timer } from "%/Transition";
+import { Button } from "%/ui/button";
+import { DialogFooter } from "%/ui/dialog";
 import {
   Form,
   FormControl,
@@ -24,23 +10,27 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/form";
-import { Input } from "./ui/input";
-import { useToast } from "./ui/use-toast";
+} from "%/ui/form";
+import Icons from "%/ui/Icons";
+import { Input } from "%/ui/input";
+import { useToast } from "@/hooks/useToast";
+import { api } from "@/lib/api.route";
+import { fetcher } from "@/lib/utils";
+import { SignUpFormType, UserType, signUpFormSchema } from "@/lib/zod.schema";
+import { authAPI } from "@/services/auth/AuthService";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { MouseEventHandler, useCallback, useState } from "react";
+import { useForm } from "react-hook-form";
+import { RegisterFormProps } from "./types";
 
-type RegisterFormProps = {
-  setOpen: Dispatch<SetStateAction<boolean>>;
-  switchMode: () => void;
-};
-
-export default function RegisterForm({ setOpen, switchMode }: RegisterFormProps) {
+export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
   const [count, setCount] = useState(0);
   const [isChecked, setIsChecked] = useState(false);
   const [isGetCode, setIsGetCode] = useState(false);
   const [isTimer, setIsTimer] = useState(false);
   const { toast } = useToast();
-  const form = useForm<RegisterFormType>({
-    resolver: zodResolver(registerFormSchema),
+  const form = useForm<SignUpFormType>({
+    resolver: zodResolver(signUpFormSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -49,7 +39,7 @@ export default function RegisterForm({ setOpen, switchMode }: RegisterFormProps)
     },
   });
   const submitForm = useCallback(
-    async ({ verification_code, ...values }: RegisterFormType) => {
+    async ({ verification_code, ...values }: SignUpFormType) => {
       const data = await authAPI.postRegister<UserType>(values);
 
       if ("id" in data) {
@@ -145,8 +135,6 @@ export default function RegisterForm({ setOpen, switchMode }: RegisterFormProps)
                 <FormControl>
                   <Input
                     {...field}
-                    autoCorrect="off"
-                    autoComplete="off"
                     className="border-none bg-transparent py-4 pl-2 pr-10 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                     disabled={isChecked}
                   />
@@ -185,8 +173,6 @@ export default function RegisterForm({ setOpen, switchMode }: RegisterFormProps)
                     <FormControl>
                       <Input
                         {...field}
-                        autoCorrect="off"
-                        autoComplete="off"
                         className="border-none bg-transparent py-4 pl-2 pr-10 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                       />
                     </FormControl>
@@ -237,9 +223,7 @@ export default function RegisterForm({ setOpen, switchMode }: RegisterFormProps)
                         <Input
                           {...field}
                           type="text"
-                          autoComplete="off"
-                          autoCorrect="off"
-                          className="border-none bg-transparent px-2 py-4 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
+                          className="bsorder-none bg-transparent px-2 py-4 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                         />
                       </FormControl>
                       <FormMessage className="flex-shrink-0" />

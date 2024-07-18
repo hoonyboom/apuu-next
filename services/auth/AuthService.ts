@@ -1,7 +1,7 @@
 import { api } from "@/lib/api.route";
 import Service from "@/services/Service";
 
-class authAPI extends Service {
+class authService extends Service {
   async postSendCode(email: string) {
     return await this.http.post({ url: api.send_code, data: { email }, isPublic: true });
   }
@@ -40,4 +40,4 @@ class authAPI extends Service {
   }
 }
 
-export default new authAPI();
+export const authAPI = new authService();

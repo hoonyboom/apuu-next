@@ -80,7 +80,7 @@
     @apply border-border;
   }
   body {
-    @apply overscroll-none bg-background font-suite text-foreground;
+    @apply overflow-x-hidden overscroll-none bg-background font-pretendard text-foreground;
   }
 
   h1,

@@ -1,14 +1,7 @@
 "use client";
 
-import { LoginFormType, UserType, loginFormSchema, userSchema } from "@/lib/zod.schema";
-import authAPI from "@/services/auth/AuthService";
-import { useUserStore } from "@/store/user.store";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { setCookie } from "cookies-next";
-import { Dispatch, SetStateAction, useCallback } from "react";
-import { useForm } from "react-hook-form";
-import { Button } from "./ui/button";
-import { DialogFooter } from "./ui/dialog";
+import { Button } from "%/ui/button";
+import { DialogFooter } from "%/ui/dialog";
 import {
   Form,
   FormControl,
@@ -16,13 +9,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/form";
-import { Input } from "./ui/input";
-
-type LoginFormProps = {
-  setOpen: Dispatch<SetStateAction<boolean>>;
-  switchMode: () => void;
-};
+} from "%/ui/form";
+import { Input } from "%/ui/input";
+import { LoginFormType, UserType, loginFormSchema, userSchema } from "@/lib/zod.schema";
+import { authAPI } from "@/services/auth/AuthService";
+import { useUserStore } from "@/store/user.store";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { setCookie } from "cookies-next";
+import { useCallback } from "react";
+import { useForm } from "react-hook-form";
+import { LoginFormProps } from "./types";
 
 export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
   const form = useForm<LoginFormType>({
@@ -63,8 +59,6 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
                 <FormControl>
                   <Input
                     {...field}
-                    autoCorrect="off"
-                    autoComplete="off"
                     className="border-none bg-transparent py-4 pl-2 pr-10 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                   />
                 </FormControl>

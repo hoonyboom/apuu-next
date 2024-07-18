@@ -1,8 +1,17 @@
 import { clsx, type ClassValue } from "clsx";
+import { MouseEventHandler } from "react";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+export const stopPropagation: MouseEventHandler = e => {
+  e.stopPropagation();
+};
+
+export function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export async function fetcher(

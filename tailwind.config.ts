@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss";
+import type { Config, PluginAPI } from "tailwindcss/types/config";
+const plugin = require("tailwindcss/plugin");
 
 const config = {
   darkMode: ["class"],
@@ -30,7 +31,25 @@ const config = {
       "5xl": "clamp(3.9191rem, 3.2155rem + 3.5179vi, 5.722rem)",
       "6xl": "clamp(4.7029rem, 3.747rem + 4.7798vi, 7.1526rem)",
     },
+    keyframes: {
+      wiggle: {
+        "0%, 100%": { transform: "rotate(-10deg)" },
+        "50%": { transform: "rotate(10deg)" },
+      },
+      up: {
+        from: { transform: "translateY(0)" },
+        "80%": { transform: "translateY(0)" },
+        to: { transform: "translateY(-40%)" },
+      },
+    },
+    animation: {
+      wiggle: "wiggle 2.5s ease-in-out forwards",
+      up: "up 2.5s ease-in-out forwards",
+    },
     extend: {
+      backgroundImage: {
+        landing: "url(/assets/svgs/landing.svg)",
+      },
       colors: {
         border: "hsl(var(--border) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",
@@ -100,7 +119,60 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(function ({ matchUtilities, addComponents, theme }: PluginAPI) {
+      matchUtilities(
+        {
+          "text-shadow": value => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme("textShadow") },
+      );
+
+      addComponents({
+        ".stacked": {
+          display: "grid",
+          "place-items": "center",
+          isolation: "isolate",
+        },
+
+        ".stacked > *": {
+          "grid-column": "1 / 2",
+          "grid-row": "1 / 2",
+        },
+
+        ".scrollbar-hide": {
+          scrollbarWidth: "none",
+          "-ms-overflow-style": "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+
+        ".blurred": {
+          "-webkit-backdrop-filter": "blur(4px)",
+          "backdrop-filter": "blur(4px)",
+        },
+
+        ".character-count": {
+          alignItems: "center",
+          color: "var(--gray-5)",
+          display: "flex",
+          fontSize: "0.75rem",
+          gap: ".5rem",
+          margin: "1.5rem",
+          svg: {
+            color: "var(--purple)",
+          },
+          "&--warning, &--warning svg": {
+            color: "var(--red)",
+          },
+        },
+      });
+    }),
+  ],
 } satisfies Config;
 
 export default config;

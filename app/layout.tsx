@@ -1,17 +1,13 @@
-import Nav from "@/components/Nav";
-import { Toaster } from "@/components/ui/toaster";
-import ReactQueryProviders from "@/hooks/useReactQuery";
-import type { Metadata } from "next";
+import { Nav } from "%/Layout";
+import { Toaster } from "%/ui/toaster";
+import { ReactQueryProvider } from "@/contexts";
+import { METADATA, VIEWPORT } from "@/lib/const";
+import "@/styles/globals.css";
+import type { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
-import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "Apuu",
-  description: "모두의 수영",
-  icons: {
-    icon: "/assets/svgs/logo-fish.svg",
-  },
-};
+export const metadata: Metadata = METADATA;
+export const viewport: Viewport = VIEWPORT;
 
 export default function RootLayout({
   children,
@@ -21,11 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ReactQueryProviders>
+        <ReactQueryProvider>
           <Nav />
-          <Toaster />
           <main>{children}</main>
-        </ReactQueryProviders>
+        </ReactQueryProvider>
+        <Toaster />
       </body>
     </html>
   );

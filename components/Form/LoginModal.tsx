@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "%/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,14 +8,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "%/ui/dialog";
+import { ModeType } from "@/lib/types";
+import { useUserStore } from "@/store/user.store";
 import { useCallback, useState } from "react";
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
+import { LoginForm, SignUpForm } from ".";
 
 export default function LoginModal() {
   const [open, setOpen] = useState(false);
-  const [mode, setMode] = useState<"register" | "login">("login");
+  const [mode, setMode] = useState<ModeType>("login");
+  const { user } = useUserStore();
 
   const switchMode = useCallback(() => {
     setMode(prev => (prev === "login" ? "register" : "login"));
@@ -22,9 +25,11 @@ export default function LoginModal() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <button>로그인</button>
-      </DialogTrigger>
+      {user ? null : (
+        <DialogTrigger asChild>
+          <Button variant="ghost">로그인</Button>
+        </DialogTrigger>
+      )}
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="text-lg">
@@ -39,7 +44,7 @@ export default function LoginModal() {
         {mode === "login" ? (
           <LoginForm setOpen={setOpen} switchMode={switchMode} />
         ) : (
-          <RegisterForm setOpen={setOpen} switchMode={switchMode} />
+          <SignUpForm setOpen={setOpen} switchMode={switchMode} />
         )}
       </DialogContent>
     </Dialog>
