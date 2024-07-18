@@ -5,7 +5,7 @@ ENV NPM_TOKEN=${NPM_TOKEN}
 RUN echo "@tiptap-pro:registry=https://registry.tiptap.dev/" > ~/.npmrc && \
     echo "//registry.tiptap.dev/:_authToken=${TIPTAP_PRO_TOKEN}" >> ~/.npmrc
 COPY package*.json ./
-RUN npm install --production
+RUN npm install
 COPY . .
 RUN npm run build
 
