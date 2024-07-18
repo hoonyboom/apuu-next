@@ -222,7 +222,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                         <Input
                           {...field}
                           type="text"
-                          className="bsorder-none bg-transparent px-2 py-4 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
+                          className="border-none bg-transparent px-2 py-4 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                         />
                       </FormControl>
                       <FormMessage className="shrink-0" />

@@ -24,9 +24,8 @@ const processEnv = {
 
 // --------------------------
 type ServerEnv = z.input<typeof server>;
-type ClientEnv = z.input<typeof client>;
 
-let env: ClientEnv & Partial<ServerEnv>;
+let env: ServerEnv;
 
 if (!!process.env.SKIP_ENV_VALIDATION === false) {
   const isServer = typeof window === "undefined";
@@ -42,7 +41,7 @@ if (!!process.env.SKIP_ENV_VALIDATION === false) {
 
   // 자동완성은 모든 변수를 보기 위해 ServerEnv로 assertion
   // 잘못 사용할 경우 내부에서 에러 출력
-  env = new Proxy(parsed.data, {
+  env = new Proxy(parsed.data as ServerEnv, {
     get(target, prop) {
       if (typeof prop !== "string") return undefined;
 

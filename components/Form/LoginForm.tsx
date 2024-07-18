@@ -62,7 +62,7 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
                     className="border-none bg-transparent py-4 pl-2 pr-10 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                   />
                 </FormControl>
-                <FormMessage className="flex-shrink-0" />
+                <FormMessage className="shrink-0" />
               </div>
             </FormItem>
           )}
