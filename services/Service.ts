@@ -1,4 +1,5 @@
 import { api } from "@/lib/api.route";
+import { env } from "@/lib/env";
 import { getCookie } from "cookies-next";
 
 type FetchOptions = {
@@ -33,8 +34,8 @@ class Service {
 
   constructor() {
     this.baseURL =
-      process.env.NODE_ENV === "production"
-        ? `${process.env.NEXT_PUBLIC_BASE_URL}/api`
+      env.NODE_ENV === "production"
+        ? `${env.NEXT_PUBLIC_BASE_URL}/api`
         : "http://localhost:3002";
     this.headers = {};
     this.http = {
