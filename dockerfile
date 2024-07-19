@@ -11,7 +11,7 @@ RUN echo "@tiptap-pro:registry=https://registry.tiptap.dev/" > ~/.npmrc && \
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm next build
+RUN npm run build
 
 # prod stage
 FROM node:21-alpine
@@ -21,10 +21,9 @@ ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL \
   NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID=$NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID \
   TIPTAP_COLLAB_SECRET=$TIPTAP_COLLAB_SECRET \
   PORT=$PORT
-COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/.next ./.next
 COPY --from=build /usr/src/app/public ./public
 COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY package*.json ./
 EXPOSE $PORT
-ENTRYPOINT ["npm", "next", "start"]
+ENTRYPOINT ["npm", "run", "start"]
