@@ -11,7 +11,7 @@ RUN echo "@tiptap-pro:registry=https://registry.tiptap.dev/" > ~/.npmrc && \
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+RUN npm next build
 
 # prod stage
 FROM node:21-alpine
@@ -27,4 +27,4 @@ COPY --from=build /usr/src/app/public ./public
 COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY package*.json ./
 EXPOSE $PORT
-ENTRYPOINT ["npm", "run", "start"]
+ENTRYPOINT ["npm", "next", "start"]
