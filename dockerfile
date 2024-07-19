@@ -22,6 +22,8 @@ ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL \
   TIPTAP_COLLAB_SECRET=$TIPTAP_COLLAB_SECRET \
   PORT=$PORT
 COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/.next .next
+COPY --from=build /usr/src/app/.public .public
 COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY package*.json ./
 EXPOSE $PORT
