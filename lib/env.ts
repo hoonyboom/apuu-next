@@ -27,11 +27,12 @@ type ServerEnv = z.input<typeof server>;
 
 let env: ServerEnv;
 
-if (!!process.env.SKIP_ENV_VALIDATION === false) {
+if (!process.env.SKIP_ENV_VALIDATION) {
   const isServer = typeof window === "undefined";
   const parsed = isServer ? server.safeParse(processEnv) : client.safeParse(processEnv);
 
   if (parsed.success === false) {
+    console.log(Object.entries(processEnv).map(value => value));
     console.error(
       "❌ 등록되지 않은 환경변수입니다 😥",
       parsed.error.flatten().fieldErrors,
