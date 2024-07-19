@@ -9,9 +9,9 @@ ARG TIPTAP_PRO_TOKEN \
 RUN echo "@tiptap-pro:registry=https://registry.tiptap.dev/" > ~/.npmrc && \
   echo "//registry.tiptap.dev/:_authToken=${TIPTAP_PRO_TOKEN}" >> ~/.npmrc
 COPY package*.json ./
-RUN pnpm install
+RUN npm install
 COPY . .
-RUN pnpm run build
+RUN npm run build
 
 # prod stage
 FROM node:21-alpine
@@ -25,4 +25,4 @@ COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY package*.json ./
 EXPOSE $PORT
-ENTRYPOINT ["pnpm", "run", "start"]
+ENTRYPOINT ["npm", "run", "start"]
