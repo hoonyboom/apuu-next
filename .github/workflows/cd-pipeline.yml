@@ -29,7 +29,7 @@ jobs:
           -e NEXT_PUBLIC_COLLAB_DOC_PREFIX=$NEXT_PUBLIC_COLLAB_DOC_PREFIX
           -e NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID=$NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID
           -e TIPTAP_COLLAB_SECRET=$TIPTAP_COLLAB_SECRET
-          --network client
+          --network server
           --name apuu-next-container hyezoprk/apuu-next
       - name: Check Network Connection
-        run: sudo docker network connect client apuu-next-container || true
+        run: sudo docker network connect server apuu-next-container || true

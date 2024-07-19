@@ -6,7 +6,6 @@ ARG TIPTAP_PRO_TOKEN \
   NEXT_PUBLIC_COLLAB_DOC_PREFIX \
   NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID \
   TIPTAP_COLLAB_SECRET
-ENV TIPTAP_PRO_TOKEN=${TIPTAP_PRO_TOKEN}
 RUN echo "@tiptap-pro:registry=https://registry.tiptap.dev/" > ~/.npmrc && \
   echo "//registry.tiptap.dev/:_authToken=${TIPTAP_PRO_TOKEN}" >> ~/.npmrc
 COPY package*.json ./
@@ -21,7 +20,7 @@ ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL \
   NEXT_PUBLIC_COLLAB_DOC_PREFIX=$NEXT_PUBLIC_COLLAB_DOC_PREFIX \
   NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID=$NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID \
   TIPTAP_COLLAB_SECRET=$TIPTAP_COLLAB_SECRET \
-  PORT=$PORT 
+  PORT=$PORT
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY package*.json ./

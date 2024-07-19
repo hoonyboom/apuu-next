@@ -19,7 +19,6 @@ jobs:
       - name: Build the Docker image
         env:
           PORT: ${{secrets.PORT}}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
           NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
           NEXT_PUBLIC_COLLAB_DOC_PREFIX: ${{ secrets.NEXT_PUBLIC_COLLAB_DOC_PREFIX }}
           NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID: ${{ secrets.NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID }}
@@ -29,8 +28,6 @@ jobs:
           docker build
           --build-arg PORT=$PORT
           --build-arg TIPTAP_PRO_TOKEN=$TIPTAP_PRO_TOKEN
-          --build-arg SKIP_ENV_VALIDATION=true
-          --build-arg NODE_ENV=$NODE_ENV
           --build-arg NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
           --build-arg NEXT_PUBLIC_COLLAB_DOC_PREFIX=$NEXT_PUBLIC_COLLAB_DOC_PREFIX
           --build-arg NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID=$NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID
