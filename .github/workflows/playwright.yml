@@ -19,6 +19,10 @@ jobs:
           node-version: 20
       - name: Install pnpm
         run: npm install -g pnpm
+      - name: Configure npm for @tiptap-pro
+        run: |
+          echo "@tiptap-pro:registry=https://registry.tiptap.dev/" > ~/.npmrc
+          echo "//registry.tiptap.dev/:_authToken=${{ secrets.TIPTAP_PRO_TOKEN }}" >> ~/.npmrc
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Run your tests
