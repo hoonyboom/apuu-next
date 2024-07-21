@@ -24,7 +24,7 @@ jobs:
           echo "@tiptap-pro:registry=https://registry.tiptap.dev/" > ~/.npmrc
           echo "//registry.tiptap.dev/:_authToken=${{ secrets.TIPTAP_PRO_TOKEN }}" >> ~/.npmrc
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --production
       - name: Build
         run: pnpm build
       - name: Run your tests
