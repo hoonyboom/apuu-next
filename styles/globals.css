@@ -78,7 +78,7 @@
     @apply border-border;
   }
   body {
-    @apply overflow-x-hidden overscroll-none bg-background font-pretendard text-foreground;
+    @apply overflow-x-hidden overscroll-none bg-background text-foreground;
   }
 
   h1,

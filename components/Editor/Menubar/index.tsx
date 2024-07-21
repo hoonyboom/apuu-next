@@ -19,7 +19,7 @@ export default function EditorMenubar() {
   const blockOptions = useContentTypes();
 
   return (
-    <div className="flex h-10 items-center justify-around border-b border-gray-200 py-2">
+    <div className="flex h-10 items-center gap-2 border-b border-gray-200 px-2 py-2">
       <ContentTypePicker options={blockOptions} />
       <Separator orientation="vertical" className="h-full" />
       <BoldBtn />
