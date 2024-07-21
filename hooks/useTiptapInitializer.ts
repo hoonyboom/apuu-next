@@ -1,17 +1,16 @@
-"use client";
-
-import { EditorConfig } from "@/components/Editor/config";
+import { ExtensionKit } from "@/components/Editor/extensions";
+import { useEditorStore } from "@/store/editor.store";
 import { useEditor } from "@tiptap/react";
 import { useEffect } from "react";
 
-export default function useTiptapEditor() {
+export default function useTiptapInitializer() {
+  const { setEditor } = useEditorStore();
   const editor = useEditor(
     {
-      extensions: EditorConfig(),
-      content: [`<p>Hello</p>`],
+      extensions: ExtensionKit(),
       immediatelyRender: false,
       shouldRerenderOnTransaction: true,
-      autofocus: true,
+      autofocus: false,
       editorProps: {
         attributes: {
           autocomplete: "off",
@@ -26,10 +25,8 @@ export default function useTiptapEditor() {
   );
 
   useEffect(() => {
-    window.editor = editor;
+    if (editor) setEditor(editor);
   }, [editor]);
 
-  const characterCount: number = editor?.storage.characterCount.characters() || 0;
-
-  return { editor, characterCount };
+  return { editor };
 }

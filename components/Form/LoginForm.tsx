@@ -52,6 +52,7 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
         <FormField
           control={form.control}
           name="email"
+          // eslint-disable-next-line react/jsx-no-bind
           render={({ field }) => (
             <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
               <FormLabel>이메일</FormLabel>
@@ -70,6 +71,7 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
         <FormField
           control={form.control}
           name="password"
+          // eslint-disable-next-line react/jsx-no-bind
           render={({ field }) => {
             return (
               <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">

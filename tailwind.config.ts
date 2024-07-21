@@ -1,35 +1,18 @@
 import type { Config, PluginAPI } from "tailwindcss/types/config";
 const plugin = require("tailwindcss/plugin");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 const config = {
   darkMode: ["class"],
   content: ["./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"],
+  safelist: ["ProseMirror"],
   prefix: "",
   theme: {
     container: {
       center: true,
-      padding: "2rem",
       screens: {
-        "2xl": "1400px",
-        "3xl": "1640px",
+        "2xl": "1200px",
       },
-    },
-    fontFamily: {
-      suite: ["SUITE", "system-ui", "sans-serif"],
-      pretendard: ["Pretendard", "system-ui"],
-    },
-    fontSize: {
-      "2xs": "clamp(0.7595rem, 0.7563rem + 0.0165vi, 0.768rem)",
-      xs: "clamp(0.9115rem, 0.8925rem + 0.0947vi, 0.96rem)",
-      sm: "clamp(1.0938rem, 1.0523rem + 0.2073vi, 1.2rem)",
-      base: "clamp(1.3125rem, 1.2393rem + 0.3659vi, 1.5rem)",
-      lg: "clamp(1.575rem, 1.4579rem + 0.5854vi, 1.875rem)",
-      xl: "clamp(1.89rem, 1.7129rem + 0.8854vi, 2.3438rem)",
-      "2xl": "clamp(2.268rem, 2.0098rem + 1.2911vi, 2.9297rem)",
-      "3xl": "clamp(2.7216rem, 2.3546rem + 1.8351vi, 3.6621rem)",
-      "4xl": "clamp(3.2659rem, 2.754rem + 2.5594vi, 4.5776rem)",
-      "5xl": "clamp(3.9191rem, 3.2155rem + 3.5179vi, 5.722rem)",
-      "6xl": "clamp(4.7029rem, 3.747rem + 4.7798vi, 7.1526rem)",
     },
     keyframes: {
       wiggle: {
@@ -46,7 +29,25 @@ const config = {
       wiggle: "wiggle 2.5s ease-in-out forwards",
       up: "up 2.5s ease-in-out forwards",
     },
+    fontSize: {
+      "2xs": "clamp(0.7595rem, 0.7563rem + 0.0165vi, 0.768rem)",
+      xs: "clamp(0.9115rem, 0.8925rem + 0.0947vi, 0.96rem)",
+      sm: "clamp(1.0938rem, 1.0523rem + 0.2073vi, 1.2rem)",
+      base: "clamp(1.3125rem, 1.2393rem + 0.3659vi, 1.5rem)",
+      lg: "clamp(1.575rem, 1.4579rem + 0.5854vi, 1.875rem)",
+      xl: "clamp(1.89rem, 1.7129rem + 0.8854vi, 2.3438rem)",
+      "2xl": "clamp(2.268rem, 2.0098rem + 1.2911vi, 2.9297rem)",
+      "3xl": "clamp(2.7216rem, 2.3546rem + 1.8351vi, 3.6621rem)",
+      "4xl": "clamp(3.2659rem, 2.754rem + 2.5594vi, 4.5776rem)",
+      "5xl": "clamp(3.9191rem, 3.2155rem + 3.5179vi, 5.722rem)",
+      "6xl": "clamp(4.7029rem, 3.747rem + 4.7798vi, 7.1526rem)",
+    },
     extend: {
+      fontFamily: {
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+        pretendard: ["Pretendard", ...defaultTheme.fontFamily.sans],
+        SUITE: ["SUITE", ...defaultTheme.fontFamily.sans],
+      },
       backgroundImage: {
         landing: "url(/assets/svgs/landing.svg)",
       },
@@ -84,10 +85,6 @@ const config = {
           DEFAULT: "hsl(var(--card) / <alpha-value>)",
           foreground: "hsl(var(--card-foreground) / <alpha-value>)",
         },
-        content: {
-          DEFUALT: "hsl(var(--content) / <alpha-value>)",
-          foreground: "hsl(var(--content-foreground) / <alpha-value>)",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -121,16 +118,9 @@ const config = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    plugin(function ({ matchUtilities, addComponents, theme }: PluginAPI) {
-      matchUtilities(
-        {
-          "text-shadow": value => ({
-            textShadow: value,
-          }),
-        },
-        { values: theme("textShadow") },
-      );
-
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+    plugin(function ({ addComponents }: PluginAPI) {
       addComponents({
         ".stacked": {
           display: "grid",
@@ -169,6 +159,12 @@ const config = {
           "&--warning, &--warning svg": {
             color: "var(--red)",
           },
+        },
+
+        blockquote: {
+          borderLeft: "3px solid darkgray",
+          margin: "1.5rem 0",
+          paddingLeft: "1rem",
         },
       });
     }),

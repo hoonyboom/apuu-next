@@ -11,11 +11,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import Icons from "@/components/ui/Icons";
+import { Icon } from "@/components/ui/Icon";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/useToast";
 import { api } from "@/lib/api.route";
-import { fetcher } from "@/lib/utils";
+import { fetcher } from "@/lib/util";
 import { SignUpFormType, UserType, signUpFormSchema } from "@/lib/zod.schema";
 import { authAPI } from "@/services/auth/AuthService";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -128,6 +128,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
         <FormField
           control={form.control}
           name="email"
+          // eslint-disable-next-line react/jsx-no-bind
           render={({ field }) => (
             <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
               <FormLabel>이메일</FormLabel>
@@ -140,7 +141,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                   />
                 </FormControl>
                 {isChecked ? (
-                  <Icons.check className="size-6 text-green-500" />
+                  <Icon name="Check" className="size-6 text-green-500" />
                 ) : (
                   <Button
                     disabled={isChecked || isTimer}
@@ -165,6 +166,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
           <FormField
             control={form.control}
             name="verification_code"
+            // eslint-disable-next-line react/jsx-no-bind
             render={({ field }) => {
               return (
                 <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
@@ -192,6 +194,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
             <FormField
               control={form.control}
               name="password"
+              // eslint-disable-next-line react/jsx-no-bind
               render={({ field }) => {
                 return (
                   <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
@@ -213,6 +216,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
             <FormField
               control={form.control}
               name="nickname"
+              // eslint-disable-next-line react/jsx-no-bind
               render={({ field }) => {
                 return (
                   <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">

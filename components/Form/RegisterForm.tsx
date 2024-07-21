@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/useToast";
 import { GOAL, LEVEL, MEMBER_SIZE, PERIOD, STYLE } from "@/lib/const";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/util";
 import { enumValuesMap, registerFormSchema } from "@/lib/zod.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon } from "@radix-ui/react-icons";
@@ -54,44 +54,46 @@ export default function RegisterForm({ children }: PropsWithChildren) {
       <CardHeader>
         <CardTitle>기본 정보를 입력해주세요</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
-            <RegisterFormSelectBox form={form} label="모집 종류" name="sort" />
-            <RegisterFormSelectBox form={form} label="교류 방식" name="method" />
-            <RegisterFormSelectBox
-              form={form}
-              label="모집 인원"
-              name="size"
-              values={MEMBER_SIZE}
-            />
-            <RegisterFormSelectBox
-              form={form}
-              label="진행 기간"
-              name="period"
-              values={PERIOD}
-            />
-            <RegisterFormCheckBox
-              form={form}
-              label="모집 수준"
-              name="level"
-              values={LEVEL}
-            />
-            <RegisterFormCheckBox
-              form={form}
-              label="메인 영법"
-              name="style"
-              values={STYLE}
-            />
-            <RegisterFormCheckBox
-              form={form}
-              label="훈련 목표"
-              name="goal"
-              values={GOAL}
-            />
-            <DatePicker form={form} />
+            <div className="mb-14 grid gap-6 sm:grid-cols-2">
+              <RegisterFormSelectBox form={form} label="모집 종류" name="sort" />
+              <RegisterFormSelectBox form={form} label="교류 방식" name="method" />
+              <RegisterFormSelectBox
+                form={form}
+                label="모집 인원"
+                name="size"
+                values={MEMBER_SIZE}
+              />
+              <RegisterFormSelectBox
+                form={form}
+                label="진행 기간"
+                name="period"
+                values={PERIOD}
+              />
+              <RegisterFormCheckBox
+                form={form}
+                label="모집 수준"
+                name="level"
+                values={LEVEL}
+              />
+              <RegisterFormCheckBox
+                form={form}
+                label="메인 영법"
+                name="style"
+                values={STYLE}
+              />
+              <RegisterFormCheckBox
+                form={form}
+                label="훈련 목표"
+                name="goal"
+                values={GOAL}
+              />
+              <DatePicker form={form} />
+            </div>
 
-            <CardTitle className="mt-10">모임에 대해 소개해주세요</CardTitle>
+            <CardTitle>모임에 대해 소개해주세요</CardTitle>
             {children}
             <Button type="submit">Submit</Button>
           </form>
@@ -106,6 +108,7 @@ const RegisterFormSelectBox = ({ form, name, label, values }: RegisterFormFieldP
     <FormField
       control={form.control}
       name={name}
+      // eslint-disable-next-line react/jsx-no-bind
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
@@ -144,6 +147,7 @@ const RegisterFormCheckBox = ({ form, name, values, label }: RegisterCheckBoxPro
     <FormField
       control={form.control}
       name={name}
+      // eslint-disable-next-line react/jsx-no-bind
       render={() => (
         <FormItem>
           <div className="mb-4">
@@ -154,12 +158,10 @@ const RegisterFormCheckBox = ({ form, name, values, label }: RegisterCheckBoxPro
               key={item}
               control={form.control}
               name={name}
+              // eslint-disable-next-line react/jsx-no-bind
               render={({ field }) => {
                 return (
-                  <FormItem
-                    key={item}
-                    className="flex flex-row items-start space-x-3 space-y-0"
-                  >
+                  <FormItem key={item} className="flex items-center space-x-3 space-y-0">
                     <FormControl>
                       <Checkbox
                         checked={field.value?.includes(item)}
@@ -189,6 +191,7 @@ const DatePicker = ({ form }: DatePickerProps) => {
     <FormField
       control={form.control}
       name="deadline"
+      // eslint-disable-next-line react/jsx-no-bind
       render={({ field }) => (
         <FormItem className="flex flex-col">
           <FormLabel>모집 마감일</FormLabel>

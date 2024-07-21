@@ -1,13 +1,58 @@
-/* Task list specific styles */
+input::placeholder,
+textarea::placeholder {
+  @apply text-black/50 dark:text-white/40;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  @apply text-black/50 dark:text-white/40;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  @apply text-black/40 dark:text-white/40;
+}
+
+.react-colorful {
+  @apply !w-full;
+}
+
+[data-reference-hidden] {
+  @apply pointer-events-none opacity-0;
+}
+
+::-webkit-scrollbar {
+  @apply h-1 w-1 bg-neutral-500/20;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-neutral-500/50;
+}
+
+input[type="range"] {
+  @apply h-2.5 appearance-none rounded border-0 bg-neutral-200 transition-all active:bg-neutral-300;
+  @apply dark:bg-neutral-700 dark:active:bg-neutral-600;
+
+  &::-webkit-slider-thumb {
+    @apply h-5 w-3 appearance-none rounded-full bg-neutral-800 transition-all active:h-6 active:w-4 active:bg-neutral-900;
+    @apply dark:bg-neutral-100 dark:active:bg-white;
+  }
+}
+
+ul,
+ol {
+  @apply my-5 ml-2 mr-4 px-4 py-0;
+
+  li p {
+    @apply my-1;
+  }
+}
+
 ul[data-type="taskList"] {
-  list-style: none;
-  margin-left: 0;
-  padding: 0;
+  @apply ml-0 p-0;
+  @apply list-none;
 
   li {
-    align-items: flex-start;
-    display: flex;
-
     > label {
       flex: 0 0 auto;
       margin-right: 0.5rem;
@@ -20,29 +65,18 @@ ul[data-type="taskList"] {
   }
 
   input[type="checkbox"] {
-    cursor: pointer;
+    @apply cursor-pointer;
   }
 
   ul[data-type="taskList"] {
-    margin: 0;
+    @apply m-0;
   }
 }
 
-/* Youtube */
-div[data-youtube-video] {
-  cursor: move;
-  padding-right: 1.5rem;
+.tiptap {
+  @apply min-h-60 overflow-y-scroll p-4;
+}
 
-  iframe {
-    border: 0.5rem solid var(--black-contrast);
-    display: block;
-    min-height: 200px;
-    min-width: 200px;
-    outline: 0px solid transparent;
-  }
-
-  &.ProseMirror-selectednode iframe {
-    outline: 3px solid var(--purple);
-    transition: outline 0.15s;
-  }
+.ProseMirror:focus {
+  @apply outline-none;
 }

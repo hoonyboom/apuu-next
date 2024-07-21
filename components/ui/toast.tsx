@@ -4,7 +4,7 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import * as ToastPrimitives from "@radix-ui/react-toast";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/util";
 import { ComponentPropsWithoutRef, ElementRef, ReactElement, forwardRef } from "react";
 
 const ToastProvider = ToastPrimitives.Provider;
@@ -94,7 +94,7 @@ const ToastTitle = forwardRef<
 >(({ className, ...props }, ref) => (
   <ToastPrimitives.Title
     ref={ref}
-    className={cn("[&+div]:text-2xs text-sm font-semibold", className)}
+    className={cn("text-sm font-semibold [&+div]:text-2xs", className)}
     {...props}
   />
 ));

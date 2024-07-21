@@ -1,16 +1,16 @@
 "use client";
 
+import Avatar from "@/components/ui/Avatar";
+import { Separator } from "@/components/ui/separator";
 import useScrollLock from "@/hooks/useScrollLock";
-import { stopPropagation } from "@/lib/utils";
+import { stopPropagation } from "@/lib/util";
 import { authAPI } from "@/services/auth/AuthService";
 import { useUserStore } from "@/store/user.store";
 import clsx from "clsx";
 import Link from "next/link";
 import { MouseEventHandler, useCallback, useState } from "react";
 import { createPortal } from "react-dom";
-import Avatar from "../ui/Avatar";
-import Icons from "../ui/Icons";
-import { Separator } from "../ui/separator";
+import { Icon } from "../ui/Icon";
 
 export default function Menu() {
   const { user, setLogoutUser } = useUserStore();
@@ -31,7 +31,8 @@ export default function Menu() {
   else
     return (
       <div>
-        <Icons.hamburger
+        <Icon
+          name="Menu"
           className={clsx("size-7 transition-opacity", {
             "opacity-0": isMenuOpen,
             "opacity-100": !isMenuOpen,
@@ -66,7 +67,7 @@ export default function Menu() {
                   <Avatar className="size-12" onClick={toggleMenu} />
                   <span>{user.nickname}</span>
                 </div>
-                <Icons.close className="size-6" onClick={toggleMenu} />
+                <Icon name="X" className="size-6" onClick={toggleMenu} />
               </div>
               <Separator />
               <div className="flex flex-col justify-around gap-4 px-4">

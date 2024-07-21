@@ -1,23 +1,11 @@
-import { useCurrentEditor } from "@/contexts/editor.provider";
-import { useCallback, useState } from "react";
-import MenubarBtn from "./MenubarBtn";
+import useEditorCallbacks from "@/hooks/useEditorCallbacks";
+import { memo } from "react";
+import { MenubarBtn } from "./MenubarBtn";
 
-export default function YoutubeBtn() {
-  const { editor } = useCurrentEditor();
-  const [height, setHeight] = useState(480);
-  const [width, setWidth] = useState(640);
+export const YoutubeBtn = memo(() => {
+  const { addYoutubeVideo } = useEditorCallbacks();
 
-  const addYoutubeVideo = useCallback(() => {
-    const url = prompt("Enter YouTube URL");
+  return <MenubarBtn onClick={addYoutubeVideo} icon="Youtube" />;
+});
 
-    if (url) {
-      editor?.commands.setYoutubeVideo({
-        src: url,
-        width: Math.max(320, width) || 640,
-        height: Math.max(180, height) || 480,
-      });
-    }
-  }, [editor, height, width]);
-
-  return <MenubarBtn onClick={addYoutubeVideo}>Youtube</MenubarBtn>;
-}
+YoutubeBtn.displayName = "YoutubeBtn";

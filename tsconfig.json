@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "lib/env.ts",
     "./dist/types/**/*.ts"
-  ],
+, "components/Editor/components/Editor/index.ts.tmpcomponents/Editor/types.ts.tmpcomponents/Editor/TextCounter.tsxxtCounter.tsx", "components/Editor/index.tsx", "contexts/editor.provider.tsx"  ],
   "exclude": [
     "node_modules"
   ]

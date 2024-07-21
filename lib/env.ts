@@ -49,7 +49,7 @@ if (!process.env.SKIP_ENV_VALIDATION) {
       // 클라이언트에서 서버 환경변수에 접근시 에러 메시지 송출
       if (!isServer && !prop.startsWith("NEXT_PUBLIC_") && prop !== "NODE_ENV")
         throw new Error(
-          process.env.NODE_ENV === "production"
+          env.NODE_ENV === "production"
             ? "❌ 클라이언트에서 서버측 환경변수를 사용할 수 없습니다"
             : `❌ 클라이언트에서 서버 환경변수 '${prop}'를 사용하려 합니다`,
         );
