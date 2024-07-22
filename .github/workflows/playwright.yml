@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  id-token: write
+  pages: write
+
 jobs:
   playwright:
     name: "Playwright Tests"
@@ -41,7 +45,7 @@ jobs:
         run: pnpm install --frozen-lockfile --production
 
       - name: Install playwright-merge-report
-        run: pnpm install -D playwright-merge-html-reports
+        run: pnpm add -D playwright-merge-html-reports
 
       - name: Build
         run: pnpm run build
