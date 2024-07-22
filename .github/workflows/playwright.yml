@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --production
       - name: Build
-        run: pnpm build
+        run: pnpm run build
       - name: Run your tests
         run: pnpx playwright test
         env:
