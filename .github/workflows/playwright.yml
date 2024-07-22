@@ -49,7 +49,7 @@ jobs:
       #     TIPTAP_COLLAB_SECRET: ${{secrets.TIPTAP_COLLAB_SECRET}}
 
       - name: Run Playwright tests
-        run: pnpx playwright test
+        run: pnpm run test
         env:
           HOME: /root
           CI: true
