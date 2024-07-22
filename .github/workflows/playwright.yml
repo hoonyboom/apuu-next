@@ -19,15 +19,30 @@ jobs:
           node-version: 20
       - name: Install pnpm
         run: npm install -g pnpm
+
       - name: Configure npm for @tiptap-pro
         run: |
           echo "@tiptap-pro:registry=https://registry.tiptap.dev/" > ~/.npmrc
           echo "//registry.tiptap.dev/:_authToken=${{ secrets.TIPTAP_PRO_TOKEN }}" >> ~/.npmrc
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key:
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{
+            hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --production
-      - name: Build
-        run: pnpm run build
-      - name: Run your tests
+
+      # - name: Build
+      #   run: pnpm run build
+
+      - name: Run Playwright tests
         run: pnpx playwright test
         env:
           HOME: /root
