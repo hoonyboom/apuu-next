@@ -46,7 +46,7 @@ jobs:
         run: pnpm run test
         env:
           HOME: /root
-          CI: true,
+          CI: true
           NODE_ENV: production
           NEXT_PUBLIC_BASE_URL: ${{secrets.NEXT_PUBLIC_BASE_URL}}
           NEXT_PUBLIC_COLLAB_DOC_PREFIX: ${{secrets.NEXT_PUBLIC_COLLAB_DOC_PREFIX}}
