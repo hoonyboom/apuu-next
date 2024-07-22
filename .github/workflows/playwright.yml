@@ -39,8 +39,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Dev
-        run: pnpm run dev
+      - name: Build
+        run: npm run build
 
       - name: Run Playwright tests
         run: pnpm run test
