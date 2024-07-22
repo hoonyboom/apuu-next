@@ -1,36 +1,18 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Form } from "@/components/ui/form";
 import { useToast } from "@/hooks/useToast";
 import { GOAL, LEVEL, MEMBER_SIZE, PERIOD, STYLE } from "@/lib/const";
-import { cn } from "@/lib/util";
-import { enumValuesMap, registerFormSchema } from "@/lib/zod.schema";
+import { registerFormSchema } from "@/lib/zod.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CalendarIcon } from "@radix-ui/react-icons";
-import { format } from "date-fns";
 import { PropsWithChildren } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { DatePickerProps, RegisterCheckBoxProps, RegisterFormFieldProps } from "./types";
+import { RegisterFormCheckBox } from "./RegisterCheckBox";
+import { RegisterDatePicker } from "./RegisterDatePicker";
+import { RegisterFormSelectBox } from "./RegisterSelectBox";
 
 export default function RegisterForm({ children }: PropsWithChildren) {
   const form = useForm<z.infer<typeof registerFormSchema>>({
@@ -90,7 +72,7 @@ export default function RegisterForm({ children }: PropsWithChildren) {
                 name="goal"
                 values={GOAL}
               />
-              <DatePicker form={form} />
+              <RegisterDatePicker form={form} />
             </div>
 
             <CardTitle>모임에 대해 소개해주세요</CardTitle>
@@ -102,137 +84,3 @@ export default function RegisterForm({ children }: PropsWithChildren) {
     </Card>
   );
 }
-
-const RegisterFormSelectBox = ({ form, name, label, values }: RegisterFormFieldProps) => {
-  return (
-    <FormField
-      control={form.control}
-      name={name}
-      // eslint-disable-next-line react/jsx-no-bind
-      render={({ field }) => (
-        <FormItem>
-          <FormLabel>{label}</FormLabel>
-          <Select
-            onValueChange={field.onChange}
-            defaultValue={field.value?.toString() ?? ""}
-          >
-            <FormControl>
-              <SelectTrigger>
-                <SelectValue placeholder="Select" />
-              </SelectTrigger>
-            </FormControl>
-            <SelectContent>
-              {enumValuesMap[name]
-                ? enumValuesMap[name].map(value => (
-                    <SelectItem key={value} value={value}>
-                      {value}
-                    </SelectItem>
-                  ))
-                : values?.map(value => (
-                    <SelectItem key={value} value={value}>
-                      {value}
-                    </SelectItem>
-                  ))}
-            </SelectContent>
-          </Select>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-};
-
-const RegisterFormCheckBox = ({ form, name, values, label }: RegisterCheckBoxProps) => {
-  return (
-    <FormField
-      control={form.control}
-      name={name}
-      // eslint-disable-next-line react/jsx-no-bind
-      render={() => (
-        <FormItem>
-          <div className="mb-4">
-            <FormLabel>{label}</FormLabel>
-          </div>
-          {values.map(item => (
-            <FormField
-              key={item}
-              control={form.control}
-              name={name}
-              // eslint-disable-next-line react/jsx-no-bind
-              render={({ field }) => {
-                return (
-                  <FormItem key={item} className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value?.includes(item)}
-                        onCheckedChange={checked => {
-                          return checked
-                            ? field.onChange(field.value?.push(item))
-                            : field.onChange(
-                                field.value?.filter(value => value !== item),
-                              );
-                        }}
-                      />
-                    </FormControl>
-                    <FormLabel className="font-normal">{item}</FormLabel>
-                  </FormItem>
-                );
-              }}
-            />
-          ))}
-        </FormItem>
-      )}
-    />
-  );
-};
-
-const DatePicker = ({ form }: DatePickerProps) => {
-  return (
-    <FormField
-      control={form.control}
-      name="deadline"
-      // eslint-disable-next-line react/jsx-no-bind
-      render={({ field }) => (
-        <FormItem className="flex flex-col">
-          <FormLabel>모집 마감일</FormLabel>
-          <Popover>
-            <PopoverTrigger asChild>
-              <FormControl>
-                <Button
-                  variant={"outline"}
-                  className={cn(
-                    "w-64 pl-3 text-left font-normal",
-                    !field.value && "text-muted-foreground",
-                  )}
-                >
-                  {field.value ? (
-                    format(field.value, "PPP")
-                  ) : (
-                    <span>마감일을 선택해주세요</span>
-                  )}
-                  <CalendarIcon className="ml-auto size-4 opacity-50" />
-                </Button>
-              </FormControl>
-            </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
-              <Calendar
-                mode="single"
-                selected={field.value}
-                onSelect={field.onChange}
-                disabled={date => {
-                  const today = new Date();
-                  const thirtyDaysFromNow = new Date();
-                  thirtyDaysFromNow.setDate(today.getDate() + 30);
-
-                  return date < today || date > thirtyDaysFromNow;
-                }}
-                initialFocus
-              />
-            </PopoverContent>
-          </Popover>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-};
