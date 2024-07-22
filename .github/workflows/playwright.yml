@@ -52,7 +52,7 @@ jobs:
           TIPTAP_COLLAB_SECRET: ${{secrets.TIPTAP_COLLAB_SECRET}}
 
       - name: Run Playwright tests
-        run: pnpm run merge-report
+        run: pnpm run test
         env:
           HOME: /root
           CI: true
