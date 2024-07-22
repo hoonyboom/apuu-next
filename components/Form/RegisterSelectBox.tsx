@@ -59,4 +59,4 @@ export const RegisterFormSelectBox = ({
   );
 };
 
-RegisterFormSelectBox.displayname = "RegisterFormSelectBox"
+RegisterFormSelectBox.displayname = "RegisterFormSelectBox";

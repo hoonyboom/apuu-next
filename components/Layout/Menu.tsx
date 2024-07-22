@@ -1,6 +1,7 @@
 "use client";
 
 import Avatar from "@/components/ui/Avatar";
+import { Icon } from "@/components/ui/Icon";
 import { Separator } from "@/components/ui/separator";
 import useScrollLock from "@/hooks/useScrollLock";
 import { stopPropagation } from "@/lib/util";
@@ -10,7 +11,6 @@ import clsx from "clsx";
 import Link from "next/link";
 import { MouseEventHandler, useCallback, useState } from "react";
 import { createPortal } from "react-dom";
-import { Icon } from "../ui/Icon";
 
 export default function Menu() {
   const { user, setLogoutUser } = useUserStore();

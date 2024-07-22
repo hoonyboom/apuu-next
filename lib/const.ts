@@ -1,5 +1,5 @@
-import { env } from "@/lib/env";
 import { Viewport, type Metadata } from "next";
+import { env } from "./env";
 
 export const METADATA: Metadata = {
   title: "Apuu",

@@ -1,4 +1,6 @@
+import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   FormControl,
   FormField,
@@ -10,8 +12,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/util";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
-import { Icon } from "../ui/Icon";
-import { Calendar } from "../ui/calendar";
 import { DatePickerProps } from "./types";
 
 export const RegisterDatePicker = ({ form }: DatePickerProps) => {

@@ -20,33 +20,9 @@
     "plugins": [
       { "name": "next" }
     ],
-    "baseUrl": ".",
     "paths": {
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/types/*": [
-          "types/*"
-      ],
-      "@/utils/*": [
-          "utils/*"
-      ],
-      "@/contexts/*": [
-          "contexts/*"
-      ],
-      "@/hooks/*": [
-          "hooks/*"
-      ],
-      "@/styles/*": [
-          "styles/*"
-      ],
-      "@/store/*": [
-          "store/*"
-      ],
-      "@/lib/*": [
-          "lib/*"
-      ]
-    }
+      "@/*": ["./*"],
+    } 
   },
   "include": [
     "next-env.d.ts",

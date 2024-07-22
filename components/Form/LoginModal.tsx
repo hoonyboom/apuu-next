@@ -9,8 +9,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ModeType } from "@/lib/types";
 import { useUserStore } from "@/store/user.store";
+import { ModeType } from "@/types";
 import { useCallback, useState } from "react";
 import { LoginForm, SignUpForm } from ".";
 
