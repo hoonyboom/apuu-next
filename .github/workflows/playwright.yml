@@ -20,10 +20,11 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: Configure npm for @tiptap-pro
+      - name: Configure .npmrc
         run: |
           echo "@tiptap-pro:registry=https://registry.tiptap.dev/" > ~/.npmrc
           echo "//registry.tiptap.dev/:_authToken=${{ secrets.TIPTAP_PRO_TOKEN }}" >> ~/.npmrc
+          echo "shamefully-hoist=true" >> ~/.npmrc
 
       - uses: actions/cache@v4
         with:
@@ -40,7 +41,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
         env:
           NEXT_PUBLIC_BASE_URL: ${{secrets.NEXT_PUBLIC_BASE_URL}}
           NEXT_PUBLIC_COLLAB_DOC_PREFIX: ${{secrets.NEXT_PUBLIC_COLLAB_DOC_PREFIX}}
@@ -48,7 +49,7 @@ jobs:
           TIPTAP_COLLAB_SECRET: ${{secrets.TIPTAP_COLLAB_SECRET}}
 
       - name: Run Playwright tests
-        run: pnpm run test
+        run: pnpx playwright test
         env:
           HOME: /root
           CI: true
