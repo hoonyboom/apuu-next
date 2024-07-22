@@ -9,9 +9,9 @@ on:
 jobs:
   playwright:
     name: "Playwright Tests"
-    timeout-minutes: 60
     runs-on: ubuntu-latest
-
+    container:
+      image: mcr.microsoft.com/playwright:v1.45.1-jammy
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -39,9 +39,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --production
-
-      - name: Install Playwright Browsers
-        run: pnpx playwright install --with-deps
 
       - name: Install playwright-merge-report
         run: pnpm install -D playwright-merge-html-reports
