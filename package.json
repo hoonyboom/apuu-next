@@ -10,12 +10,12 @@
     "lint": "next lint",
     "eslint": "eslint --ignore-path .gitignore \"**/*{ts,tsx}\" --fix",
     "vitest": "vitest",
-    "test": "exec playwright test",
-    "report": "exec playwright show-report",
-    "merge-report": "exec playwright test tests/playwright"
+    "test": "playwright test",
+    "report": "playwright show-report"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+    "@playwright/test": "^1.45.2",
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.1",
@@ -84,7 +84,6 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
-    "@playwright/test": "^1.45.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.13",
     "@tanstack/react-query-devtools": "^5.51.9",
