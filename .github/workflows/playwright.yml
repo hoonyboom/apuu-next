@@ -49,7 +49,7 @@ jobs:
           TIPTAP_COLLAB_SECRET: ${{secrets.TIPTAP_COLLAB_SECRET}}
 
       - name: Run Playwright tests
-        run: pnpx playwright test
+        run: pnpm run test
         env:
           HOME: /root
           CI: true
@@ -58,3 +58,10 @@ jobs:
           NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID: ${{secrets.NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID}}
           TIPTAP_COLLAB_SECRET: ${{secrets.TIPTAP_COLLAB_SECRET}}
           TIPTAP_PRO_TOKEN: ${{secrets.TIPTAP_PRO_TOKEN}}
+
+      - uses: actions/upload-artifact@v4
+            if: ${{ !cancelled() }}
+            with:
+              name: playwright-report
+              path: playwright-report/
+              retention-days: 30
