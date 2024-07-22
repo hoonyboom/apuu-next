@@ -10,8 +10,9 @@
     "lint": "next lint",
     "eslint": "eslint --ignore-path .gitignore \"**/*{ts,tsx}\" --fix",
     "vitest": "vitest",
-    "test": "playwright test",
-    "report": "playwright show-report"
+    "test": "exec playwright test",
+    "report": "exec playwright show-report",
+    "merge-report": "exec playwright test tests/playwright"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
