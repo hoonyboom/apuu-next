@@ -1,10 +1,10 @@
 "use client";
 
-import useTiptapInitializer from "@/hooks/useTiptapInitializer";
+import useTiptapInitializer from "@/hook/useTiptapInitializer";
 import "@/styles/editor.css";
 import { EditorContent } from "@tiptap/react";
 import { memo } from "react";
-import { EditorMenubar, TextCounter } from ".";
+import { EditorMenubar } from ".";
 
 export const Editor = memo(() => {
   const { editor } = useTiptapInitializer();
@@ -13,7 +13,7 @@ export const Editor = memo(() => {
     <div className="relative w-full rounded-md border border-gray-300">
       <EditorMenubar />
       <EditorContent editor={editor} />
-      <TextCounter />
+      {/* <TextCounter /> */}
     </div>
   );
 });

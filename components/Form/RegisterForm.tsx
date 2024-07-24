@@ -3,33 +3,55 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
-import { useToast } from "@/hooks/useToast";
-import { GOAL, LEVEL, MEMBER_SIZE, PERIOD, STYLE } from "@/lib/const";
-import { registerFormSchema } from "@/lib/zod.schema";
+import { useToast } from "@/hook/useToast";
+import { CHECK_BOX_LIST, SELECT_BOX_LIST } from "@/lib/const";
+import { useCreatePostMutation } from "@/service/posts/usePostsService";
+import { useEditorStore } from "@/store/editor.store";
+import { registerFormSchema } from "@/types/zod.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { RegisterFormCheckBox } from "./RegisterCheckBox";
 import { RegisterDatePicker } from "./RegisterDatePicker";
 import { RegisterFormSelectBox } from "./RegisterSelectBox";
+import { RegisterTitleInput } from "./RegisterTitleInput";
+import { RegisterFormDataType } from "./types";
 
 export default function RegisterForm({ children }: PropsWithChildren) {
-  const form = useForm<z.infer<typeof registerFormSchema>>({
-    resolver: zodResolver(registerFormSchema),
-  });
   const { toast } = useToast();
+  const [content, setContent] = useState("");
+  const form = useForm<RegisterFormDataType>({
+    resolver: zodResolver(registerFormSchema),
+    defaultValues: {
+      title: "",
+      level: [],
+      style: [],
+      goal: [],
+    },
+  });
+  const { mutate } = useCreatePostMutation();
+  const { editor } = useEditorStore();
 
-  const onSubmit = (data: z.infer<typeof registerFormSchema>) => {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  };
+  const onSubmit = useCallback(
+    (data: RegisterFormDataType) => {
+      mutate({
+        ...data,
+        content: editor?.getHTML() || "",
+      });
+
+      toast({
+        title: "You submitted the following values:",
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+            <code className="text-white">
+              {JSON.stringify({ ...data, content: editor?.getHTML() }, null, 2)}
+            </code>
+          </pre>
+        ),
+      });
+    },
+    [mutate, editor, toast],
+  );
 
   return (
     <Card className="w-full">
@@ -38,46 +60,36 @@ export default function RegisterForm({ children }: PropsWithChildren) {
       </CardHeader>
       <CardContent className="px-4">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
             <div className="mb-14 grid gap-6 sm:grid-cols-2">
-              <RegisterFormSelectBox form={form} label="모집 종류" name="sort" />
-              <RegisterFormSelectBox form={form} label="교류 방식" name="method" />
-              <RegisterFormSelectBox
-                form={form}
-                label="모집 인원"
-                name="size"
-                values={MEMBER_SIZE}
-              />
-              <RegisterFormSelectBox
-                form={form}
-                label="진행 기간"
-                name="period"
-                values={PERIOD}
-              />
-              <RegisterFormCheckBox
-                form={form}
-                label="모집 수준"
-                name="level"
-                values={LEVEL}
-              />
-              <RegisterFormCheckBox
-                form={form}
-                label="메인 영법"
-                name="style"
-                values={STYLE}
-              />
-              <RegisterFormCheckBox
-                form={form}
-                label="훈련 목표"
-                name="goal"
-                values={GOAL}
-              />
+              {SELECT_BOX_LIST.map(s => (
+                <RegisterFormSelectBox
+                  key={s.name}
+                  form={form}
+                  label={s.label}
+                  name={s.name}
+                  values={s.values}
+                />
+              ))}
+
+              {CHECK_BOX_LIST.map(c => (
+                <RegisterFormCheckBox
+                  form={form}
+                  key={c.label}
+                  label={c.label}
+                  name={c.name}
+                  values={c.values}
+                />
+              ))}
               <RegisterDatePicker form={form} />
             </div>
 
-            <CardTitle>모임에 대해 소개해주세요</CardTitle>
-            {children}
-            <Button type="submit">Submit</Button>
+            <div className="space-y-2">
+              <CardTitle className="mb-6">모임에 대해 소개해주세요</CardTitle>
+              <RegisterTitleInput form={form} />
+              {children}
+              <Button type="submit">Submit</Button>
+            </div>
           </form>
         </Form>
       </CardContent>

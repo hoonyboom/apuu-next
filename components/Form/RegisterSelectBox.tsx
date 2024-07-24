@@ -1,10 +1,4 @@
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import {
   Select,
   SelectContent,
@@ -12,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { enumValuesMap } from "@/lib/zod.schema";
+import { cn } from "@/lib/util";
 import { RegisterFormFieldProps } from "./types";
 
 export const RegisterFormSelectBox = ({
@@ -20,6 +14,7 @@ export const RegisterFormSelectBox = ({
   name,
   label,
   values,
+  unit,
 }: RegisterFormFieldProps) => {
   return (
     <FormField
@@ -28,7 +23,7 @@ export const RegisterFormSelectBox = ({
       // eslint-disable-next-line react/jsx-no-bind
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel className="mb-3 text-xs font-semibold">{label}</FormLabel>
           <Select
             onValueChange={field.onChange}
             defaultValue={field.value?.toString() ?? ""}
@@ -39,20 +34,22 @@ export const RegisterFormSelectBox = ({
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              {enumValuesMap[name]
-                ? enumValuesMap[name].map(value => (
-                    <SelectItem key={value} value={value}>
-                      {value}
-                    </SelectItem>
-                  ))
-                : values?.map(value => (
-                    <SelectItem key={value} value={value}>
+              {values?.map(value => (
+                    <SelectItem
+                      key={value}
+                      value={value.toString()}
+                      unit-value={unit}
+                      className={cn(
+                        typeof value === "number" &&
+                          unit &&
+                          "after:content-[attr(unit-value)]",
+                      )}
+                    >
                       {value}
                     </SelectItem>
                   ))}
             </SelectContent>
           </Select>
-          <FormMessage />
         </FormItem>
       )}
     />

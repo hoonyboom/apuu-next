@@ -74,7 +74,27 @@ ul[data-type="taskList"] {
 }
 
 .tiptap {
-  @apply min-h-60 overflow-y-scroll p-4;
+  @apply max-h-[40rem] min-h-60 overflow-y-scroll p-4;
+
+  p {
+    @apply mt-2 first:mt-0;
+  }
+
+  img {
+    @apply my-6 block h-auto max-w-full;
+
+    &.ProseMirror-selectednode {
+      @apply outline-4 outline-purple-600;
+    }
+  }
+
+  hr {
+    @apply my-8 cursor-pointer border-t border-none border-gray-100;
+
+    &.ProseMirror-selectednode {
+      @apply border-t border-purple-600;
+    }
+  }
 }
 
 .ProseMirror:focus {

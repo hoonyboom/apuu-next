@@ -1,4 +1,5 @@
-import { UserType } from "@/lib/zod.schema";
+import { UserType } from "@/types/zod.schema";
+import { deleteCookie } from "cookies-next";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -13,7 +14,11 @@ export const useUserStore = create(
     (set, get) => ({
       user: null,
       setLoginUser: (user: UserType) => set({ user }),
-      setLogoutUser: () => set({ user: null }),
+      setLogoutUser: () => {
+        set({ user: null });
+        deleteCookie("user");
+        deleteCookie("refreshToken");
+      },
       updateUser: (user: Partial<UserType>) => set({ user: { ...get().user!, ...user } }),
     }),
     {

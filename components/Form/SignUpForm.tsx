@@ -13,11 +13,11 @@ import {
 } from "@/components/ui/form";
 import { Icon } from "@/components/ui/Icon";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/useToast";
-import { api } from "@/lib/api.route";
+import { useToast } from "@/hook/useToast";
+import { api } from "@/lib/config/api.route";
 import { fetcher } from "@/lib/util";
-import { SignUpFormType, UserType, signUpFormSchema } from "@/lib/zod.schema";
-import { authAPI } from "@/services/auth/AuthService";
+import { authAPI } from "@/service/auth/AuthService";
+import { SignUpFormType, UserType, signUpFormSchema } from "@/types/zod.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MouseEventHandler, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";

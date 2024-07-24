@@ -1,5 +1,5 @@
-import { api } from "@/lib/api.route";
-import { env } from "@/lib/env";
+import { api } from "@/lib/config/api.route";
+import { env } from "@/lib/config/env";
 import { getCookie } from "cookies-next";
 
 type FetchOptions = {
@@ -60,7 +60,7 @@ class Service {
 
       if (!isTokenAlive) {
         try {
-          await fetch(this.baseURL + api.revalidate_access_token, {
+          await fetch(this.baseURL + api.auth.revalidate_access_token, {
             method: "POST",
             credentials: "include",
           });
@@ -87,6 +87,7 @@ class Service {
         },
       });
 
+      console.log(res);
       const responseData: T = await res.json();
       return responseData;
     } catch (error) {

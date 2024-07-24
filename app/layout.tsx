@@ -1,6 +1,6 @@
 import { Nav } from "@/components/Layout";
 import { Toaster } from "@/components/ui/toaster";
-import { ReactQueryProvider } from "@/contexts";
+import { ReactQueryProvider } from "@/context";
 import { METADATA, VIEWPORT } from "@/lib/const";
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";

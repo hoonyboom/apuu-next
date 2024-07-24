@@ -1,12 +1,18 @@
 import { Checkbox } from "@/components/ui/checkbox";
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { RegisterCheckBoxProps } from "./types";
 
 export const RegisterFormCheckBox = ({
   form,
-  name,
-  values,
   label,
+  values,
+  name,
 }: RegisterCheckBoxProps) => {
   return (
     <FormField
@@ -15,10 +21,8 @@ export const RegisterFormCheckBox = ({
       // eslint-disable-next-line react/jsx-no-bind
       render={() => (
         <FormItem>
-          <div className="mb-4">
-            <FormLabel>{label}</FormLabel>
-          </div>
-          {values.map(item => (
+          <div className="mb-4 text-xs font-semibold">{label}</div>
+          {values.map((item, i) => (
             <FormField
               key={item}
               control={form.control}
@@ -32,7 +36,7 @@ export const RegisterFormCheckBox = ({
                         checked={field.value?.includes(item)}
                         onCheckedChange={checked => {
                           return checked
-                            ? field.onChange(field.value?.push(item))
+                            ? field.onChange([...field.value, item])
                             : field.onChange(
                                 field.value?.filter(value => value !== item),
                               );
@@ -40,6 +44,7 @@ export const RegisterFormCheckBox = ({
                       />
                     </FormControl>
                     <FormLabel className="font-normal">{item}</FormLabel>
+                    <FormMessage />
                   </FormItem>
                 );
               }}

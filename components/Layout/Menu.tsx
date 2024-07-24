@@ -3,9 +3,9 @@
 import Avatar from "@/components/ui/Avatar";
 import { Icon } from "@/components/ui/Icon";
 import { Separator } from "@/components/ui/separator";
-import useScrollLock from "@/hooks/useScrollLock";
+import useScrollLock from "@/hook/useScrollLock";
 import { stopPropagation } from "@/lib/util";
-import { authAPI } from "@/services/auth/AuthService";
+import { authAPI } from "@/service/auth/AuthService";
 import { useUserStore } from "@/store/user.store";
 import clsx from "clsx";
 import Link from "next/link";

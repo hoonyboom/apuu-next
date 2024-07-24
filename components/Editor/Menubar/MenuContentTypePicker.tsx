@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Icon, IconProps } from "@/components/ui/Icon";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { MenubarBtn } from "./MenubarBtn";
 
 export type ContentTypePickerOption = {
@@ -41,7 +41,7 @@ const isCategory = (
   option: ContentTypePickerOption | ContentTypePickerCategory,
 ): option is ContentTypePickerCategory => option.type === "category";
 
-export const ContentTypePicker = ({ options }: ContentTypePickerProps) => {
+export const ContentTypePicker = memo(({ options }: ContentTypePickerProps) => {
   const activeItem = useMemo(
     () => options.find(option => option.type === "option" && option.isActive()),
     [options],
@@ -51,19 +51,21 @@ export const ContentTypePicker = ({ options }: ContentTypePickerProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <MenubarBtn
+          tooltip="문단 설정"
           icon={(activeItem?.type === "option" && activeItem.icon) || "Pilcrow"}
         >
           <Icon name="ChevronDown" className="size-2" />
         </MenubarBtn>
       </DropdownMenuTrigger>
-      <DropdownMenuContent asChild>
-        <DropdownMenuItem className="flex flex-col items-start gap-1 px-2 py-4">
+      <DropdownMenuContent asChild className="bg-white">
+        <DropdownMenuItem className="flex flex-col items-start gap-1 bg-white px-2 py-4">
           {options.map(option => {
             if (isOption(option)) {
               return (
                 <Button
                   key={option.id}
-                  className="flex items-center gap-1"
+                  variant="ghost"
+                  className="flex w-full items-center justify-start gap-1 hover:bg-accent"
                   onClick={option.onClick}
                 >
                   <Icon name={option.icon} className="mr-1 h-4 w-4" />
@@ -72,8 +74,10 @@ export const ContentTypePicker = ({ options }: ContentTypePickerProps) => {
               );
             } else if (isCategory(option)) {
               return (
-                <div className="mt-2 text-sm first:mt-0" key={option.id}>
-                  <DropdownMenuLabel key={option.id}>{option.label}</DropdownMenuLabel>
+                <div className="mt-2 first:mt-0" key={option.id}>
+                  <DropdownMenuLabel className="text-xs" key={option.id}>
+                    {option.label}
+                  </DropdownMenuLabel>
                 </div>
               );
             }
@@ -82,4 +86,5 @@ export const ContentTypePicker = ({ options }: ContentTypePickerProps) => {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-};
+});
+ContentTypePicker.displayName = "ContentTypePicker";

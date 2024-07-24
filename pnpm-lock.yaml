@@ -47,36 +47,15 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-visually-hidden':
+        specifier: ^1.1.0
+        version: 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-query':
         specifier: ^5.51.9
         version: 5.51.9(react@18.3.1)
-      '@tiptap-pro/extension-drag-handle':
-        specifier: ^2.10.3
-        version: 2.10.3(@tiptap-pro/extension-node-range@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4))(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/extension-collaboration@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18)))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18))
-      '@tiptap-pro/extension-drag-handle-react':
-        specifier: ^2.10.3
-        version: 2.10.3(@tiptap-pro/extension-drag-handle@2.10.3(@tiptap-pro/extension-node-range@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4))(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/extension-collaboration@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18)))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18)))(@tiptap/pm@2.5.4)(@tiptap/react@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@tiptap-pro/extension-emoji':
-        specifier: ^2.10.3
-        version: 2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(@tiptap/suggestion@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4))(emojibase@15.3.1)
-      '@tiptap-pro/extension-file-handler':
-        specifier: ^2.10.3
-        version: 2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
-      '@tiptap-pro/extension-mathematics':
-        specifier: ^2.10.3
-        version: 2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(katex@0.16.11)
-      '@tiptap-pro/extension-node-range':
-        specifier: ^2.10.3
-        version: 2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
-      '@tiptap-pro/extension-table-of-contents':
-        specifier: ^2.10.3
-        version: 2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
       '@tiptap/core':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/extension-blockquote':
-        specifier: ^2.5.4
-        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/extension-bold':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
@@ -98,15 +77,24 @@ importers:
       '@tiptap/extension-dropcursor':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
-      '@tiptap/extension-focus':
+      '@tiptap/extension-gapcursor':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
+      '@tiptap/extension-hard-break':
+        specifier: ^2.5.5
+        version: 2.5.5(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/extension-heading':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/extension-highlight':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
+      '@tiptap/extension-history':
+        specifier: ^2.5.4
+        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
+      '@tiptap/extension-horizontal-rule':
+        specifier: ^2.5.4
+        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
       '@tiptap/extension-image':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
@@ -128,15 +116,6 @@ importers:
       '@tiptap/extension-placeholder':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
-      '@tiptap/extension-table':
-        specifier: ^2.5.4
-        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
-      '@tiptap/extension-table-header':
-        specifier: ^2.5.4
-        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
-      '@tiptap/extension-table-row':
-        specifier: ^2.5.4
-        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/extension-task-item':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
@@ -144,18 +123,6 @@ importers:
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/extension-text':
-        specifier: ^2.5.4
-        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
-      '@tiptap/extension-text-align':
-        specifier: ^2.5.4
-        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
-      '@tiptap/extension-text-style':
-        specifier: ^2.5.4
-        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
-      '@tiptap/extension-typography':
-        specifier: ^2.5.4
-        version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
-      '@tiptap/extension-underline':
         specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/extension-youtube':
@@ -1231,65 +1198,10 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@tiptap-pro/extension-drag-handle-react@2.10.3':
-    resolution: {integrity: sha512-KGINtPsNtb8cWHemrskLFXq1FKDQzF0txQt0MP+fxmvVKoeox48hOgf7jpRoa7C5bqvdD9Ft+0UT9CeBxfTx0Q==}
-    peerDependencies:
-      '@tiptap-pro/extension-drag-handle': ^2.7.7
-      '@tiptap/pm': ^2.0.0
-      '@tiptap/react': ^2.0.0
-      react: ^17.0.0 || ^18.0.0
-      react-dom: ^17.0.0 || ^18.0.0
-
-  '@tiptap-pro/extension-drag-handle@2.10.3':
-    resolution: {integrity: sha512-A182SXOUXRtWDENVlA4shJ/og4V5z1+QLikqcEKJ2Qjk9VCWzvGNsDzR06v181wDygr23H0tZJ9uh5vRGQ4zAg==}
-    peerDependencies:
-      '@tiptap-pro/extension-node-range': ^2.7.7
-      '@tiptap/core': ^2.0.0
-      '@tiptap/extension-collaboration': ^2.0.0
-      '@tiptap/pm': ^2.0.0
-      y-prosemirror: ^1.2.5
-
-  '@tiptap-pro/extension-emoji@2.10.3':
-    resolution: {integrity: sha512-NiZuNEwN1qCxiNthb4hbEnFoLhdHcgZyAToTXT+Asz0M6rbS0nAtcZwY2xJps+jOvbbkVFGUcl960AaDmUJJnA==}
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-      '@tiptap/pm': ^2.0.0
-      '@tiptap/suggestion': ^2.0.0
-
-  '@tiptap-pro/extension-file-handler@2.10.3':
-    resolution: {integrity: sha512-MzC0eAJz0iZ0JsWKZLi/ecBNw1qUKVwiIC15Yz+CpKQ8O81/217m3R51q6iJ8bzEISKNHxBlxJN/M3NNuqU6Mg==}
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-      '@tiptap/pm': ^2.0.0
-
-  '@tiptap-pro/extension-mathematics@2.10.3':
-    resolution: {integrity: sha512-8u3/dtfnpDrxhOHGMXfXjBh0R++AYSEH39DYPWgN2iB+q1k8j+mhy7yWklB9tX44h/tVGhBWZQrCgi0sTNGpsg==}
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-      '@tiptap/pm': ^2.0.0
-      katex: ^0.16.4
-
-  '@tiptap-pro/extension-node-range@2.10.3':
-    resolution: {integrity: sha512-SNkxHLnVsUGUSUUxXH/LiQ3kD2N/WfNCIlfBXaUy2EOl8UNSbHtCRQ6fxMZtgSYTTLXH4MnDZDBfl9HoW+WZew==}
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-      '@tiptap/pm': ^2.0.0
-
-  '@tiptap-pro/extension-table-of-contents@2.10.3':
-    resolution: {integrity: sha512-AJcIJstnCPiouqN6BjkSqZQJ+bUXKOEGBAcO1W22DeR7GFONacZHpUg58nidi2WaO3+fXaGJK9lWDLJ0af17lQ==}
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-      '@tiptap/pm': ^2.0.0
-
   '@tiptap/core@2.5.4':
     resolution: {integrity: sha512-Zs/hShr4+W02+0nOlpmr5cS2YjDRLqd+XMt+jsiQH0QNr3s1Lc82pfF6C3CjgLEZtdUzImZrW2ABtLlpvbogaA==}
     peerDependencies:
       '@tiptap/pm': ^2.5.4
-
-  '@tiptap/extension-blockquote@2.5.4':
-    resolution: {integrity: sha512-UqeJunZM3IiCQGZE0X5YNUOWYkuIieqrwPgOEghAIjnhDcQizQcouRQ5R7cwwv/scNr2JvZHncOTLrALV3Janw==}
-    peerDependencies:
-      '@tiptap/core': ^2.5.4
 
   '@tiptap/extension-bold@2.5.4':
     resolution: {integrity: sha512-H5sjqloFMjq7VOSfE+U4T7dqGoflOiF6RW6/gZm/U6KYeHG2/bG0ktq7mWAnnhbiKiy7gUcxyJCV+ILdGX9C5g==}
@@ -1312,13 +1224,6 @@ packages:
     peerDependencies:
       '@tiptap/core': ^2.5.4
       '@tiptap/pm': ^2.5.4
-
-  '@tiptap/extension-collaboration@2.5.4':
-    resolution: {integrity: sha512-CpQdbr7XpQaVqRFo/A1DchrQZMDb8vrkP+FcUIgvHN0b8hwKDmXRAHDtuk8yTTEatW1EqpX8lx8UxaUTcDNbIg==}
-    peerDependencies:
-      '@tiptap/core': ^2.5.4
-      '@tiptap/pm': ^2.5.4
-      y-prosemirror: ^1.2.6
 
   '@tiptap/extension-color@2.5.4':
     resolution: {integrity: sha512-f4ltxa4Y9NzD6+xFkjVo925+OltZbtYEuwUSXQKU4NJyjiMBMUOzW+mCgQM2TB5V36VP2ttIvdQ+W99yazJqUg==}
@@ -1343,11 +1248,16 @@ packages:
       '@tiptap/core': ^2.5.4
       '@tiptap/pm': ^2.5.4
 
-  '@tiptap/extension-focus@2.5.4':
-    resolution: {integrity: sha512-/Iq++93f9S+bNJzj3OmgOydCO58VfAhmnsImbGK/GmxV39hHbgJdazxMugwdQlvrY/oe3+Y+WY8ZI1WlWwTJ4g==}
+  '@tiptap/extension-gapcursor@2.5.4':
+    resolution: {integrity: sha512-wzTh1piODZBS0wmuDgPjjg8PQwclYa5LssnxDIo9pDSnt4l3AfHSAJIJSGIfgt96KnzF1wqRTRpe08qNa1n7/g==}
     peerDependencies:
       '@tiptap/core': ^2.5.4
       '@tiptap/pm': ^2.5.4
+
+  '@tiptap/extension-hard-break@2.5.5':
+    resolution: {integrity: sha512-VtrwKU0LYS/0rfH5rGz8ztKwA0bsHRyBF53G7aP2FS4BiN8aOEu8t7VkvBZAewXDITDah9K6rqfXk+MNwoul2Q==}
+    peerDependencies:
+      '@tiptap/core': ^2.5.5
 
   '@tiptap/extension-heading@2.5.4':
     resolution: {integrity: sha512-DuAB58/e7eho1rkyad0Z/SjW+EB+H2hRqHlswEeZZYhBTjzey5UmBwkMWTGC/SQiRisx1xYQYTd8T0fiABi5hw==}
@@ -1358,6 +1268,18 @@ packages:
     resolution: {integrity: sha512-TSYnFBluZu1YQdTCyXl2wuxFuhFUYFzbaV0f1wq2P2Nc8U2OiiuaNz+QggHw5Hf3ILzkRxQCUQnq97Q/5smMwQ==}
     peerDependencies:
       '@tiptap/core': ^2.5.4
+
+  '@tiptap/extension-history@2.5.4':
+    resolution: {integrity: sha512-WB1fZYGIlpahAD6Ba+mj9vIb1tk8S3TsADXDFKxLVpZWZPQ+B7duGJP7g/vRH2XAXEs836JzC2oxjKeaop3k7A==}
+    peerDependencies:
+      '@tiptap/core': ^2.5.4
+      '@tiptap/pm': ^2.5.4
+
+  '@tiptap/extension-horizontal-rule@2.5.4':
+    resolution: {integrity: sha512-uXLDe/iyzQbyfDkJ8kE5XaAkY3EOcbTFLjbueqGlkbWtjJgy+3LysGvh8fQj8PAOaIBMaFRFhTq7GMbW2ebRog==}
+    peerDependencies:
+      '@tiptap/core': ^2.5.4
+      '@tiptap/pm': ^2.5.4
 
   '@tiptap/extension-image@2.5.4':
     resolution: {integrity: sha512-4ySSP7iPsbbo1SlPJYj546TKettuO6FGY5MQKxH8AGnZWyQGZYl89GpU1iGFAaeHq4dKUemM5D3ikgSynEQLow==}
@@ -1396,22 +1318,6 @@ packages:
       '@tiptap/core': ^2.5.4
       '@tiptap/pm': ^2.5.4
 
-  '@tiptap/extension-table-header@2.5.4':
-    resolution: {integrity: sha512-0JV7yxf7UQXcnNBeh0ruJzpgxbPWtJjQ5CB7R/2nGGJtK5Zd4qbBSvPwZb90rrzbfGG6gPyH/840nBOV9Hihqw==}
-    peerDependencies:
-      '@tiptap/core': ^2.5.4
-
-  '@tiptap/extension-table-row@2.5.4':
-    resolution: {integrity: sha512-syE0HO+1nZ6cZP+A1BnOfyBLY5/fSzlqXId1SzDxp3w2RfUldXfrV9ltyyEE6wxruxCgI+V5J3wV3ObSXy9PMA==}
-    peerDependencies:
-      '@tiptap/core': ^2.5.4
-
-  '@tiptap/extension-table@2.5.4':
-    resolution: {integrity: sha512-EvK3XQmbuje0re8xCXuGcPO1NgnRh1MYUe2zi4++rPNDN2nTzCvJI1QdYfA9DYMdklnpvygnXCJhgvx1rB/26Q==}
-    peerDependencies:
-      '@tiptap/core': ^2.5.4
-      '@tiptap/pm': ^2.5.4
-
   '@tiptap/extension-task-item@2.5.4':
     resolution: {integrity: sha512-zl+L9M3kkIgXYhq3n++WJPfSOBlNA4zxPCo3ZfG/IjmLXOfxYQfgt2mbX9akr6L1XiiyGq8VAMDMvXgW0/21NQ==}
     peerDependencies:
@@ -1423,11 +1329,6 @@ packages:
     peerDependencies:
       '@tiptap/core': ^2.5.4
 
-  '@tiptap/extension-text-align@2.5.4':
-    resolution: {integrity: sha512-hQT7wPVISw7fgMTT0XfK6uk3T2qLKpeYWOUBO1ENEdim6HQmFTOIgNyAdVcCipaedQSlD72ysfRXq2S1mzWzEw==}
-    peerDependencies:
-      '@tiptap/core': ^2.5.4
-
   '@tiptap/extension-text-style@2.5.4':
     resolution: {integrity: sha512-OwQ6rQrwVSCTicxJJ67C5Z+LQjZp9HyZDeEcrQgPsv/gtk6H69qo1jShHAdmYn4ck40CkuNyN6VKczd9VZf0+g==}
     peerDependencies:
@@ -1435,16 +1336,6 @@ packages:
 
   '@tiptap/extension-text@2.5.4':
     resolution: {integrity: sha512-+3x/hYqhmCYbvedCcQzQHFtZ5MAcMOlKuczomZtygf8AfDfuQVrG1m4GoJyNzJdqxjN80/xq4e2vDVvqQxYTCw==}
-    peerDependencies:
-      '@tiptap/core': ^2.5.4
-
-  '@tiptap/extension-typography@2.5.4':
-    resolution: {integrity: sha512-LXctwoKdmWw9geXngQWGHcwEHIYLJ5v7GX3GuudN+oHhSV2MTGUTYZ2qv/RLIR9kvB0vcV9vTF98YJxEnjU5Fw==}
-    peerDependencies:
-      '@tiptap/core': ^2.5.4
-
-  '@tiptap/extension-underline@2.5.4':
-    resolution: {integrity: sha512-o8T3oWbniA3rLo6LkslPRF8pwdjsaHXJCeK4KmKeCyYhTpMfjypT3uptd+VSSJ4iQkaiFInKeIUOBqqEQ9cADw==}
     peerDependencies:
       '@tiptap/core': ^2.5.4
 
@@ -1463,12 +1354,6 @@ packages:
       '@tiptap/pm': ^2.5.4
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
-
-  '@tiptap/suggestion@2.5.4':
-    resolution: {integrity: sha512-mf0gC237PFz5l/hFRIetZoXemLMUXtmTPRbHTgBzqkTfaiJhfWsZZ3VeQNh4hoQ5AGYxRHWb9+zgRNGsH4jAEw==}
-    peerDependencies:
-      '@tiptap/core': ^2.5.4
-      '@tiptap/pm': ^2.5.4
 
   '@types/aria-query@5.0.4':
     resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==}
@@ -1821,10 +1706,6 @@ packages:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
 
-  commander@8.3.0:
-    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
-    engines: {node: '>= 12'}
-
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
@@ -1964,14 +1845,6 @@ packages:
 
   emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
-
-  emojibase-data@7.0.1:
-    resolution: {integrity: sha512-BLZpOdwyFpZ7lzBWyDtnxmKVm/SJMYgAfp1if3o6n1TVUMSXAf0nikONXl90LZuJ/m3XWPBkkubgCet2BsCGGQ==}
-    peerDependencies:
-      emojibase: '*'
-
-  emojibase@15.3.1:
-    resolution: {integrity: sha512-GNsjHnG2J3Ktg684Fs/vZR/6XpOSkZPMAv85EHrr6br2RN2cJNwdS4am/3YSK3y+/gOv2kmoK3GGdahXdMxg2g==}
 
   enhanced-resolve@5.17.0:
     resolution: {integrity: sha512-dwDPwZL0dmye8Txp2gzFmA6sxALaSvdRDjPH0viLcKrtlOL3tw62nWWweVD1SdILDTJrbrL6tdWVN58Wo6U3eA==}
@@ -2440,9 +2313,6 @@ packages:
     resolution: {integrity: sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ==}
     engines: {node: '>= 0.4'}
 
-  is-emoji-supported@0.0.5:
-    resolution: {integrity: sha512-WOlXUhDDHxYqcSmFZis+xWhhqXiK2SU0iYiqmth5Ip0FHLZQAt9rKL5ahnilE8/86WH8tZ3bmNNNC+bTzamqlw==}
-
   is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
@@ -2538,9 +2408,6 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isomorphic.js@0.2.5:
-    resolution: {integrity: sha512-PIeMbHqMt4DnUP3MA/Flc0HElYjMXArsw1qwJZcm9sqR8mq3l8NYizFMty0pWwE/tzIGH3EKK5+jes5mAr85yw==}
-
   iterator.prototype@1.1.2:
     resolution: {integrity: sha512-DR33HMMr8EzwuRL8Y9D3u2BMj8+RqSE850jfGu59kS7tbmPLzGkZmVSfyCFSDxuZiEY6Rzt3T2NA/qU+NwVj1w==}
 
@@ -2598,10 +2465,6 @@ packages:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
     engines: {node: '>=4.0'}
 
-  katex@0.16.11:
-    resolution: {integrity: sha512-RQrI8rlHY92OLf3rho/Ts8i/XvjgguEjOkO1BEXcU3N8BqPpSzBNwV/G0Ukr+P/l3ivvJUE/Fa/CwbS6HesGNQ==}
-    hasBin: true
-
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
@@ -2615,11 +2478,6 @@ packages:
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
-
-  lib0@0.2.94:
-    resolution: {integrity: sha512-hZ3p54jL4Wpu7IOg26uC7dnEWiMyNlUrb9KoG7+xYs45WkQwpVvKFndVq2+pqLYKe1u8Fp3+zAfZHVvTK34PvQ==}
-    engines: {node: '>=16'}
-    hasBin: true
 
   lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
@@ -3611,10 +3469,6 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  uuid@10.0.0:
-    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
-    hasBin: true
-
   vite-node@2.0.3:
     resolution: {integrity: sha512-14jzwMx7XTcMB+9BhGQyoEAmSl0eOr3nrnn+Z12WNERtOvLN+d2scbRUvyni05rT3997Bg+rZb47NyP4IQPKXg==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -3759,22 +3613,6 @@ packages:
   xmlchars@2.2.0:
     resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==}
 
-  y-prosemirror@1.2.9:
-    resolution: {integrity: sha512-fThGIVmSqrqnG/ckywEGlHM9ElfILC4TcMZd5zxWPe/i+UuP97TEr4swsopRKG3Y+KHBVt4Y/5NVBC3AAsUoUg==}
-    engines: {node: '>=16.0.0', npm: '>=8.0.0'}
-    peerDependencies:
-      prosemirror-model: ^1.7.1
-      prosemirror-state: ^1.2.3
-      prosemirror-view: ^1.9.10
-      y-protocols: ^1.0.1
-      yjs: ^13.5.38
-
-  y-protocols@1.0.6:
-    resolution: {integrity: sha512-vHRF2L6iT3rwj1jub/K5tYcTT/mEYDUppgNPXwp8fmLpui9f7Yeq3OEtTLVF012j39QnV+KEQpNqoN7CWU7Y9Q==}
-    engines: {node: '>=16.0.0', npm: '>=8.0.0'}
-    peerDependencies:
-      yjs: ^13.0.0
-
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
 
@@ -3782,10 +3620,6 @@ packages:
     resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
     engines: {node: '>= 14'}
     hasBin: true
-
-  yjs@13.6.18:
-    resolution: {integrity: sha512-GBTjO4QCmv2HFKFkYIJl7U77hIB1o22vSCSQD1Ge8ZxWbIbn8AltI4gyXbtL+g5/GJep67HCMq3Y5AmNwDSyEg==}
-    engines: {node: '>=16.0.0', npm: '>=8.0.0'}
 
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
@@ -4682,63 +4516,9 @@ snapshots:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@tiptap-pro/extension-drag-handle-react@2.10.3(@tiptap-pro/extension-drag-handle@2.10.3(@tiptap-pro/extension-node-range@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4))(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/extension-collaboration@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18)))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18)))(@tiptap/pm@2.5.4)(@tiptap/react@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@tiptap-pro/extension-drag-handle': 2.10.3(@tiptap-pro/extension-node-range@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4))(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/extension-collaboration@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18)))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18))
-      '@tiptap/pm': 2.5.4
-      '@tiptap/react': 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
-  '@tiptap-pro/extension-drag-handle@2.10.3(@tiptap-pro/extension-node-range@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4))(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/extension-collaboration@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18)))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18))':
-    dependencies:
-      '@tiptap-pro/extension-node-range': 2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/extension-collaboration': 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18))
-      '@tiptap/pm': 2.5.4
-      tippy.js: 6.3.7
-      y-prosemirror: 1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18)
-
-  '@tiptap-pro/extension-emoji@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(@tiptap/suggestion@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4))(emojibase@15.3.1)':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/pm': 2.5.4
-      '@tiptap/suggestion': 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
-      emoji-regex: 10.3.0
-      emojibase-data: 7.0.1(emojibase@15.3.1)
-      is-emoji-supported: 0.0.5
-    transitivePeerDependencies:
-      - emojibase
-
-  '@tiptap-pro/extension-file-handler@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/pm': 2.5.4
-
-  '@tiptap-pro/extension-mathematics@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(katex@0.16.11)':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/pm': 2.5.4
-      katex: 0.16.11
-
-  '@tiptap-pro/extension-node-range@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/pm': 2.5.4
-
-  '@tiptap-pro/extension-table-of-contents@2.10.3(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/pm': 2.5.4
-      uuid: 10.0.0
-
   '@tiptap/core@2.5.4(@tiptap/pm@2.5.4)':
     dependencies:
       '@tiptap/pm': 2.5.4
-
-  '@tiptap/extension-blockquote@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
 
   '@tiptap/extension-bold@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
     dependencies:
@@ -4758,12 +4538,6 @@ snapshots:
     dependencies:
       '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
       '@tiptap/pm': 2.5.4
-
-  '@tiptap/extension-collaboration@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18))':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/pm': 2.5.4
-      y-prosemirror: 1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18)
 
   '@tiptap/extension-color@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/extension-text-style@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4)))':
     dependencies:
@@ -4785,10 +4559,14 @@ snapshots:
       '@tiptap/pm': 2.5.4
       tippy.js: 6.3.7
 
-  '@tiptap/extension-focus@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
+  '@tiptap/extension-gapcursor@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
     dependencies:
       '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
       '@tiptap/pm': 2.5.4
+
+  '@tiptap/extension-hard-break@2.5.5(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
+    dependencies:
+      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
 
   '@tiptap/extension-heading@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
     dependencies:
@@ -4797,6 +4575,16 @@ snapshots:
   '@tiptap/extension-highlight@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
     dependencies:
       '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
+
+  '@tiptap/extension-history@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
+    dependencies:
+      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
+      '@tiptap/pm': 2.5.4
+
+  '@tiptap/extension-horizontal-rule@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
+    dependencies:
+      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
+      '@tiptap/pm': 2.5.4
 
   '@tiptap/extension-image@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
     dependencies:
@@ -4829,19 +4617,6 @@ snapshots:
       '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
       '@tiptap/pm': 2.5.4
 
-  '@tiptap/extension-table-header@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-
-  '@tiptap/extension-table-row@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-
-  '@tiptap/extension-table@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/pm': 2.5.4
-
   '@tiptap/extension-task-item@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
     dependencies:
       '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
@@ -4851,23 +4626,11 @@ snapshots:
     dependencies:
       '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
 
-  '@tiptap/extension-text-align@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-
   '@tiptap/extension-text-style@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
     dependencies:
       '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
 
   '@tiptap/extension-text@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-
-  '@tiptap/extension-typography@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-
-  '@tiptap/extension-underline@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))':
     dependencies:
       '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
 
@@ -4906,11 +4669,6 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       use-sync-external-store: 1.2.2(react@18.3.1)
-
-  '@tiptap/suggestion@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)':
-    dependencies:
-      '@tiptap/core': 2.5.4(@tiptap/pm@2.5.4)
-      '@tiptap/pm': 2.5.4
 
   '@types/aria-query@5.0.4': {}
 
@@ -5324,8 +5082,6 @@ snapshots:
 
   commander@4.1.1: {}
 
-  commander@8.3.0: {}
-
   concat-map@0.0.1: {}
 
   convert-source-map@2.0.0: {}
@@ -5460,12 +5216,6 @@ snapshots:
   emoji-regex@8.0.0: {}
 
   emoji-regex@9.2.2: {}
-
-  emojibase-data@7.0.1(emojibase@15.3.1):
-    dependencies:
-      emojibase: 15.3.1
-
-  emojibase@15.3.1: {}
 
   enhanced-resolve@5.17.0:
     dependencies:
@@ -5618,7 +5368,7 @@ snapshots:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.9.0(eslint@8.57.0)
       eslint-plugin-react: 7.34.4(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
@@ -5647,7 +5397,7 @@ snapshots:
       enhanced-resolve: 5.17.0
       eslint: 8.57.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.6
       is-core-module: 2.15.0
@@ -5669,7 +5419,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5
@@ -6126,8 +5876,6 @@ snapshots:
     dependencies:
       has-tostringtag: 1.0.2
 
-  is-emoji-supported@0.0.5: {}
-
   is-extglob@2.1.1: {}
 
   is-finalizationregistry@1.0.2:
@@ -6203,8 +5951,6 @@ snapshots:
   isarray@2.0.5: {}
 
   isexe@2.0.0: {}
-
-  isomorphic.js@0.2.5: {}
 
   iterator.prototype@1.1.2:
     dependencies:
@@ -6283,10 +6029,6 @@ snapshots:
       object.assign: 4.1.5
       object.values: 1.2.0
 
-  katex@0.16.11:
-    dependencies:
-      commander: 8.3.0
-
   keyv@4.5.4:
     dependencies:
       json-buffer: 3.0.1
@@ -6301,10 +6043,6 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
-
-  lib0@0.2.94:
-    dependencies:
-      isomorphic.js: 0.2.5
 
   lilconfig@2.1.0: {}
 
@@ -7319,8 +7057,6 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  uuid@10.0.0: {}
-
   vite-node@2.0.3(@types/node@20.14.11):
     dependencies:
       cac: 6.7.14
@@ -7474,27 +7210,9 @@ snapshots:
 
   xmlchars@2.2.0: {}
 
-  y-prosemirror@1.2.9(prosemirror-model@1.22.2)(prosemirror-state@1.4.3)(prosemirror-view@1.33.9)(y-protocols@1.0.6(yjs@13.6.18))(yjs@13.6.18):
-    dependencies:
-      lib0: 0.2.94
-      prosemirror-model: 1.22.2
-      prosemirror-state: 1.4.3
-      prosemirror-view: 1.33.9
-      y-protocols: 1.0.6(yjs@13.6.18)
-      yjs: 13.6.18
-
-  y-protocols@1.0.6(yjs@13.6.18):
-    dependencies:
-      lib0: 0.2.94
-      yjs: 13.6.18
-
   yallist@3.1.1: {}
 
   yaml@2.4.5: {}
-
-  yjs@13.6.18:
-    dependencies:
-      lib0: 0.2.94
 
   yocto-queue@0.1.0: {}
 

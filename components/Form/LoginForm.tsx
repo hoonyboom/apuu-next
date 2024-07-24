@@ -11,9 +11,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { LoginFormType, UserType, loginFormSchema, userSchema } from "@/lib/zod.schema";
-import { authAPI } from "@/services/auth/AuthService";
+import { authAPI } from "@/service/auth/AuthService";
 import { useUserStore } from "@/store/user.store";
+import { LoginFormType, UserType, loginFormSchema, userSchema } from "@/types/zod.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { setCookie } from "cookies-next";
 import { useCallback } from "react";

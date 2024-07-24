@@ -1,4 +1,4 @@
-import { isTextSelected } from "@/lib/utils";
+import { isTextSelected } from "@/lib/util";
 import { useEditorStore } from "@/store/editor.store";
 import { Editor as CoreEditor } from "@tiptap/core";
 import { EditorState } from "@tiptap/pm/state";

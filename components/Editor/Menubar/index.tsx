@@ -1,12 +1,12 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { useContentTypes } from "@/hooks/useContentType";
-import useEditorCallbacks from "@/hooks/useEditorCallbacks";
-import { useEditorStates } from "@/hooks/useEditorStates";
-import { BlockquoteBtn } from "./BlockquoteBtn";
+import { useContentTypes } from "@/hook/useContentType";
+import useEditorCallbacks from "@/hook/useEditorCallbacks";
+import { useEditorStates } from "@/hook/useEditorStates";
 import { BoldBtn } from "./BoldBtn";
 import { ColorPicker } from "./ColorPicker";
+import { ImageBtn } from "./ImageBtn";
 import { ItalicBtn } from "./ItalicBtn";
 import { LinkBtn } from "./LinkBtn";
 import { ContentTypePicker } from "./MenuContentTypePicker";
@@ -24,17 +24,17 @@ export default function EditorMenubar() {
       <Separator orientation="vertical" className="h-full" />
       <BoldBtn />
       <ItalicBtn />
-      <BlockquoteBtn />
       <YoutubeBtn />
       <LinkBtn />
-      <PopoverBtn icon="Palette">
+      <ImageBtn />
+      <PopoverBtn icon="Palette" tooltip="폰트 색상">
         <ColorPicker
           color={states.currentColor}
           onChange={commands.onChangeColor}
           onClear={commands.onClearColor}
         />
       </PopoverBtn>
-      <PopoverBtn icon="Highlighter">
+      <PopoverBtn icon="Highlighter" tooltip="형광펜">
         <ColorPicker
           color={states.currentHighlight}
           onChange={commands.onChangeHighlight}

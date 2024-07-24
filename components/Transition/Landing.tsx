@@ -1,7 +1,7 @@
 "use client";
 
-import useMount from "@/hooks/useMount";
-import useTimer from "@/hooks/useTimer";
+import useMount from "@/hook/useMount";
+import useTimer from "@/hook/useTimer";
 import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useState } from "react";

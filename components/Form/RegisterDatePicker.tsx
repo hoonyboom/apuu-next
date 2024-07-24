@@ -12,9 +12,9 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/util";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
-import { DatePickerProps } from "./types";
+import { RegisterDefaultProps } from "./types";
 
-export const RegisterDatePicker = ({ form }: DatePickerProps) => {
+export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
   return (
     <FormField
       control={form.control}

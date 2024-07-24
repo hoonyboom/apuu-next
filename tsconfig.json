@@ -28,7 +28,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "lib/env.ts",
+    "lib/config/env.ts",
     ".next/types/**/*.ts",
     "./dist/types/**/*.ts",
   ],

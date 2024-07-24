@@ -1,30 +1,26 @@
 "use client";
 
 import { useEditorStore } from "@/store/editor.store";
-import { DependencyList, useCallback } from "react";
+import { useCallback } from "react";
 
-export default function useEditorCallbacks(deps: DependencyList = []) {
+export default function useEditorCallbacks() {
   const { editor } = useEditorStore();
 
-  const toggleBlockquote = useCallback(
-    () => editor?.chain().focus().toggleBlockquote().run(),
-    [editor, ...deps],
-  );
   const toggleBold = useCallback(
     () => editor?.chain().focus().toggleBold().run(),
-    [editor, ...deps],
+    [editor],
   );
   const toggleItalic = useCallback(
     () => editor?.chain().focus().toggleItalic().run(),
-    [editor, ...deps],
+    [editor],
   );
   const toggleTaskList = useCallback(
     () => editor?.chain().focus().toggleTaskList().run(),
-    [editor, ...deps],
+    [editor],
   );
   const setLink = useCallback(() => {
     const previousUrl = editor?.getAttributes("link").href;
-    const url = window.prompt("URL", previousUrl);
+    const url = prompt("URL", previousUrl);
 
     if (url === null) return;
     else if (url === "") {
@@ -32,7 +28,7 @@ export default function useEditorCallbacks(deps: DependencyList = []) {
       return;
     }
     editor?.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
-  }, [editor, ...deps]);
+  }, [editor]);
 
   const addYoutubeVideo = useCallback(() => {
     const url = prompt("Enter YouTube URL");
@@ -40,11 +36,29 @@ export default function useEditorCallbacks(deps: DependencyList = []) {
     if (url) {
       editor?.commands.setYoutubeVideo({
         src: url,
-        width: 640,
-        height: 480,
       });
     }
-  }, [editor, ...deps]);
+  }, [editor]);
+
+  const setImage = useCallback(() => {
+    editor?.chain().focus().setImageUpload().run();
+  }, [editor]);
+
+  const setSeparator = useCallback(() => {
+    editor?.chain().focus().setHorizontalRule().run();
+  }, [editor]);
+
+  const setUndo = useCallback(() => {
+    editor?.chain().focus().undo().run();
+  }, [editor]);
+
+  const setRedo = useCallback(() => {
+    editor?.chain().focus().redo().run();
+  }, [editor]);
+
+  const setHardBreak = useCallback(() => {
+    editor?.chain().focus().setHardBreak().run();
+  }, [editor]);
 
   const onChangeColor = useCallback(
     (color: string) => editor?.chain().setColor(color).run(),
@@ -65,11 +79,15 @@ export default function useEditorCallbacks(deps: DependencyList = []) {
   );
 
   return {
-    toggleBlockquote,
+    setImage,
+    setLink,
+    setUndo,
+    setRedo,
+    setSeparator,
+    setHardBreak,
     toggleBold,
     toggleItalic,
     toggleTaskList,
-    setLink,
     addYoutubeVideo,
     onChangeColor,
     onClearColor,

@@ -8,7 +8,7 @@ export const useContentTypes = () => {
     return [
       {
         type: "category",
-        label: "Hierarchy",
+        label: "포맷",
         id: "hierarchy",
       },
       {
@@ -28,7 +28,7 @@ export const useContentTypes = () => {
           !editor?.isActive("orderedList") &&
           !editor?.isActive("bulletList") &&
           !editor?.isActive("taskList"),
-        label: "Paragraph",
+        label: "본문",
         type: "option",
       },
       {
@@ -44,7 +44,7 @@ export const useContentTypes = () => {
         id: "heading1",
         disabled: () => !editor?.can().setHeading({ level: 1 }),
         isActive: () => editor?.isActive("heading", { level: 1 }),
-        label: "Heading 1",
+        label: "타이틀 1",
         type: "option",
       },
       {
@@ -60,7 +60,7 @@ export const useContentTypes = () => {
         id: "heading2",
         disabled: () => !editor?.can().setHeading({ level: 2 }),
         isActive: () => editor?.isActive("heading", { level: 2 }),
-        label: "Heading 2",
+        label: "타이틀 2",
         type: "option",
       },
       {
@@ -76,12 +76,12 @@ export const useContentTypes = () => {
         id: "heading3",
         disabled: () => !editor?.can().setHeading({ level: 3 }),
         isActive: () => editor?.isActive("heading", { level: 3 }),
-        label: "Heading 3",
+        label: "타이틀 3",
         type: "option",
       },
       {
         type: "category",
-        label: "Lists",
+        label: "리스트",
         id: "lists",
       },
       {
@@ -90,7 +90,7 @@ export const useContentTypes = () => {
         id: "bulletList",
         disabled: () => !editor?.can().toggleBulletList(),
         isActive: () => editor?.isActive("bulletList"),
-        label: "Bullet list",
+        label: "불렛 리스트",
         type: "option",
       },
       {
@@ -99,7 +99,7 @@ export const useContentTypes = () => {
         id: "orderedList",
         disabled: () => !editor?.can().toggleOrderedList(),
         isActive: () => editor?.isActive("orderedList"),
-        label: "Numbered list",
+        label: "숫자 리스트",
         type: "option",
       },
       {
@@ -108,7 +108,7 @@ export const useContentTypes = () => {
         id: "todoList",
         disabled: () => !editor?.can().toggleTaskList(),
         isActive: () => editor?.isActive("taskList"),
-        label: "Todo list",
+        label: "체크 리스트",
         type: "option",
       },
     ];
