@@ -1,4 +1,4 @@
-import { useToast } from "@/hook";
+import { toast, useToast } from "@/hook";
 import { DragEvent, useCallback, useEffect, useRef, useState } from "react";
 
 export const useUploader = ({ onUpload }: { onUpload: (url: string) => void }) => {
@@ -17,7 +17,7 @@ export const useUploader = ({ onUpload }: { onUpload: (url: string) => void }) =
       }
       setLoading(false);
     },
-    [onUpload],
+    [onUpload, toast],
   );
 
   return { loading, uploadFile };

@@ -12,9 +12,17 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/util";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
+import { useCallback } from "react";
 import { RegisterDefaultProps } from "./types";
 
 export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
+  const onDisabled = useCallback((date: Date) => {
+    const today = new Date();
+    const thirtyDaysFromNow = new Date();
+    thirtyDaysFromNow.setDate(today.getDate() + 30);
+    return date < today || date > thirtyDaysFromNow;
+  }, []);
+
   return (
     <FormField
       control={form.control}
@@ -48,13 +56,7 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
                 mode="single"
                 selected={field.value}
                 onSelect={field.onChange}
-                disabled={date => {
-                  const today = new Date();
-                  const thirtyDaysFromNow = new Date();
-                  thirtyDaysFromNow.setDate(today.getDate() + 30);
-
-                  return date < today || date > thirtyDaysFromNow;
-                }}
+                disabled={onDisabled}
                 initialFocus
               />
             </PopoverContent>

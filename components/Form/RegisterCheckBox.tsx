@@ -22,7 +22,8 @@ export const RegisterFormCheckBox = ({
       render={() => (
         <FormItem>
           <div className="mb-4 text-xs font-semibold">{label}</div>
-          {values.map((item, i) => (
+          {/* eslint-disable-next-line react/jsx-no-bind */}
+          {values.map(item => (
             <FormField
               key={item}
               control={form.control}
@@ -34,6 +35,7 @@ export const RegisterFormCheckBox = ({
                     <FormControl>
                       <Checkbox
                         checked={field.value?.includes(item)}
+                        // eslint-disable-next-line react/jsx-no-bind
                         onCheckedChange={checked => {
                           return checked
                             ? field.onChange([...field.value, item])

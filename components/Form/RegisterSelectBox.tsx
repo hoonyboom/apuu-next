@@ -35,19 +35,19 @@ export const RegisterFormSelectBox = ({
             </FormControl>
             <SelectContent>
               {values?.map(value => (
-                    <SelectItem
-                      key={value}
-                      value={value.toString()}
-                      unit-value={unit}
-                      className={cn(
-                        typeof value === "number" &&
-                          unit &&
-                          "after:content-[attr(unit-value)]",
-                      )}
-                    >
-                      {value}
-                    </SelectItem>
-                  ))}
+                <SelectItem
+                  key={value}
+                  value={value.toString()}
+                  unit-value={unit}
+                  className={cn(
+                    typeof value === "number" &&
+                      unit &&
+                      "after:content-[attr(unit-value)]",
+                  )}
+                >
+                  {value}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </FormItem>

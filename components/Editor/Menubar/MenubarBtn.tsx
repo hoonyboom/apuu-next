@@ -31,7 +31,7 @@ export const MenubarBtn = forwardRef<HTMLButtonElement, MenubarBtnProps>(
               {children}
             </Button>
           </TooltipTrigger>
-          <TooltipContent className="text-silk border bg-white text-2xs">
+          <TooltipContent className="border bg-white text-2xs text-silk">
             {tooltip}
           </TooltipContent>
         </Tooltip>

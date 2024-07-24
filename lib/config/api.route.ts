@@ -10,8 +10,7 @@ export const api = {
     revalidate_refresh_token: "/auth/token/refresh",
   },
 
-  //
   posts: {
-    create_post: "/posts"
-  }
+    create_post: "/posts",
+  },
 };
