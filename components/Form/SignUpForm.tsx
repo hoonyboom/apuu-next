@@ -14,8 +14,6 @@ import {
 import { Icon } from "@/components/ui/Icon";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hook/useToast";
-import { api } from "@/lib/config/api.route";
-import { fetcher } from "@/lib/util";
 import { authAPI } from "@/service/auth/AuthService";
 import { SignUpFormType, UserType, signUpFormSchema } from "@/types/zod.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -101,18 +99,17 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
   const verifyCode: MouseEventHandler = useCallback(
     async e => {
       e.preventDefault();
-
       try {
-        const res = await fetcher(api.verify_code, {
-          email: form.getValues("email"),
-          verify_code: form.getValues("verification_code"),
-        });
+        const res = await authAPI.postVerifyCode(
+          form.getValues("email"),
+          form.getValues("verification_code"),
+        );
 
-        if (res.status === 201) {
+        if ("success" in res) {
           setIsTimer(false);
           setIsChecked(true);
           setIsGetCode(false);
-        } else if (res.status === 401) {
+        } else if (res.statusCode === 401) {
           alert("인증 코드가 일치하지 않습니다.");
         }
       } catch (err) {

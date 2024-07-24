@@ -10,6 +10,14 @@ class AuthService extends Service {
     });
   }
 
+  async postVerifyCode(email: string, verify_code: string) {
+    return await this.http.post({
+      url: api.auth.verify_code,
+      data: { email, verify_code },
+      isPublic: true,
+    });
+  }
+
   async postCheckEmail(email: string) {
     return await this.http.post({
       url: api.auth.check_email,
