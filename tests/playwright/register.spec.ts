@@ -6,7 +6,7 @@ test("타이틀이 있나요?", async ({ page }) => {
 });
 
 test("다음 버튼이 있나요?", async ({ page }) => {
-  await page.goto("http://localhost:3001/register");
+  await page.goto("http://localhost:3000/register");
   const nextButton = page.getByRole("button", { name: "다음", disabled: true });
   await expect(nextButton).toBeInViewport();
   await expect(nextButton).toBeDisabled();
