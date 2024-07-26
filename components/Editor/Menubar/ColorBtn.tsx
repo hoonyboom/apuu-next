@@ -19,6 +19,7 @@ export const ColorBtn = memo(({ active, color, onColorChange }: ColorButtonProps
     <Button
       variant="ghost"
       size="icon"
+      type="button"
       onClick={handleClick}
       className={cn(
         "group flex size-7 items-center justify-center rounded",

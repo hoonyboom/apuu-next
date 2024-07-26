@@ -7,7 +7,6 @@ import Color from "@tiptap/extension-color";
 import Document from "@tiptap/extension-document";
 import DropCursor from "@tiptap/extension-dropcursor";
 import GapCursor from "@tiptap/extension-gapcursor";
-import HardBreak from "@tiptap/extension-hard-break";
 import Heading from "@tiptap/extension-heading";
 import Highlight from "@tiptap/extension-highlight";
 import History from "@tiptap/extension-history";
@@ -36,7 +35,6 @@ export const ExtensionKit = () => [
   DropCursor,
   GapCursor,
   Separator,
-  HardBreak,
   History.configure({
     depth: 50,
   }),

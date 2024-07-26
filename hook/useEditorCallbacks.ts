@@ -56,10 +56,6 @@ export default function useEditorCallbacks() {
     editor?.chain().focus().redo().run();
   }, [editor]);
 
-  const setHardBreak = useCallback(() => {
-    editor?.chain().focus().setHardBreak().run();
-  }, [editor]);
-
   const onChangeColor = useCallback(
     (color: string) => editor?.chain().setColor(color).run(),
     [editor],
@@ -84,7 +80,6 @@ export default function useEditorCallbacks() {
     setUndo,
     setRedo,
     setSeparator,
-    setHardBreak,
     toggleBold,
     toggleItalic,
     toggleTaskList,

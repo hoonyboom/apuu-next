@@ -11,6 +11,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { MouseEventHandler, useCallback, useState } from "react";
 import { createPortal } from "react-dom";
+import { Button } from "../ui/button";
 
 export default function Menu() {
   const { user, setLogoutUser } = useUserStore();
@@ -67,19 +68,27 @@ export default function Menu() {
                   <Avatar className="size-12" onClick={toggleMenu} />
                   <span>{user.nickname}</span>
                 </div>
-                <Icon name="X" className="size-6" onClick={toggleMenu} />
+                <Button size="icon">
+                  <Icon name="X" className="size-6" onClick={toggleMenu} />
+                </Button>
               </div>
               <Separator />
-              <div className="flex flex-col justify-around gap-4 px-4">
-                <p>대시보드</p>
-                <Link href="/register" onClick={toggleMenu}>
-                  <p>파티모집</p>
+              <div className="flex flex-col items-start justify-around gap-4 px-4">
+                <Link href="/register">
+                  <span>대시보드</span>
                 </Link>
-                <p>프로필</p>
+                <Link href="/register" onClick={toggleMenu}>
+                  <span>파티모집</span>
+                </Link>
+                <Link href="/register">
+                  <span>프로필</span>
+                </Link>
               </div>
               <Separator />
-              <div className="flex flex-col justify-around px-4">
-                <p onClick={logoutHandler}>로그아웃</p>
+              <div className="flex flex-col items-start justify-around px-4">
+                <Link href="/">
+                  <span onClick={logoutHandler}>로그아웃</span>
+                </Link>
               </div>
             </div>
           </div>,

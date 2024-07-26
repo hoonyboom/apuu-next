@@ -11,14 +11,17 @@ export default function Logo({
 }: LogoProps) {
   return (
     <Link href="/">
-      <Image
-        height={32}
-        width={32}
-        className={cn("size-10", className)}
-        alt={alt}
-        src={src}
-        {...props}
-      />
+      <div className="relative flex place-items-center gap-1 font-bold">
+        <Image
+          height={32}
+          width={32}
+          className={cn("size-10", className)}
+          alt={alt}
+          src={src}
+          {...props}
+        />
+        <span className="hidden sm:block">puu</span>
+      </div>
     </Link>
   );
 }

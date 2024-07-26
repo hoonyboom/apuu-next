@@ -22,6 +22,7 @@ export const MenubarBtn = forwardRef<HTMLButtonElement, MenubarBtnProps>(
           <TooltipTrigger asChild>
             <Button
               ref={ref}
+              type="button"
               variant="ghost"
               size="icon"
               className={cn("p-0 hover:bg-neutral-100 hover:text-black", className)}

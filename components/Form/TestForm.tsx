@@ -23,7 +23,7 @@ import { RegisterFormSelectBox } from "./RegisterSelectBox";
 import { RegisterTitleInput } from "./RegisterTitleInput";
 import { RegisterFormDataType } from "./types";
 
-export default function TestForm({ children }: PropsWithChildren) {
+export default function MobileRegisterForm({ children }: PropsWithChildren) {
   const { toast } = useToast();
   const form = useForm<RegisterFormDataType>({
     resolver: zodResolver(registerFormSchema),

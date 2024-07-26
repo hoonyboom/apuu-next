@@ -77,7 +77,7 @@ ul[data-type="taskList"] {
   @apply max-h-80 min-h-60 overflow-y-scroll p-4;
 
   p {
-    @apply mt-2 first:mt-0;
+    @apply first:mt-0;
   }
 
   img {

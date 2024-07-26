@@ -5,10 +5,7 @@ import { Logo, Menu } from ".";
 export default function Nav() {
   return (
     <nav className="flex h-nav max-w-full items-center justify-between px-4">
-      <div className="relative flex place-items-center gap-1 font-bold">
-        <Logo />
-        <span className="hidden sm:block">puu</span>
-      </div>
+      <Logo />
       <div className="flex items-center gap-10">
         <Link href="/register" className="hidden sm:block">
           팀원 모집하기
