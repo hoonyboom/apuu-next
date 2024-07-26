@@ -34,9 +34,9 @@ class Service {
 
   constructor() {
     this.baseURL =
-      env.NODE_ENV === "production"
-        ? `${env.NEXT_PUBLIC_BASE_URL}/api`
-        : "http://localhost:3002";
+      env.NODE_ENV === "development"
+        ? "http://localhost:3002"
+        : `${env.NEXT_PUBLIC_BASE_URL}/api`;
     this.headers = {};
     this.http = {
       get: this.get.bind(this),
