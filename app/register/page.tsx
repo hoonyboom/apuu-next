@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Editor } from "@/components/Editor";
 import TestForm from "@/components/Form/TestForm";

@@ -115,7 +115,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
     } catch (err) {
       console.error(err);
     }
-  }, [form]);
+  }, [form, toast]);
 
   return (
     <Form {...form}>

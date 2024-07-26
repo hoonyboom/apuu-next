@@ -60,7 +60,7 @@ export default function TestForm({ children }: PropsWithChildren) {
 
   const numberOfListItem = useMemo(
     () => SELECT_BOX_LIST.length + CHECK_BOX_LIST.length,
-    [CHECK_BOX_LIST, SELECT_BOX_LIST],
+    [],
   );
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -101,7 +101,7 @@ export default function TestForm({ children }: PropsWithChildren) {
         setCurrentStep(prevStep => prevStep + 1);
       }
     },
-    [form.getValues(), currentStep, setCurrentStep],
+    [form],
   );
 
   return (

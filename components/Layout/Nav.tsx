@@ -4,7 +4,7 @@ import { Logo, Menu } from ".";
 
 export default function Nav() {
   return (
-    <nav className="h-nav flex max-w-full items-center justify-between px-4">
+    <nav className="flex h-nav max-w-full items-center justify-between px-4">
       <div className="relative flex place-items-center gap-1 font-bold">
         <Logo />
         <span className="hidden sm:block">puu</span>
