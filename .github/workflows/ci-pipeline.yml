@@ -29,12 +29,14 @@ jobs:
           TIPTAP_COLLAB_SECRET: ${{ secrets.TIPTAP_COLLAB_SECRET }}
           TIPTAP_PRO_TOKEN: ${{ secrets.TIPTAP_PRO_TOKEN }}
         run: >-
-          docker build --build-arg PORT=$PORT --build-arg
-          TIPTAP_PRO_TOKEN=$TIPTAP_PRO_TOKEN --build-arg
-          NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL --build-arg
-          NEXT_PUBLIC_COLLAB_DOC_PREFIX=$NEXT_PUBLIC_COLLAB_DOC_PREFIX --build-arg
-          NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID=$NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID --build-arg
-          TIPTAP_COLLAB_SECRET=$TIPTAP_COLLAB_SECRET -t apuu-next .
+          docker build
+          --build-arg PORT=$PORT
+          --build-arg TIPTAP_PRO_TOKEN=$TIPTAP_PRO_TOKEN
+          --build-arg NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
+          --build-arg NEXT_PUBLIC_COLLAB_DOC_PREFIX=$NEXT_PUBLIC_COLLAB_DOC_PREFIX
+          --build-arg NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID=$NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID
+          --build-arg TIPTAP_COLLAB_SECRET=$TIPTAP_COLLAB_SECRET
+          -t apuu-next .
       - name: taging
         run: docker tag apuu-next:latest ${{secrets.DOCKERHUB_USERNAME}}/apuu-next:latest
       - name: Push to Dockerhub
