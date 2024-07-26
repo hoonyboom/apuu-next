@@ -5,12 +5,13 @@
       "name": "Next.js: debug full stack",
       "type": "node-terminal",
       "request": "launch",
-      "command": "npm run dev",
+      "command": "${workspaceFolder}/node_modules/next/dist/bin/next",
+      "sourceMaps": true,
       "serverReadyAction": {
         "pattern": "- Local:.+(https?://.+)",
         "uriFormat": "%s",
         "action": "openExternally"
-      }
-    }
+      },
+    },
   ]
 }
