@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardTitle } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { useToast } from "@/hook/useToast";
 import { CHECK_BOX_LIST, SELECT_BOX_LIST } from "@/lib/const";
@@ -9,7 +9,7 @@ import { useCreatePostMutation } from "@/service/posts/usePostsService";
 import { useEditorStore } from "@/store/editor.store";
 import { registerFormSchema } from "@/types/zod.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PropsWithChildren, useCallback, useState } from "react";
+import { PropsWithChildren, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { RegisterFormCheckBox } from "./RegisterCheckBox";
 import { RegisterDatePicker } from "./RegisterDatePicker";
@@ -19,7 +19,6 @@ import { RegisterFormDataType } from "./types";
 
 export default function RegisterForm({ children }: PropsWithChildren) {
   const { toast } = useToast();
-  const [content, setContent] = useState("");
   const form = useForm<RegisterFormDataType>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
@@ -54,45 +53,38 @@ export default function RegisterForm({ children }: PropsWithChildren) {
   );
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle>기본 정보를 입력해주세요</CardTitle>
-      </CardHeader>
-      <CardContent className="px-4">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-            <div className="mb-14 grid gap-6 sm:grid-cols-2">
-              {SELECT_BOX_LIST.map(s => (
-                <RegisterFormSelectBox
-                  key={s.name}
-                  form={form}
-                  label={s.label}
-                  name={s.name}
-                  values={s.values}
-                />
-              ))}
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+        <div className="mb-14 grid gap-6 sm:grid-cols-2">
+          {SELECT_BOX_LIST.map(s => (
+            <RegisterFormSelectBox
+              key={s.name}
+              form={form}
+              label={s.label}
+              name={s.name}
+              values={s.values}
+            />
+          ))}
 
-              {CHECK_BOX_LIST.map(c => (
-                <RegisterFormCheckBox
-                  form={form}
-                  key={c.label}
-                  label={c.label}
-                  name={c.name}
-                  values={c.values}
-                />
-              ))}
-              <RegisterDatePicker form={form} />
-            </div>
+          {CHECK_BOX_LIST.map(c => (
+            <RegisterFormCheckBox
+              form={form}
+              key={c.label}
+              label={c.label}
+              name={c.name}
+              values={c.values}
+            />
+          ))}
+          <RegisterDatePicker form={form} />
+        </div>
 
-            <div className="space-y-2">
-              <CardTitle className="mb-6">모임에 대해 소개해주세요</CardTitle>
-              <RegisterTitleInput form={form} />
-              {children}
-              <Button type="submit">Submit</Button>
-            </div>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+        <div className="space-y-2">
+          <CardTitle className="mb-6">모임에 대해 소개해주세요</CardTitle>
+          <RegisterTitleInput form={form} />
+          {children}
+          <Button type="submit">Submit</Button>
+        </div>
+      </form>
+    </Form>
   );
 }

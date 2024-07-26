@@ -15,6 +15,7 @@ export const RegisterFormSelectBox = ({
   label,
   values,
   unit,
+  isShow,
 }: RegisterFormFieldProps) => {
   return (
     <FormField
@@ -22,14 +23,29 @@ export const RegisterFormSelectBox = ({
       name={name}
       // eslint-disable-next-line react/jsx-no-bind
       render={({ field }) => (
-        <FormItem>
-          <FormLabel className="mb-3 text-xs font-semibold">{label}</FormLabel>
+        <FormItem
+          className={cn(
+            "transition duration-1000",
+            isShow && "pointer-events-auto translate-y-0 opacity-100",
+            !isShow && "pointer-events-none translate-y-3 opacity-0",
+          )}
+        >
+          <FormLabel className={"mb-3 text-xs font-semibold"}>{label}</FormLabel>
           <Select
             onValueChange={field.onChange}
             defaultValue={field.value?.toString() ?? ""}
           >
             <FormControl>
-              <SelectTrigger>
+              <SelectTrigger
+                unit-value={unit}
+                className={cn(
+                  "relative focus:ring-0",
+                  field.name === "size" &&
+                    unit &&
+                    field.value &&
+                    "after:absolute after:pl-[10px] after:content-[attr(unit-value)]",
+                )}
+              >
                 <SelectValue placeholder="Select" />
               </SelectTrigger>
             </FormControl>
@@ -40,6 +56,7 @@ export const RegisterFormSelectBox = ({
                   value={value.toString()}
                   unit-value={unit}
                   className={cn(
+                    "hover:text-primary-foreground",
                     typeof value === "number" &&
                       unit &&
                       "after:content-[attr(unit-value)]",

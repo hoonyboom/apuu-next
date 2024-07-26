@@ -43,6 +43,14 @@ const config = {
       "6xl": "clamp(4.7029rem, 3.747rem + 4.7798vi, 7.1526rem)",
     },
     extend: {
+      height: {
+        nav: "var(--navbar-height)",
+        fullscreen: "var(--fullscreen)",
+      },
+      maxHeight: {
+        fullscreen: "var(--fullscreen)",
+        form: "var(--register-form)",
+      },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
         pretendard: ["Pretendard", ...defaultTheme.fontFamily.sans],
@@ -108,12 +116,17 @@ const config = {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
+        "caret-blink": {
+          "0%,70%,100%": { opacity: "1" },
+          "20%,50%": { opacity: "0" },
+        },
       },
       animation: {
         marquee: "marquee var(--marquee-duration) linear infinite",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "caret-blink": "caret-blink 1.25s ease-out infinite",
       },
     },
   },
@@ -139,6 +152,14 @@ const config = {
           "-ms-overflow-style": "none",
           "&::-webkit-scrollbar": {
             display: "none",
+          },
+        },
+
+        ".scrollbar-thin": {
+          "scrollbar-width": "thin",
+          "-ms-overflow-style": "auto",
+          "&::-webkit-scrollbar": {
+            display: "block",
           },
         },
 

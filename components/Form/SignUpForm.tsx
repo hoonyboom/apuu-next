@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Icon } from "@/components/ui/Icon";
 import { Input } from "@/components/ui/input";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { useToast } from "@/hook/useToast";
 import { authAPI } from "@/service/auth/AuthService";
 import { SignUpFormType, UserType, signUpFormSchema } from "@/types/zod.schema";
@@ -96,28 +97,25 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
     [form, toast],
   );
 
-  const verifyCode: MouseEventHandler = useCallback(
-    async e => {
-      e.preventDefault();
-      try {
-        const res = await authAPI.postVerifyCode(
-          form.getValues("email"),
-          form.getValues("verification_code"),
-        );
+  const verifyCode = useCallback(async () => {
+    // e.preventDefault();
+    try {
+      const res = await authAPI.postVerifyCode(
+        form.getValues("email"),
+        form.getValues("verification_code"),
+      );
 
-        if ("success" in res) {
-          setIsTimer(false);
-          setIsChecked(true);
-          setIsGetCode(false);
-        } else if (res.statusCode === 401) {
-          alert("인증 코드가 일치하지 않습니다.");
-        }
-      } catch (err) {
-        console.error(err);
+      if ("success" in res) {
+        setIsTimer(false);
+        setIsChecked(true);
+        setIsGetCode(false);
+      } else if (res.statusCode === 401) {
+        return toast({ description: "인증코드가 일치하지 않습니다" });
       }
-    },
-    [form],
-  );
+    } catch (err) {
+      console.error(err);
+    }
+  }, [form]);
 
   return (
     <Form {...form}>
@@ -142,7 +140,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                 ) : (
                   <Button
                     disabled={isChecked || isTimer}
-                    className={`min-w-20 ${isTimer && "bg-emerald-600"}`}
+                    className={`min-w-20 bg-primary ${isTimer && "bg-emerald-600"}`}
                     type="button"
                     onClick={sendVerificationCode}
                   >
@@ -153,7 +151,6 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                     )}
                   </Button>
                 )}
-                <FormMessage className="shrink-0" />
               </div>
             </FormItem>
           )}
@@ -168,18 +165,33 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
               return (
                 <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
                   <FormLabel>인증코드</FormLabel>
-                  <div className="col-span-4 flex items-center rounded-md border p-1 focus-within:ring-2 focus-within:ring-blue-300">
+                  <div className="col-span-4 flex items-center justify-stretch gap-2 rounded-md pr-1 focus-within:ring-0">
                     <FormControl>
-                      <Input
+                      {/* <Input
                         {...field}
                         className="border-none bg-transparent py-4 pl-2 pr-10 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
-                      />
+                      /> */}
+                      <InputOTP maxLength={6} {...field}>
+                        <InputOTPGroup>
+                          <InputOTPSlot index={0} />
+                          <InputOTPSlot index={1} />
+                          <InputOTPSlot index={2} />
+                          <InputOTPSlot index={3} />
+                          <InputOTPSlot index={4} />
+                          <InputOTPSlot index={5} />
+                        </InputOTPGroup>
+                      </InputOTP>
                     </FormControl>
-                    <Button type="button" onClick={verifyCode}>
+                    <Button
+                      type="button"
+                      disabled={field.value.length !== 6}
+                      className="w-full bg-primary"
+                      onClick={verifyCode}
+                    >
                       확인
                     </Button>
-                    <FormMessage className="shrink-0" />
                   </div>
+                  <FormMessage className="shrink-0" />
                 </FormItem>
               );
             }}

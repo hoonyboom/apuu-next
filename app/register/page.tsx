@@ -1,12 +1,19 @@
-"use client";
+"use client"
 
 import { Editor } from "@/components/Editor";
-import RegisterForm from "@/components/Form/RegisterForm";
+import TestForm from "@/components/Form/TestForm";
+
+// const Test = dynamic(() => import("@/components/Form/TestForm"));
 
 export default function Page() {
   return (
-    <RegisterForm>
-      <Editor />
-    </RegisterForm>
+    <div>
+      {/* <RegisterForm>
+            <Editor />
+          </RegisterForm> */}
+      <TestForm>
+        <Editor />
+      </TestForm>
+    </div>
   );
 }

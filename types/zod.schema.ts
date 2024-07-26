@@ -30,7 +30,9 @@ export const registerFormSchema = z.object({
   method: z.enum(METHOD),
   size: z.string().refine(value => parseInt(value) <= 10),
   period: z.enum(PERIOD),
-  level: z.array(z.string()).nonempty(),
+  level: z.array(z.string()).nonempty({
+    message: "하나 이상 선택해주세요",
+  }),
   style: z.array(z.string()).nonempty({
     message: "하나 이상 선택해주세요",
   }),

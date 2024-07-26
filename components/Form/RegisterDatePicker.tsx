@@ -1,13 +1,7 @@
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/util";
 import { format } from "date-fns";
@@ -61,7 +55,6 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
               />
             </PopoverContent>
           </Popover>
-          <FormMessage />
         </FormItem>
       )}
     />

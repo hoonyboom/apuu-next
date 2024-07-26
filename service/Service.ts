@@ -87,7 +87,6 @@ class Service {
         },
       });
 
-      console.log(res);
       const responseData: T = await res.json();
       return responseData;
     } catch (error) {

@@ -99,7 +99,11 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
           >
             아직 계정이 없으신가요?
           </Button>
-          <Button type="submit" className="min-w-28">
+          <Button
+            type="submit"
+            className="min-w-28"
+            disabled={!form.getValues("email") || !form.getValues("password")}
+          >
             확인
           </Button>
         </DialogFooter>

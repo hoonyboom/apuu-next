@@ -10,7 +10,7 @@ export const RegisterTitleInput = ({ form }: RegisterDefaultProps) => {
       name="title"
       // eslint-disable-next-line react/jsx-no-bind
       render={({ field }) => (
-        <FormItem className="flex items-center space-y-0 rounded-md border focus-within:ring-2 focus-within:ring-blue-300">
+        <FormItem className="mt-2 flex items-center space-y-0 rounded-md border focus-within:ring-2 focus-within:ring-blue-300">
           <VisuallyHidden>
             <FormLabel>제목</FormLabel>
           </VisuallyHidden>

@@ -32,7 +32,6 @@ if (!process.env.SKIP_ENV_VALIDATION) {
   const parsed = isServer ? server.safeParse(processEnv) : client.safeParse(processEnv);
 
   if (parsed.success === false) {
-    console.log(Object.entries(processEnv).map(value => value));
     console.error(
       "❌ 등록되지 않은 환경변수입니다 😥",
       parsed.error.flatten().fieldErrors,

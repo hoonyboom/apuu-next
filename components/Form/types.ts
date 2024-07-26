@@ -13,6 +13,7 @@ export type RegisterFormReturnType = UseFormReturn<RegisterFormDataType>;
 
 export type RegisterDefaultProps = {
   form: RegisterFormReturnType;
+  isShow?: boolean;
 };
 
 export type RegisterFormFieldProps = {

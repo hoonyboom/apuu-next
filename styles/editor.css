@@ -74,7 +74,7 @@ ul[data-type="taskList"] {
 }
 
 .tiptap {
-  @apply max-h-[40rem] min-h-60 overflow-y-scroll p-4;
+  @apply max-h-80 min-h-60 overflow-y-scroll p-4;
 
   p {
     @apply mt-2 first:mt-0;
