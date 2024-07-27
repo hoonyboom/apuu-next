@@ -25,7 +25,6 @@ jobs:
           -p $PORT:$PORT
           -e PORT=$PORT
           -e NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
-          -e NEXT_PUBLIC_LOCAL_SERVER_URL="localhost:3002"
           --network server
           --name apuu-next-container hyezoprk/apuu-next
       - name: Check Network Connection

@@ -3,7 +3,6 @@ import { z } from "zod"
 const client = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
   NEXT_PUBLIC_BASE_URL: z.string(),
-  NEXT_PUBLIC_LOCAL_SERVER_URL: z.string(),
 })
 
 const server = client.extend({})
@@ -12,7 +11,6 @@ const processEnv = {
   // 클라이언트
   NODE_ENV: process.env.NODE_ENV,
   NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
-  NEXT_PUBLIC_LOCAL_SERVER_URL: process.env.NEXT_PUBLIC_LOCAL_SERVER_URL,
 
   // 서버
 }

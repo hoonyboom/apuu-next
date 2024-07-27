@@ -22,10 +22,12 @@ jobs:
       - name: Build the Docker image
         env:
           PORT: ${{secrets.PORT}}
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
           TIPTAP_PRO_TOKEN: ${{ secrets.TIPTAP_PRO_TOKEN }}
         run: >-
           docker build
           --build-arg PORT=$PORT
+          --build-arg NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
           --build-arg TIPTAP_PRO_TOKEN=$TIPTAP_PRO_TOKEN
           -t apuu-next .
       - name: taging
