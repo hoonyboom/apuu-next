@@ -1,5 +1,5 @@
-import { Viewport, type Metadata } from "next";
-import { env } from "./env";
+import { Viewport, type Metadata } from "next"
+import { env } from "./env"
 
 export const METADATA: Metadata = {
   title: "Apuu",
@@ -32,7 +32,7 @@ export const METADATA: Metadata = {
     description:
       "어푸! 수영 챌린지, 프로그램을 구성하고 참여해보세요. 팀원들과 기록을 쌓으며 성장할 수 있어요.",
   },
-};
+}
 
 export const VIEWPORT: Viewport = {
   viewportFit: "cover",
@@ -40,4 +40,4 @@ export const VIEWPORT: Viewport = {
   minimumScale: 1,
   initialScale: 1,
   maximumScale: 1,
-};
+}

@@ -5,5 +5,5 @@ export default function Category() {
       <h3>챌린지</h3>
       <h3>크루</h3>
     </div>
-  );
+  )
 }

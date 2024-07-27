@@ -1,34 +1,34 @@
-"use client";
+"use client"
 
-import Avatar from "@/components/ui/Avatar";
-import { Icon } from "@/components/ui/Icon";
-import { Separator } from "@/components/ui/separator";
-import useScrollLock from "@/hook/useScrollLock";
-import { stopPropagation } from "@/lib/util";
-import { authAPI } from "@/service/auth/AuthService";
-import { useUserStore } from "@/store/user.store";
-import clsx from "clsx";
-import Link from "next/link";
-import { MouseEventHandler, useCallback, useState } from "react";
-import { createPortal } from "react-dom";
-import { Button } from "../ui/button";
+import Avatar from "@/components/ui/Avatar"
+import { Icon } from "@/components/ui/Icon"
+import { Separator } from "@/components/ui/separator"
+import useScrollLock from "@/hook/useScrollLock"
+import { stopPropagation } from "@/lib/util"
+import { authAPI } from "@/service/auth/AuthService"
+import { useUserStore } from "@/store/user.store"
+import clsx from "clsx"
+import Link from "next/link"
+import { MouseEventHandler, useCallback, useState } from "react"
+import { createPortal } from "react-dom"
+import { Button } from "../ui/button"
 
 export default function Menu() {
-  const { user, setLogoutUser } = useUserStore();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, setLogoutUser } = useUserStore()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const logoutHandler = useCallback(async () => {
-    await authAPI.postLogout();
-    setLogoutUser();
-  }, [setLogoutUser]);
+    await authAPI.postLogout()
+    setLogoutUser()
+  }, [setLogoutUser])
 
   const toggleMenu: MouseEventHandler = useCallback(() => {
-    setIsMenuOpen(prev => !prev);
-  }, [setIsMenuOpen]);
+    setIsMenuOpen(prev => !prev)
+  }, [setIsMenuOpen])
 
-  useScrollLock(isMenuOpen);
+  useScrollLock(isMenuOpen)
 
-  if (!user) null;
+  if (!user) null
   else
     return (
       <div>
@@ -95,5 +95,5 @@ export default function Menu() {
           document.body,
         )}
       </div>
-    );
+    )
 }

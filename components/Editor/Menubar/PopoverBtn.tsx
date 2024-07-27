@@ -1,6 +1,6 @@
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { PropsWithChildren } from "react";
-import { MenubarBtn, MenubarBtnProps } from "./MenubarBtn";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { PropsWithChildren } from "react"
+import { MenubarBtn, MenubarBtnProps } from "./MenubarBtn"
 
 export default function PopoverBtn({
   icon,
@@ -15,5 +15,5 @@ export default function PopoverBtn({
       </PopoverTrigger>
       <PopoverContent>{children}</PopoverContent>
     </Popover>
-  );
+  )
 }

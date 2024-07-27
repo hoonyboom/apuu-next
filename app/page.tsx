@@ -1,4 +1,4 @@
-import { Category, Footer } from "@/components/Layout";
+import { Category, Footer } from "@/components/Layout"
 
 export default function Home() {
   return (
@@ -7,5 +7,5 @@ export default function Home() {
       <Category />
       <Footer />
     </>
-  );
+  )
 }

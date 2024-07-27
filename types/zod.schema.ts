@@ -1,5 +1,5 @@
-import { METHOD, PASSWORD_REGEX, PERIOD, SORT } from "@/lib/const";
-import { z } from "zod";
+import { METHOD, PASSWORD_REGEX, PERIOD, SORT } from "@/lib/const"
+import { z } from "zod"
 
 export const signUpFormSchema = z.object({
   email: z.string().email({ message: "올바른 이메일을 입력해 주세요" }),
@@ -12,8 +12,8 @@ export const signUpFormSchema = z.object({
     }),
   verification_code: z.string().length(6, { message: "6자리를 입력해 주세요" }),
   nickname: z.string().min(2, { message: "2자리 이상 입력해 주세요" }),
-});
-export const loginFormSchema = signUpFormSchema.pick({ email: true, password: true });
+})
+export const loginFormSchema = signUpFormSchema.pick({ email: true, password: true })
 export const userSchema = z.object({
   id: z.number(),
   email: z.string().email(),
@@ -23,7 +23,7 @@ export const userSchema = z.object({
   updatedAt: z.string().datetime(),
   followerCount: z.number(),
   followeeCount: z.number(),
-});
+})
 
 export const registerFormSchema = z.object({
   sort: z.enum(SORT),
@@ -41,9 +41,12 @@ export const registerFormSchema = z.object({
   }),
   deadline: z.date(),
   title: z.string().min(1),
-});
+})
 
-export type SignUpFormType = z.infer<typeof signUpFormSchema>;
-export type LoginFormType = Pick<SignUpFormType, "email" | "password">;
-export type UserType = z.infer<typeof userSchema>;
-export type CreatePostBodyType = z.infer<typeof registerFormSchema> & { content: string, images?: string[] };
+export type SignUpFormType = z.infer<typeof signUpFormSchema>
+export type LoginFormType = Pick<SignUpFormType, "email" | "password">
+export type UserType = z.infer<typeof userSchema>
+export type CreatePostBodyType = z.infer<typeof registerFormSchema> & {
+  content: string
+  images?: string[]
+}

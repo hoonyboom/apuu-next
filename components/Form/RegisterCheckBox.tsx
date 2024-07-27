@@ -1,7 +1,7 @@
-import { Checkbox } from "@/components/ui/checkbox";
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { cn } from "@/lib/util";
-import { RegisterCheckBoxProps } from "./types";
+import { Checkbox } from "@/components/ui/checkbox"
+import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
+import { cn } from "@/lib/util"
+import { RegisterCheckBoxProps } from "./types"
 
 export const RegisterFormCheckBox = ({
   form,
@@ -42,22 +42,20 @@ export const RegisterFormCheckBox = ({
                         onCheckedChange={checked => {
                           return checked
                             ? field.onChange([...field.value, item])
-                            : field.onChange(
-                                field.value?.filter(value => value !== item),
-                              );
+                            : field.onChange(field.value?.filter(value => value !== item))
                         }}
                       />
                     </FormControl>
                     <FormLabel className="font-normal">{item}</FormLabel>
                   </FormItem>
-                );
+                )
               }}
             />
           ))}
         </FormItem>
       )}
     />
-  );
-};
+  )
+}
 
-RegisterFormCheckBox.displayname = "RegisterFormCheckBox";
+RegisterFormCheckBox.displayname = "RegisterFormCheckBox"

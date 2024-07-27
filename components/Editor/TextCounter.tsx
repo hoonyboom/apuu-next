@@ -3,20 +3,20 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/util";
-import { useEditorStore } from "@/store/editor.store";
-import { useMemo } from "react";
-import { limit } from "./extensions";
+} from "@/components/ui/tooltip"
+import { cn } from "@/lib/util"
+import { useEditorStore } from "@/store/editor.store"
+import { useMemo } from "react"
+import { limit } from "./extensions"
 
 export default function TextCounter() {
-  const { editor } = useEditorStore();
-  const characterCount: number = editor?.storage.characterCount.characters();
-  const wordCount = editor?.storage.characterCount.words();
+  const { editor } = useEditorStore()
+  const characterCount: number = editor?.storage.characterCount.characters()
+  const wordCount = editor?.storage.characterCount.words()
   const percentage = useMemo(
     () => Math.round((100 / limit) * characterCount),
     [characterCount],
-  );
+  )
 
   return (
     <TooltipProvider>
@@ -50,5 +50,5 @@ export default function TextCounter() {
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
-  );
+  )
 }

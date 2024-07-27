@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { Editor } from "@/components/Editor";
-import { DesktopRegisterForm, MobileRegisterForm } from "@/components/Form";
+import { Editor } from "@/components/Editor"
+import { DesktopRegisterForm, MobileRegisterForm } from "@/components/Form"
 
 export default function Page() {
   return (
@@ -17,5 +17,5 @@ export default function Page() {
         </MobileRegisterForm>
       </div>
     </>
-  );
+  )
 }

@@ -1,34 +1,34 @@
-"use client";
+"use client"
 
-import useMount from "@/hook/useMount";
-import useTimer from "@/hook/useTimer";
-import clsx from "clsx";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import useMount from "@/hook/useMount"
+import useTimer from "@/hook/useTimer"
+import clsx from "clsx"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 
 export default function Landing() {
-  const [isExiting, setIsExiting] = useState(false);
-  const { isLoading } = useTimer(3);
-  const { mount } = useMount();
+  const [isExiting, setIsExiting] = useState(false)
+  const { isLoading } = useTimer(3)
+  const { mount } = useMount()
 
   useEffect(() => {
-    if (isLoading) document.body.style.overflow = "hidden";
+    if (isLoading) document.body.style.overflow = "hidden"
     else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = ""
       if (!isLoading) {
         const timeout = setTimeout(() => {
-          setIsExiting(true);
-        }, 1000); // Match this duration with your exit animation duration
-        return () => clearTimeout(timeout);
+          setIsExiting(true)
+        }, 1000) // Match this duration with your exit animation duration
+        return () => clearTimeout(timeout)
       }
     }
     return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isLoading]);
+      document.body.style.overflow = ""
+    }
+  }, [isLoading])
 
-  if (!mount || isExiting) return null;
+  if (!mount || isExiting) return null
   return createPortal(
     <div
       className={clsx(
@@ -52,5 +52,5 @@ export default function Landing() {
       </div>
     </div>,
     document.body,
-  );
+  )
 }

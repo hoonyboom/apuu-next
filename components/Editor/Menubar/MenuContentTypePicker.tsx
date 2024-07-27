@@ -1,51 +1,51 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Icon, IconProps } from "@/components/ui/Icon";
-import { memo, useMemo } from "react";
-import { MenubarBtn } from "./MenubarBtn";
+} from "@/components/ui/dropdown-menu"
+import { Icon, IconProps } from "@/components/ui/Icon"
+import { memo, useMemo } from "react"
+import { MenubarBtn } from "./MenubarBtn"
 
 export type ContentTypePickerOption = {
-  label: string;
-  id: string;
-  type: "option";
-  disabled: () => boolean | undefined;
-  isActive: () => boolean | undefined;
-  onClick: () => void;
-  icon: IconProps["name"];
-};
+  label: string
+  id: string
+  type: "option"
+  disabled: () => boolean | undefined
+  isActive: () => boolean | undefined
+  onClick: () => void
+  icon: IconProps["name"]
+}
 
 export type ContentTypePickerCategory = {
-  label: string;
-  id: string;
-  type: "category";
-};
+  label: string
+  id: string
+  type: "category"
+}
 
 export type ContentPickerOptions = Array<
   ContentTypePickerOption | ContentTypePickerCategory
->;
+>
 
 export type ContentTypePickerProps = {
-  options: ContentPickerOptions;
-};
+  options: ContentPickerOptions
+}
 
 const isOption = (
   option: ContentTypePickerOption | ContentTypePickerCategory,
-): option is ContentTypePickerOption => option.type === "option";
+): option is ContentTypePickerOption => option.type === "option"
 const isCategory = (
   option: ContentTypePickerOption | ContentTypePickerCategory,
-): option is ContentTypePickerCategory => option.type === "category";
+): option is ContentTypePickerCategory => option.type === "category"
 
 export const ContentTypePicker = memo(({ options }: ContentTypePickerProps) => {
   const activeItem = useMemo(
     () => options.find(option => option.type === "option" && option.isActive()),
     [options],
-  );
+  )
 
   return (
     <DropdownMenu>
@@ -71,7 +71,7 @@ export const ContentTypePicker = memo(({ options }: ContentTypePickerProps) => {
                   <Icon name={option.icon} className="mr-1 h-4 w-4" />
                   {option.label}
                 </Button>
-              );
+              )
             } else if (isCategory(option)) {
               return (
                 <div className="mt-2 first:mt-0" key={option.id}>
@@ -79,12 +79,12 @@ export const ContentTypePicker = memo(({ options }: ContentTypePickerProps) => {
                     {option.label}
                   </DropdownMenuLabel>
                 </div>
-              );
+              )
             }
           })}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-});
-ContentTypePicker.displayName = "ContentTypePicker";
+  )
+})
+ContentTypePicker.displayName = "ContentTypePicker"

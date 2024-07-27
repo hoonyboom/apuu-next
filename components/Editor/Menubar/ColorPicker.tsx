@@ -1,42 +1,42 @@
-import { Button } from "@/components/ui/button";
-import { Icon } from "@/components/ui/Icon";
-import { themeColors } from "@/lib/const";
-import { cn } from "@/lib/util";
-import { ChangeEvent, memo, useCallback, useState } from "react";
-import { HexColorPicker } from "react-colorful";
-import { ColorBtn } from "./ColorBtn";
+import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/Icon"
+import { themeColors } from "@/lib/const"
+import { cn } from "@/lib/util"
+import { ChangeEvent, memo, useCallback, useState } from "react"
+import { HexColorPicker } from "react-colorful"
+import { ColorBtn } from "./ColorBtn"
 
 export type ColorPickerProps = {
-  color?: string;
-  onChange?: (color: string) => void;
-  onClear?: () => void;
-};
+  color?: string
+  onChange?: (color: string) => void
+  onClear?: () => void
+}
 
 export const ColorPicker = memo(
   ({ color = "#000000", onChange, onClear }: ColorPickerProps) => {
-    const [colorInputValue, setColorInputValue] = useState(color || "");
+    const [colorInputValue, setColorInputValue] = useState(color || "")
 
     const handleColorUpdate = useCallback(
       (e: ChangeEvent<HTMLInputElement>) => {
-        setColorInputValue(e.target.value);
+        setColorInputValue(e.target.value)
       },
       [setColorInputValue],
-    );
+    )
 
     const handleColorChange = useCallback(() => {
-      const isCorrectColor = /^#([0-9A-F]{3}){1,2}$/i.test(colorInputValue);
+      const isCorrectColor = /^#([0-9A-F]{3}){1,2}$/i.test(colorInputValue)
 
       if (!isCorrectColor) {
         if (onChange) {
-          onChange("");
+          onChange("")
         }
-        return;
+        return
       }
 
       if (onChange) {
-        onChange(colorInputValue);
+        onChange(colorInputValue)
       }
-    }, [colorInputValue, onChange]);
+    }, [colorInputValue, onChange])
 
     return (
       <div className="flex flex-col gap-2">
@@ -70,8 +70,8 @@ export const ColorPicker = memo(
           </Button>
         </div>
       </div>
-    );
+    )
   },
-);
+)
 
-ColorPicker.displayName = "ColorPicker";
+ColorPicker.displayName = "ColorPicker"

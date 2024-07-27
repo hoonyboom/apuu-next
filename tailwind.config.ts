@@ -1,6 +1,6 @@
-import type { Config, PluginAPI } from "tailwindcss/types/config";
-const plugin = require("tailwindcss/plugin");
-const defaultTheme = require("tailwindcss/defaultTheme");
+import type { Config, PluginAPI } from "tailwindcss/types/config"
+const plugin = require("tailwindcss/plugin")
+const defaultTheme = require("tailwindcss/defaultTheme")
 
 const config = {
   darkMode: ["class"],
@@ -188,9 +188,9 @@ const config = {
           margin: "1.5rem 0",
           paddingLeft: "1rem",
         },
-      });
+      })
     }),
   ],
-} satisfies Config;
+} satisfies Config
 
-export default config;
+export default config

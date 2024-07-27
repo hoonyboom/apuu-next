@@ -1,30 +1,30 @@
-import { env } from "@/lib/config/env";
-import Bold from "@tiptap/extension-bold";
-import BubbleMenu from "@tiptap/extension-bubble-menu";
-import BulletList from "@tiptap/extension-bullet-list";
-import CharacterCount from "@tiptap/extension-character-count";
-import Color from "@tiptap/extension-color";
-import Document from "@tiptap/extension-document";
-import DropCursor from "@tiptap/extension-dropcursor";
-import GapCursor from "@tiptap/extension-gapcursor";
-import Heading from "@tiptap/extension-heading";
-import Highlight from "@tiptap/extension-highlight";
-import History from "@tiptap/extension-history";
-import Separator from "@tiptap/extension-horizontal-rule";
-import Image from "@tiptap/extension-image";
-import Italic from "@tiptap/extension-italic";
-import Link from "@tiptap/extension-link";
-import ListItem from "@tiptap/extension-list-item";
-import OrderedList from "@tiptap/extension-ordered-list";
-import Paragraph from "@tiptap/extension-paragraph";
-import TaskItem from "@tiptap/extension-task-item";
-import TaskList from "@tiptap/extension-task-list";
-import Text from "@tiptap/extension-text";
-import TextStyle from "@tiptap/extension-text-style";
-import Youtube from "@tiptap/extension-youtube";
-import { ImageUpload } from "./ImageUpload";
+import { env } from "@/lib/config/env"
+import Bold from "@tiptap/extension-bold"
+import BubbleMenu from "@tiptap/extension-bubble-menu"
+import BulletList from "@tiptap/extension-bullet-list"
+import CharacterCount from "@tiptap/extension-character-count"
+import Color from "@tiptap/extension-color"
+import Document from "@tiptap/extension-document"
+import DropCursor from "@tiptap/extension-dropcursor"
+import GapCursor from "@tiptap/extension-gapcursor"
+import Heading from "@tiptap/extension-heading"
+import Highlight from "@tiptap/extension-highlight"
+import History from "@tiptap/extension-history"
+import Separator from "@tiptap/extension-horizontal-rule"
+import Image from "@tiptap/extension-image"
+import Italic from "@tiptap/extension-italic"
+import Link from "@tiptap/extension-link"
+import ListItem from "@tiptap/extension-list-item"
+import OrderedList from "@tiptap/extension-ordered-list"
+import Paragraph from "@tiptap/extension-paragraph"
+import TaskItem from "@tiptap/extension-task-item"
+import TaskList from "@tiptap/extension-task-list"
+import Text from "@tiptap/extension-text"
+import TextStyle from "@tiptap/extension-text-style"
+import Youtube from "@tiptap/extension-youtube"
+import { ImageUpload } from "./ImageUpload"
 
-export const limit = 120;
+export const limit = 120
 
 export const ExtensionKit = () => [
   Document,
@@ -97,4 +97,4 @@ export const ExtensionKit = () => [
       class: "w-full",
     },
   }),
-];
+]

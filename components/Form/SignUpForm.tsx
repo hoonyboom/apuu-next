@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { Timer } from "@/components/Transition";
-import { Button } from "@/components/ui/button";
-import { DialogFooter } from "@/components/ui/dialog";
+import { Timer } from "@/components/Transition"
+import { Button } from "@/components/ui/button"
+import { DialogFooter } from "@/components/ui/dialog"
 import {
   Form,
   FormControl,
@@ -10,24 +10,24 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Icon } from "@/components/ui/Icon";
-import { Input } from "@/components/ui/input";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
-import { useToast } from "@/hook/useToast";
-import { authAPI } from "@/service/auth/AuthService";
-import { SignUpFormType, UserType, signUpFormSchema } from "@/types/zod.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { MouseEventHandler, useCallback, useState } from "react";
-import { useForm } from "react-hook-form";
-import { RegisterFormProps } from "./types";
+} from "@/components/ui/form"
+import { Icon } from "@/components/ui/Icon"
+import { Input } from "@/components/ui/input"
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
+import { useToast } from "@/hook/useToast"
+import { authAPI } from "@/service/auth/AuthService"
+import { SignUpFormType, UserType, signUpFormSchema } from "@/types/zod.schema"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { MouseEventHandler, useCallback, useState } from "react"
+import { useForm } from "react-hook-form"
+import { RegisterFormProps } from "./types"
 
 export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
-  const [count, setCount] = useState(0);
-  const [isChecked, setIsChecked] = useState(false);
-  const [isGetCode, setIsGetCode] = useState(false);
-  const [isTimer, setIsTimer] = useState(false);
-  const { toast } = useToast();
+  const [count, setCount] = useState(0)
+  const [isChecked, setIsChecked] = useState(false)
+  const [isGetCode, setIsGetCode] = useState(false)
+  const [isTimer, setIsTimer] = useState(false)
+  const { toast } = useToast()
   const form = useForm<SignUpFormType>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -36,66 +36,66 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
       verification_code: "",
       nickname: "",
     },
-  });
+  })
   const submitForm = useCallback(
     async ({ verification_code, ...values }: SignUpFormType) => {
-      const data = await authAPI.postRegister<UserType>(values);
+      const data = await authAPI.postRegister<UserType>(values)
 
       if ("id" in data) {
-        setOpen(false);
+        setOpen(false)
         return toast({
           description: "회원가입이 완료되었습니다",
-        });
+        })
       } else if (data.error) {
         return toast({
           title: "회원가입에 실패했습니다.",
           description: "다시 시도해주세요.",
-        });
+        })
       }
     },
     [setOpen, toast],
-  );
+  )
 
   // TODO:  전송을 성공했다는 가정하에 optimistic UI 적용
   const sendVerificationCode: MouseEventHandler = useCallback(
     async e => {
-      e.preventDefault();
+      e.preventDefault()
 
       // 이메일 중복 체크시 UI부터 변경
-      const data = await authAPI.postCheckEmail(form.getValues("email"));
+      const data = await authAPI.postCheckEmail(form.getValues("email"))
 
       if ("success" in data) {
-        setCount(120);
-        setIsTimer(true);
-        setIsGetCode(true);
+        setCount(120)
+        setIsTimer(true)
+        setIsGetCode(true)
         toast({
           title: "인증 코드가 발송되었습니다.",
           description: "이메일을 확인해주세요.",
-        });
+        })
       } else if (data.error) {
         return toast({
           title: "이미 가입된 이메일입니다.",
           description: "다른 이메일을 입력해주세요.",
-        });
+        })
       } else {
         return toast({
           title: "올바른 이메일 형식이 아닙니다.",
           description: "이메일을 확인해주세요.",
-        });
+        })
       }
 
-      const send_code = await authAPI.postSendCode(form.getValues("email"));
+      const send_code = await authAPI.postSendCode(form.getValues("email"))
       if ("error" in send_code) {
         // Redis 저장, 이메일 전송이 실패할 경우
-        setCount(0);
-        setIsTimer(false);
+        setCount(0)
+        setIsTimer(false)
         return toast({
           description: "올바른 이메일을 입력해주세요.",
-        });
+        })
       }
     },
     [form, toast],
-  );
+  )
 
   const verifyCode = useCallback(async () => {
     // e.preventDefault();
@@ -103,19 +103,19 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
       const res = await authAPI.postVerifyCode(
         form.getValues("email"),
         form.getValues("verification_code"),
-      );
+      )
 
       if ("success" in res) {
-        setIsTimer(false);
-        setIsChecked(true);
-        setIsGetCode(false);
+        setIsTimer(false)
+        setIsChecked(true)
+        setIsGetCode(false)
       } else if (res.statusCode === 401) {
-        return toast({ description: "인증코드가 일치하지 않습니다" });
+        return toast({ description: "인증코드가 일치하지 않습니다" })
       }
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
-  }, [form, toast]);
+  }, [form, toast])
 
   return (
     <Form {...form}>
@@ -193,7 +193,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                   </div>
                   <FormMessage className="shrink-0" />
                 </FormItem>
-              );
+              )
             }}
           />
         ) : null}
@@ -219,7 +219,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                       </FormControl>
                     </div>
                   </FormItem>
-                );
+                )
               }}
             />
             <FormField
@@ -241,7 +241,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                       <FormMessage className="shrink-0" />
                     </div>
                   </FormItem>
-                );
+                )
               }}
             />
           </>
@@ -264,5 +264,5 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
         </DialogFooter>
       </form>
     </Form>
-  );
+  )
 }

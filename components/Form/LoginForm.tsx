@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { DialogFooter } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button"
+import { DialogFooter } from "@/components/ui/dialog"
 import {
   Form,
   FormControl,
@@ -9,16 +9,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { authAPI } from "@/service/auth/AuthService";
-import { useUserStore } from "@/store/user.store";
-import { LoginFormType, UserType, loginFormSchema, userSchema } from "@/types/zod.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { setCookie } from "cookies-next";
-import { useCallback } from "react";
-import { useForm } from "react-hook-form";
-import { LoginFormProps } from "./types";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { authAPI } from "@/service/auth/AuthService"
+import { useUserStore } from "@/store/user.store"
+import { LoginFormType, UserType, loginFormSchema, userSchema } from "@/types/zod.schema"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { setCookie } from "cookies-next"
+import { useCallback } from "react"
+import { useForm } from "react-hook-form"
+import { LoginFormProps } from "./types"
 
 export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
   const form = useForm<LoginFormType>({
@@ -27,24 +27,24 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
       email: "",
       password: "",
     },
-  });
-  const { setLoginUser } = useUserStore();
+  })
+  const { setLoginUser } = useUserStore()
 
   const submitForm = useCallback(
     async ({ email, password }: LoginFormType) => {
-      const data = await authAPI.postLogin<UserType>(email, password);
+      const data = await authAPI.postLogin<UserType>(email, password)
 
       if ("id" in data) {
-        const user = userSchema.parse(data);
-        setCookie("user", user);
-        setLoginUser(user);
-        setOpen(false);
+        const user = userSchema.parse(data)
+        setCookie("user", user)
+        setLoginUser(user)
+        setOpen(false)
       } else if (data.error) {
-        return alert(data.message);
+        return alert(data.message)
       }
     },
     [setOpen, setLoginUser],
-  );
+  )
 
   return (
     <Form {...form}>
@@ -86,7 +86,7 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
                   </FormControl>
                 </div>
               </FormItem>
-            );
+            )
           }}
         />
         <DialogFooter className="flex-row !justify-between">
@@ -109,5 +109,5 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
         </DialogFooter>
       </form>
     </Form>
-  );
+  )
 }

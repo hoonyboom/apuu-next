@@ -1,10 +1,10 @@
-import { ExtensionKit } from "@/components/Editor/extensions";
-import { useEditorStore } from "@/store/editor.store";
-import { useEditor } from "@tiptap/react";
-import { useEffect } from "react";
+import { ExtensionKit } from "@/components/Editor/extensions"
+import { useEditorStore } from "@/store/editor.store"
+import { useEditor } from "@tiptap/react"
+import { useEffect } from "react"
 
 export default function useTiptapInitializer() {
-  const { setEditor } = useEditorStore();
+  const { setEditor } = useEditorStore()
   const editor = useEditor(
     {
       extensions: ExtensionKit(),
@@ -22,11 +22,11 @@ export default function useTiptapInitializer() {
       },
     },
     [],
-  );
+  )
 
   useEffect(() => {
-    if (editor) setEditor(editor);
-  }, [editor]);
+    if (editor) setEditor(editor)
+  }, [editor, setEditor])
 
-  return { editor };
+  return { editor }
 }

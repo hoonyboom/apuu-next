@@ -1,7 +1,7 @@
-import { cn } from "@/lib/util";
-import Image from "next/image";
-import Link from "next/link";
-import { LogoProps } from "./types";
+import { cn } from "@/lib/util"
+import Image from "next/image"
+import Link from "next/link"
+import { LogoProps } from "./types"
 
 export default function Logo({
   className,
@@ -23,5 +23,5 @@ export default function Logo({
         <span className="hidden sm:block">puu</span>
       </div>
     </Link>
-  );
+  )
 }

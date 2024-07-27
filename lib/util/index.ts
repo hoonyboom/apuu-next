@@ -1,17 +1,17 @@
-import { clsx, type ClassValue } from "clsx";
-import { MouseEventHandler } from "react";
-import { twMerge } from "tailwind-merge";
+import { clsx, type ClassValue } from "clsx"
+import { MouseEventHandler } from "react"
+import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+  return twMerge(clsx(inputs))
 }
 
 export const stopPropagation: MouseEventHandler = e => {
-  e.stopPropagation();
-};
+  e.stopPropagation()
+}
 
 export function sleep(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 export async function fetcher(
@@ -27,20 +27,20 @@ export async function fetcher(
     credentials: "include",
     body: JSON.stringify(values),
     ...options,
-  });
+  })
 
-  const data = await res.json();
+  const data = await res.json()
 
   return {
     status: res.status,
     success: res.ok,
     data,
-  };
+  }
 }
 
 export function randomElement(array: Array<any>) {
-  return array[Math.floor(Math.random() * array.length)];
+  return array[Math.floor(Math.random() * array.length)]
 }
 
-export * from "./cssVar";
-export * from "./isTextSelected";
+export * from "./cssVar"
+export * from "./isTextSelected"

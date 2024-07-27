@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { Form } from "@/components/ui/form";
-import { useToast } from "@/hook/useToast";
-import { CHECK_BOX_LIST, SELECT_BOX_LIST } from "@/lib/const";
-import { usePostsMutation } from "@/service/posts/usePostsService";
-import { useEditorStore } from "@/store/editor.store";
-import { registerFormSchema } from "@/types/zod.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Form } from "@/components/ui/form"
+import { useToast } from "@/hook/useToast"
+import { CHECK_BOX_LIST, SELECT_BOX_LIST } from "@/lib/const"
+import { usePostsMutation } from "@/service/posts/usePostsService"
+import { useEditorStore } from "@/store/editor.store"
+import { registerFormSchema } from "@/types/zod.schema"
+import { zodResolver } from "@hookform/resolvers/zod"
 import {
   PropsWithChildren,
   useCallback,
@@ -14,17 +14,17 @@ import {
   useMemo,
   useRef,
   useState,
-} from "react";
-import { useForm } from "react-hook-form";
-import { Button } from "../ui/button";
-import { RegisterFormCheckBox } from "./RegisterCheckBox";
-import { RegisterDatePicker } from "./RegisterDatePicker";
-import { RegisterFormSelectBox } from "./RegisterSelectBox";
-import { RegisterTitleInput } from "./RegisterTitleInput";
-import { RegisterFormDataType } from "./types";
+} from "react"
+import { useForm } from "react-hook-form"
+import { Button } from "../ui/button"
+import { RegisterFormCheckBox } from "./RegisterCheckBox"
+import { RegisterDatePicker } from "./RegisterDatePicker"
+import { RegisterFormSelectBox } from "./RegisterSelectBox"
+import { RegisterTitleInput } from "./RegisterTitleInput"
+import { RegisterFormDataType } from "./types"
 
 export default function MobileRegisterForm({ children }: PropsWithChildren) {
-  const { toast } = useToast();
+  const { toast } = useToast()
   const form = useForm<RegisterFormDataType>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
@@ -33,15 +33,15 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
       style: [],
       goal: [],
     },
-  });
-  const { mutate } = usePostsMutation();
-  const { editor } = useEditorStore();
+  })
+  const { mutate } = usePostsMutation()
+  const { editor } = useEditorStore()
   const onSubmit = useCallback(
     (data: RegisterFormDataType) => {
       mutate({
         ...data,
         content: editor?.getHTML() || "",
-      });
+      })
 
       toast({
         title: "You submitted the following values:",
@@ -52,52 +52,52 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
             </code>
           </pre>
         ),
-      });
+      })
     },
     [mutate, editor, toast],
-  );
+  )
 
   const numberOfListItem = useMemo(
     () => SELECT_BOX_LIST.length + CHECK_BOX_LIST.length,
     [],
-  );
-  const [currentStep, setCurrentStep] = useState(0);
+  )
+  const [currentStep, setCurrentStep] = useState(0)
   const [transition, setTransition] = useState(() =>
     Array.from({ length: numberOfListItem + 2 }, (_, i) => (i === 0 ? true : false)),
-  );
-  const currentNameRef = useRef<keyof RegisterFormDataType | undefined>(undefined);
-  const containerRef = useRef<HTMLDivElement>(null);
+  )
+  const currentNameRef = useRef<keyof RegisterFormDataType | undefined>(undefined)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!containerRef.current || !currentNameRef.current) return;
+    if (!containerRef.current || !currentNameRef.current) return
 
     setTransition(state => {
-      const tmp = [...state];
-      tmp[currentStep] = true;
-      return tmp;
-    });
+      const tmp = [...state]
+      tmp[currentStep] = true
+      return tmp
+    })
 
     if (currentStep === numberOfListItem) {
-      currentNameRef.current = "deadline";
+      currentNameRef.current = "deadline"
     } else if (currentStep === numberOfListItem + 1) {
-      currentNameRef.current = "title";
+      currentNameRef.current = "title"
     } else {
-      currentNameRef.current = undefined;
+      currentNameRef.current = undefined
     }
 
-    containerRef.current.scrollTop = -containerRef.current.scrollHeight;
-  }, [containerRef, currentNameRef, setTransition, numberOfListItem, currentStep]);
+    containerRef.current.scrollTop = -containerRef.current.scrollHeight
+  }, [containerRef, currentNameRef, setTransition, numberOfListItem, currentStep])
 
   const handleNext = useCallback(
     function setNextStep() {
-      if (!currentNameRef.current) return;
-      let data = form.getValues()[currentNameRef.current];
+      if (!currentNameRef.current) return
+      let data = form.getValues()[currentNameRef.current]
       if ((Array.isArray(data) ? data.length > 0 : data !== "") && data) {
-        setCurrentStep(prevStep => prevStep + 1);
+        setCurrentStep(prevStep => prevStep + 1)
       }
     },
     [form],
-  );
+  )
 
   return (
     <Form {...form}>
@@ -108,7 +108,7 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
         >
           {SELECT_BOX_LIST.map((s, i) => {
             if (i <= currentStep) {
-              currentNameRef.current = s.name;
+              currentNameRef.current = s.name
               return (
                 <RegisterFormSelectBox
                   key={s.name}
@@ -120,13 +120,13 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
                   isShow={transition[i]}
                   isMobile
                 />
-              );
+              )
             }
           })}
 
           {CHECK_BOX_LIST.map((s, i) => {
             if (i <= currentStep - SELECT_BOX_LIST.length) {
-              currentNameRef.current = s.name;
+              currentNameRef.current = s.name
               return (
                 <RegisterFormCheckBox
                   key={s.name}
@@ -137,7 +137,7 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
                   isShow={transition[i + SELECT_BOX_LIST.length]}
                   isMobile
                 />
-              );
+              )
             }
           })}
 
@@ -172,5 +172,5 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
         </div>
       </form>
     </Form>
-  );
+  )
 }

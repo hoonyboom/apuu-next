@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react"
 
 /** 
  * @example
@@ -14,6 +14,6 @@ import { useEffect, useLayoutEffect } from "react";
   return <p>Hello, world</p>
 }
  */
-const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect
 
-export default useIsomorphicEffect;
+export default useIsomorphicEffect

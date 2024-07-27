@@ -1,3 +1,3 @@
-import { ImageProps } from "next/image";
+import { ImageProps } from "next/image"
 
-export type LogoProps = Partial<ImageProps>;
+export type LogoProps = Partial<ImageProps>

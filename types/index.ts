@@ -1,1 +1,1 @@
-export type ModeType = "register" | "login";
+export type ModeType = "register" | "login"

@@ -1,13 +1,13 @@
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { cn } from "@/lib/util";
-import { RegisterFormFieldProps } from "./types";
+} from "@/components/ui/select"
+import { cn } from "@/lib/util"
+import { RegisterFormFieldProps } from "./types"
 
 export const RegisterFormSelectBox = ({
   form,
@@ -71,7 +71,7 @@ export const RegisterFormSelectBox = ({
         </FormItem>
       )}
     />
-  );
-};
+  )
+}
 
-RegisterFormSelectBox.displayname = "RegisterFormSelectBox";
+RegisterFormSelectBox.displayname = "RegisterFormSelectBox"

@@ -1,5 +1,5 @@
-import { api } from "@/lib/config/api.route";
-import Service from "@/service/Service";
+import { api } from "@/lib/config/api.route"
+import Service from "@/service/Service"
 
 class AuthService extends Service {
   async postSendCode(email: string) {
@@ -7,7 +7,7 @@ class AuthService extends Service {
       url: api.auth.send_code,
       data: { email },
       isPublic: true,
-    });
+    })
   }
 
   async postVerifyCode(email: string, verify_code: string) {
@@ -15,7 +15,7 @@ class AuthService extends Service {
       url: api.auth.verify_code,
       data: { email, verify_code },
       isPublic: true,
-    });
+    })
   }
 
   async postCheckEmail(email: string) {
@@ -23,7 +23,7 @@ class AuthService extends Service {
       url: api.auth.check_email,
       data: { email },
       isPublic: true,
-    });
+    })
   }
 
   async postRegister<T>(body: { email: string; password: string; nickname: string }) {
@@ -31,11 +31,11 @@ class AuthService extends Service {
       url: api.auth.register_email,
       data: body,
       isPublic: true,
-    });
+    })
   }
 
   async postLogin<T>(email: string, password: string) {
-    const token = btoa(`${email}:${password}`);
+    const token = btoa(`${email}:${password}`)
     return await this.http.post<T>({
       url: api.auth.login_email,
       isPublic: true,
@@ -44,12 +44,12 @@ class AuthService extends Service {
           authorization: `Basic ${token}`,
         },
       },
-    });
+    })
   }
 
   async postLogout() {
-    return await this.http.post({ url: api.auth.logout });
+    return await this.http.post({ url: api.auth.logout })
   }
 }
 
-export const authAPI = new AuthService();
+export const authAPI = new AuthService()

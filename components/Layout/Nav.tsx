@@ -1,6 +1,6 @@
-import LoginModal from "@/components/Form/LoginModal";
-import Link from "next/link";
-import { Logo, Menu } from ".";
+import LoginModal from "@/components/Form/LoginModal"
+import Link from "next/link"
+import { Logo, Menu } from "."
 
 export default function Nav() {
   return (
@@ -14,5 +14,5 @@ export default function Nav() {
         <LoginModal />
       </div>
     </nav>
-  );
+  )
 }

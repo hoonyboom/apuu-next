@@ -1,18 +1,18 @@
-import { Button, ButtonProps } from "@/components/ui/button";
-import { Icon, IconProps } from "@/components/ui/Icon";
+import { Button, ButtonProps } from "@/components/ui/button"
+import { Icon, IconProps } from "@/components/ui/Icon"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/util";
-import { forwardRef } from "react";
+} from "@/components/ui/tooltip"
+import { cn } from "@/lib/util"
+import { forwardRef } from "react"
 
 export type MenubarBtnProps = {
-  icon: IconProps["name"];
-  tooltip: string;
-} & ButtonProps;
+  icon: IconProps["name"]
+  tooltip: string
+} & ButtonProps
 
 export const MenubarBtn = forwardRef<HTMLButtonElement, MenubarBtnProps>(
   ({ children, className, tooltip, icon, ...props }: MenubarBtnProps, ref) => {
@@ -37,7 +37,7 @@ export const MenubarBtn = forwardRef<HTMLButtonElement, MenubarBtnProps>(
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-    );
+    )
   },
-);
-MenubarBtn.displayName = "MenubarBtn";
+)
+MenubarBtn.displayName = "MenubarBtn"

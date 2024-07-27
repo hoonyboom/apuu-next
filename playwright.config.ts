@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test"
 // import dotenv from "dotenv";
 // import path from "path";
 // import { fileURLToPath } from "url";
@@ -70,4 +70,4 @@ export default defineConfig({
     url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
   },
-});
+})

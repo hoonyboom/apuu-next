@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { EditorContent, HTMLContent, useEditor } from "@tiptap/react";
+import { EditorContent, HTMLContent, useEditor } from "@tiptap/react"
 
 type ViewerProps = {
-  content: HTMLContent;
-};
+  content: HTMLContent
+}
 
 export default function Viewer({ content }: ViewerProps) {
   const editor = useEditor({
     editable: false,
     content,
-  });
-  return <EditorContent editor={editor} />;
+  })
+  return <EditorContent editor={editor} />
 }

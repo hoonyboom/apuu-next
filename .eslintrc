@@ -1,7 +1,8 @@
 {
   /* 공홈 참조 : https://eslint.org/docs/latest/rules/ */
-  "extends": ["next/core-web-vitals"],
+  "extends": ["next/core-web-vitals", "eslint-config-prettier"],
   "plugins": ["react", "react-hooks", "tailwindcss", "prettier"],
+  "ignorePatterns": ["components/ui/**"], 
   "rules": {
     "prettier/prettier": ["error"],
     "import/no-anonymous-default-export": "off",

@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -8,20 +8,20 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { useUserStore } from "@/store/user.store";
-import { ModeType } from "@/types";
-import { useCallback, useState } from "react";
-import { LoginForm, SignUpForm } from ".";
+} from "@/components/ui/dialog"
+import { useUserStore } from "@/store/user.store"
+import { ModeType } from "@/types"
+import { useCallback, useState } from "react"
+import { LoginForm, SignUpForm } from "."
 
 export default function LoginModal() {
-  const [open, setOpen] = useState(false);
-  const [mode, setMode] = useState<ModeType>("login");
-  const { user } = useUserStore();
+  const [open, setOpen] = useState(false)
+  const [mode, setMode] = useState<ModeType>("login")
+  const { user } = useUserStore()
 
   const switchMode = useCallback(() => {
-    setMode(prev => (prev === "login" ? "register" : "login"));
-  }, [setMode]);
+    setMode(prev => (prev === "login" ? "register" : "login"))
+  }, [setMode])
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -48,5 +48,5 @@ export default function LoginModal() {
         )}
       </DialogContent>
     </Dialog>
-  );
+  )
 }

@@ -1,22 +1,22 @@
-import { Icon } from "@/components/ui/Icon";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { cn } from "@/lib/util";
-import { format } from "date-fns";
-import { ko } from "date-fns/locale";
-import { useCallback } from "react";
-import { DateFormatter } from "react-day-picker";
-import { RegisterDefaultProps } from "./types";
+import { Icon } from "@/components/ui/Icon"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { cn } from "@/lib/util"
+import { format } from "date-fns"
+import { ko } from "date-fns/locale"
+import { useCallback } from "react"
+import { DateFormatter } from "react-day-picker"
+import { RegisterDefaultProps } from "./types"
 
 export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
   const onDisabled = useCallback((date: Date) => {
-    const today = new Date();
-    const thirtyDaysFromNow = new Date();
-    thirtyDaysFromNow.setDate(today.getDate() + 30);
-    return date < today || date > thirtyDaysFromNow;
-  }, []);
+    const today = new Date()
+    const thirtyDaysFromNow = new Date()
+    thirtyDaysFromNow.setDate(today.getDate() + 30)
+    return date < today || date > thirtyDaysFromNow
+  }, [])
 
   return (
     <FormField
@@ -37,7 +37,7 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
                   )}
                 >
                   {field.value ? (
-                    format(field.value, "PPPP", {locale: ko})
+                    format(field.value, "PPPP", { locale: ko })
                   ) : (
                     <span>마감일을 선택해주세요</span>
                   )}
@@ -60,12 +60,12 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
         </FormItem>
       )}
     />
-  );
-};
+  )
+}
 
-RegisterDatePicker.displayname = "RegisterDatePicker";
+RegisterDatePicker.displayname = "RegisterDatePicker"
 
 const formatCaption: DateFormatter = (date: Date) => {
-  const formattedDate = format(date, "yyyy년 M월", { locale: ko });
-  return <span className="text-sm">{formattedDate}</span>;
-};
+  const formattedDate = format(date, "yyyy년 M월", { locale: ko })
+  return <span className="text-sm">{formattedDate}</span>
+}

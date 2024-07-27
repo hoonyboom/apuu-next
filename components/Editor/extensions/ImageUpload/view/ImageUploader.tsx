@@ -1,29 +1,29 @@
-import { Button } from "@/components/ui/button";
-import { Icon } from "@/components/ui/Icon";
-import { Spinner } from "@/components/ui/spinner";
-import { cn } from "@/lib/util";
-import { ChangeEvent, useCallback } from "react";
-import { useDropZone, useFileUpload, useUploader } from "./hooks";
+import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/Icon"
+import { Spinner } from "@/components/ui/spinner"
+import { cn } from "@/lib/util"
+import { ChangeEvent, useCallback } from "react"
+import { useDropZone, useFileUpload, useUploader } from "./hooks"
 
 export const ImageUploader = ({ onUpload }: { onUpload: (url: string) => void }) => {
-  const { loading, uploadFile } = useUploader({ onUpload });
-  const { handleUploadClick, ref } = useFileUpload();
+  const { loading, uploadFile } = useUploader({ onUpload })
+  const { handleUploadClick, ref } = useFileUpload()
   const { draggedInside, onDrop, onDragEnter, onDragLeave } = useDropZone({
     uploader: uploadFile,
-  });
+  })
 
   const onFileChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) =>
       e.target.files ? uploadFile(e.target.files[0]) : null,
     [uploadFile],
-  );
+  )
 
   if (loading) {
     return (
       <div className="flex min-h-[10rem] items-center justify-center rounded-lg bg-opacity-80 p-8">
         <Spinner className="text-neutral-500" size={1.5} />
       </div>
-    );
+    )
   }
 
   return (
@@ -65,7 +65,7 @@ export const ImageUploader = ({ onUpload }: { onUpload: (url: string) => void })
         onChange={onFileChange}
       />
     </div>
-  );
-};
+  )
+}
 
-export default ImageUploader;
+export default ImageUploader

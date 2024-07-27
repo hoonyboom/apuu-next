@@ -17,4 +17,4 @@ export const api = {
   common: {
     uploadImageAsTemp: "/common/image",
   },
-};
+}

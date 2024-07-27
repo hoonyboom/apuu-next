@@ -1,24 +1,24 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { CardTitle } from "@/components/ui/card";
-import { Form } from "@/components/ui/form";
-import { useToast } from "@/hook/useToast";
-import { CHECK_BOX_LIST, SELECT_BOX_LIST } from "@/lib/const";
-import { usePostsMutation } from "@/service/posts/usePostsService";
-import { useEditorStore } from "@/store/editor.store";
-import { registerFormSchema } from "@/types/zod.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { PropsWithChildren, useCallback } from "react";
-import { useForm } from "react-hook-form";
-import { RegisterFormCheckBox } from "./RegisterCheckBox";
-import { RegisterDatePicker } from "./RegisterDatePicker";
-import { RegisterFormSelectBox } from "./RegisterSelectBox";
-import { RegisterTitleInput } from "./RegisterTitleInput";
-import { RegisterFormDataType } from "./types";
+import { Button } from "@/components/ui/button"
+import { CardTitle } from "@/components/ui/card"
+import { Form } from "@/components/ui/form"
+import { useToast } from "@/hook/useToast"
+import { CHECK_BOX_LIST, SELECT_BOX_LIST } from "@/lib/const"
+import { usePostsMutation } from "@/service/posts/usePostsService"
+import { useEditorStore } from "@/store/editor.store"
+import { registerFormSchema } from "@/types/zod.schema"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { PropsWithChildren, useCallback } from "react"
+import { useForm } from "react-hook-form"
+import { RegisterFormCheckBox } from "./RegisterCheckBox"
+import { RegisterDatePicker } from "./RegisterDatePicker"
+import { RegisterFormSelectBox } from "./RegisterSelectBox"
+import { RegisterTitleInput } from "./RegisterTitleInput"
+import { RegisterFormDataType } from "./types"
 
 export default function DesktopRegisterForm({ children }: PropsWithChildren) {
-  const { toast } = useToast();
+  const { toast } = useToast()
   const form = useForm<RegisterFormDataType>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
@@ -27,27 +27,27 @@ export default function DesktopRegisterForm({ children }: PropsWithChildren) {
       style: [],
       goal: [],
     },
-  });
-  const { mutate, data } = usePostsMutation();
-  const { editor } = useEditorStore();
+  })
+  const { mutate, data } = usePostsMutation()
+  const { editor } = useEditorStore()
   const onSubmit = useCallback(
     (data: RegisterFormDataType) => {
-      if (!editor) return;
+      if (!editor) return
 
-      const images: string[] = [];
+      const images: string[] = []
       const content = editor
         .getHTML()
         .replace(/\/public\/temp\/([^"]*)/g, (original, src) => {
-          const newSrc = `/public/posts/${src}`;
-          images.push(src);
-          return newSrc;
-        });
+          const newSrc = `/public/posts/${src}`
+          images.push(src)
+          return newSrc
+        })
 
       mutate({
         ...data,
         content,
         images,
-      });
+      })
 
       toast({
         title: "You submitted the following values:",
@@ -58,12 +58,10 @@ export default function DesktopRegisterForm({ children }: PropsWithChildren) {
             </code>
           </pre>
         ),
-      });
+      })
     },
     [mutate, editor, toast],
-  );
-
-  console.log(data);
+  )
 
   return (
     <Form {...form}>
@@ -101,5 +99,5 @@ export default function DesktopRegisterForm({ children }: PropsWithChildren) {
         </div>
       </form>
     </Form>
-  );
+  )
 }

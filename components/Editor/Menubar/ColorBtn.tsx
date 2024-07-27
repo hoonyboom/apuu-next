@@ -1,19 +1,19 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/util";
-import { memo, useCallback } from "react";
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/util"
+import { memo, useCallback } from "react"
 
 export type ColorButtonProps = {
-  color: string;
-  active: boolean;
-  onColorChange?: (color: string) => void; // eslint-disable-line no-unused-vars
-};
+  color: string
+  active: boolean
+  onColorChange?: (color: string) => void // eslint-disable-line no-unused-vars
+}
 
 export const ColorBtn = memo(({ active, color, onColorChange }: ColorButtonProps) => {
   const handleClick = useCallback(() => {
     if (onColorChange) {
-      onColorChange(color || "");
+      onColorChange(color || "")
     }
-  }, [onColorChange, color]);
+  }, [onColorChange, color])
 
   return (
     <Button
@@ -36,7 +36,7 @@ export const ColorBtn = memo(({ active, color, onColorChange }: ColorButtonProps
         )}
       />
     </Button>
-  );
-});
+  )
+})
 
-ColorBtn.displayName = "ColorBtn";
+ColorBtn.displayName = "ColorBtn"

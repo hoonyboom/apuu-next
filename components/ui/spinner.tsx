@@ -1,5 +1,5 @@
-import { cn } from "@/lib/util";
-import { HTMLProps, forwardRef } from "react";
+import { cn } from "@/lib/util"
+import { HTMLProps, forwardRef } from "react"
 
 export const Spinner = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
   ({ className, ...rest }, ref) => {
@@ -12,8 +12,8 @@ export const Spinner = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
         ref={ref}
         {...rest}
       />
-    );
+    )
   },
-);
+)
 
-Spinner.displayName = "Spinner";
+Spinner.displayName = "Spinner"

@@ -1,7 +1,7 @@
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { RegisterDefaultProps } from "./types";
+import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
+import { RegisterDefaultProps } from "./types"
 
 export const RegisterTitleInput = ({ form }: RegisterDefaultProps) => {
   return (
@@ -24,7 +24,7 @@ export const RegisterTitleInput = ({ form }: RegisterDefaultProps) => {
         </FormItem>
       )}
     />
-  );
-};
+  )
+}
 
-RegisterTitleInput.displayname = "RegisterTitleInput";
+RegisterTitleInput.displayname = "RegisterTitleInput"

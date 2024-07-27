@@ -1,9 +1,9 @@
-import { ContentPickerOptions } from "@/components/Editor/Menubar/MenuContentTypePicker";
-import { useEditorStore } from "@/store/editor.store";
-import { useMemo } from "react";
+import { ContentPickerOptions } from "@/components/Editor/Menubar/MenuContentTypePicker"
+import { useEditorStore } from "@/store/editor.store"
+import { useMemo } from "react"
 
 export const useContentTypes = () => {
-  const { editor } = useEditorStore();
+  const { editor } = useEditorStore()
   const options = useMemo<ContentPickerOptions>(() => {
     return [
       {
@@ -111,9 +111,9 @@ export const useContentTypes = () => {
         label: "체크 리스트",
         type: "option",
       },
-    ];
+    ]
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [editor, editor?.state]);
+  }, [editor, editor?.state])
 
-  return options;
-};
+  return options
+}
