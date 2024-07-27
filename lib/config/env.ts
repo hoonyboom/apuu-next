@@ -4,10 +4,11 @@ const client = z.object({
   NEXT_PUBLIC_BASE_URL: z.string(),
   NEXT_PUBLIC_COLLAB_DOC_PREFIX: z.string(),
   NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID: z.string(),
+  NODE_ENV: z.enum(["development", "test", "production"]),
+  NEXT_PUBLIC_LOCAL_SERVER_URL: z.string(),
 });
 
 const server = client.extend({
-  NODE_ENV: z.enum(["development", "test", "production"]),
   TIPTAP_COLLAB_SECRET: z.string(),
 });
 
@@ -16,9 +17,10 @@ const processEnv = {
   NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
   NEXT_PUBLIC_COLLAB_DOC_PREFIX: process.env.NEXT_PUBLIC_COLLAB_DOC_PREFIX,
   NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID: process.env.NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID,
+  NODE_ENV: process.env.NODE_ENV,
+  NEXT_PUBLIC_LOCAL_SERVER_URL: process.env.NEXT_PUBLIC_LOCAL_SERVER_URL,
 
   // 서버
-  NODE_ENV: process.env.NODE_ENV,
   TIPTAP_COLLAB_SECRET: process.env.TIPTAP_COLLAB_SECRET,
 };
 

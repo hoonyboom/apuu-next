@@ -7,6 +7,7 @@ import { cn } from "@/lib/util";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { useCallback } from "react";
+import { DateFormatter } from "react-day-picker";
 import { RegisterDefaultProps } from "./types";
 
 export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
@@ -36,7 +37,7 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
                   )}
                 >
                   {field.value ? (
-                    format(field.value, "PPP")
+                    format(field.value, "PPPP", {locale: ko})
                   ) : (
                     <span>마감일을 선택해주세요</span>
                   )}
@@ -47,6 +48,7 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
             <PopoverContent className="w-auto p-0" align="start">
               <Calendar
                 locale={ko}
+                formatters={{ formatCaption }}
                 mode="single"
                 selected={field.value}
                 onSelect={field.onChange}
@@ -62,3 +64,8 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
 };
 
 RegisterDatePicker.displayname = "RegisterDatePicker";
+
+const formatCaption: DateFormatter = (date: Date) => {
+  const formattedDate = format(date, "yyyy년 M월", { locale: ko });
+  return <span className="text-sm">{formattedDate}</span>;
+};

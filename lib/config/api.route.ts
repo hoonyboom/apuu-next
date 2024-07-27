@@ -13,4 +13,8 @@ export const api = {
   posts: {
     create_post: "/posts",
   },
+
+  common: {
+    uploadImageAsTemp: "/common/image",
+  },
 };

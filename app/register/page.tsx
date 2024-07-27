@@ -1,19 +1,21 @@
 "use client";
 
 import { Editor } from "@/components/Editor";
-import MobileRegisterForm from "@/components/Form/TestForm";
-
-// const Test = dynamic(() => import("@/components/Form/TestForm"));
+import { DesktopRegisterForm, MobileRegisterForm } from "@/components/Form";
 
 export default function Page() {
   return (
-    <div>
-      {/* <RegisterForm>
-            <Editor />
-          </RegisterForm> */}
-      <MobileRegisterForm>
-        <Editor />
-      </MobileRegisterForm>
-    </div>
+    <>
+      <div className="hidden @lg/register:block">
+        <DesktopRegisterForm>
+          <Editor />
+        </DesktopRegisterForm>
+      </div>
+      <div className="@lg/register:hidden">
+        <MobileRegisterForm>
+          <Editor />
+        </MobileRegisterForm>
+      </div>
+    </>
   );
 }

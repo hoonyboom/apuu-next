@@ -3,7 +3,7 @@
 import { Form } from "@/components/ui/form";
 import { useToast } from "@/hook/useToast";
 import { CHECK_BOX_LIST, SELECT_BOX_LIST } from "@/lib/const";
-import { useCreatePostMutation } from "@/service/posts/usePostsService";
+import { usePostsMutation } from "@/service/posts/usePostsService";
 import { useEditorStore } from "@/store/editor.store";
 import { registerFormSchema } from "@/types/zod.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -34,9 +34,8 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
       goal: [],
     },
   });
-  const { mutate } = useCreatePostMutation();
+  const { mutate } = usePostsMutation();
   const { editor } = useEditorStore();
-
   const onSubmit = useCallback(
     (data: RegisterFormDataType) => {
       mutate({
@@ -62,12 +61,10 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
     () => SELECT_BOX_LIST.length + CHECK_BOX_LIST.length,
     [],
   );
-
   const [currentStep, setCurrentStep] = useState(0);
   const [transition, setTransition] = useState(() =>
     Array.from({ length: numberOfListItem + 2 }, (_, i) => (i === 0 ? true : false)),
   );
-
   const currentNameRef = useRef<keyof RegisterFormDataType | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -79,8 +76,6 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
       tmp[currentStep] = true;
       return tmp;
     });
-
-    // form.setFocus(currentNameRef.current);
 
     if (currentStep === numberOfListItem) {
       currentNameRef.current = "deadline";
@@ -123,6 +118,7 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
                   values={s.values}
                   unit="명"
                   isShow={transition[i]}
+                  isMobile
                 />
               );
             }
@@ -139,6 +135,7 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
                   name={s.name}
                   values={s.values}
                   isShow={transition[i + SELECT_BOX_LIST.length]}
+                  isMobile
                 />
               );
             }
@@ -148,7 +145,7 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
             <RegisterDatePicker form={form} isShow={transition[numberOfListItem]} />
           )}
 
-          {currentStep >= numberOfListItem + 1 && (
+          {currentStep === numberOfListItem + 1 && (
             <div className="space-y-2">
               <RegisterTitleInput form={form} isShow={transition[numberOfListItem + 1]} />
               {children}
@@ -157,18 +154,17 @@ export default function MobileRegisterForm({ children }: PropsWithChildren) {
         </div>
 
         <div className="absolute inset-x-0 bottom-4 mx-auto w-full px-5">
-          {currentStep > SELECT_BOX_LIST.length + CHECK_BOX_LIST.length + 1 ? (
-            <Button
-              type="submit"
-              disabled={currentStep <= SELECT_BOX_LIST.length + CHECK_BOX_LIST.length + 1}
-            >
-              Submit
+          {currentStep === numberOfListItem + 1 ? (
+            <Button type="submit" disabled={currentStep <= numberOfListItem + 1}>
+              저장
             </Button>
           ) : (
             <Button
+              type="button"
               onClick={handleNext}
               disabled={!form.getValues(currentNameRef.current!)}
               className="w-full"
+              variant="default"
             >
               다음
             </Button>

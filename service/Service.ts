@@ -21,7 +21,7 @@ export type TSuccess = {
   message: string;
 };
 
-type TError = {
+export type TError = {
   message: string;
   statusCode: number;
   error: string;
@@ -35,10 +35,11 @@ class Service {
   constructor() {
     this.baseURL =
       env.NODE_ENV === "development"
-        ? "http://localhost:3002"
+        ? env.NEXT_PUBLIC_LOCAL_SERVER_URL
         : `${env.NEXT_PUBLIC_BASE_URL}/api`;
     this.headers = {};
     this.http = {
+      // 화살표함수로 선언하지 않아서 바인드
       get: this.get.bind(this),
       delete: this.delete.bind(this),
       post: this.post.bind(this),
@@ -70,7 +71,7 @@ class Service {
       }
 
       this.headers = {
-        "XSRF-TOKEN": getCookie("XSRF-TOKEN") ?? "",
+        "xsrf-token": getCookie("XSRF-TOKEN") ?? "",
       };
     }
 
@@ -78,10 +79,11 @@ class Service {
       const res = await fetch(this.baseURL + url, {
         method,
         credentials: "include",
-        body: data ? JSON.stringify(data) : undefined,
+        body: data instanceof FormData ? data : data ? JSON.stringify(data) : undefined,
         ...config,
         headers: {
-          "Content-Type": "application/json",
+          // multipart 안쓰는 이유: 쓰면 boundary가 자동생성되지 않아 multer에서 오류를 낸다
+          ...(data instanceof FormData ? {} : { "Content-Type": "application/json" }),
           ...this.headers,
           ...config?.headers,
         },

@@ -3,15 +3,12 @@ import { PropsWithChildren } from "react";
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="container h-fullscreen overflow-hidden px-3 pb-2">
-      {/* <div className="blurred sticky top-0 w-full py-2">
-        <h2>파티원 모집</h2>
-      </div> */}
-      <Card className="size-full max-h-full overflow-y-hidden pb-10">
+    <div className="@container/register @lg/register:h-full h-fullscreen overflow-hidden px-3 pb-2">
+      <Card className="@lg/register:max-h-none @lg/register:overflow-auto @lg/register:pb-0 size-full max-h-full overflow-y-hidden pb-10">
         <CardHeader>
           <CardTitle>기본 정보를 입력해주세요</CardTitle>
         </CardHeader>
-        <CardContent className="px-0">{children}</CardContent>
+        <CardContent className="@lg/register:px-4 mt-2 px-0">{children}</CardContent>
       </Card>
     </div>
   );

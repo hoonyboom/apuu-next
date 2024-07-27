@@ -20,6 +20,7 @@ import Paragraph from "@tiptap/extension-paragraph";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Text from "@tiptap/extension-text";
+import TextStyle from "@tiptap/extension-text-style";
 import Youtube from "@tiptap/extension-youtube";
 import { ImageUpload } from "./ImageUpload";
 
@@ -35,6 +36,7 @@ export const ExtensionKit = () => [
   DropCursor,
   GapCursor,
   Separator,
+  TextStyle,
   History.configure({
     depth: 50,
   }),

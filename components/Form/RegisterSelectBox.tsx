@@ -16,6 +16,7 @@ export const RegisterFormSelectBox = ({
   values,
   unit,
   isShow,
+  isMobile = false,
 }: RegisterFormFieldProps) => {
   return (
     <FormField
@@ -26,8 +27,8 @@ export const RegisterFormSelectBox = ({
         <FormItem
           className={cn(
             "transition duration-1000",
-            isShow && "pointer-events-auto translate-y-0 opacity-100",
-            !isShow && "pointer-events-none translate-y-3 opacity-0",
+            isMobile && isShow && "pointer-events-auto translate-y-0 opacity-100",
+            isMobile && !isShow && "pointer-events-none translate-y-3 opacity-0",
           )}
         >
           <FormLabel className={"mb-3 text-xs font-semibold"}>{label}</FormLabel>

@@ -2,7 +2,7 @@ import { CreatePostBodyType } from "@/types/zod.schema";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { QK, queryOptions } from "./queries";
 
-export function useCreatePostMutation() {
+export function usePostsMutation() {
   const queryClient = useQueryClient();
 
   return useMutation({

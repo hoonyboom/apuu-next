@@ -1,7 +1,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { RegisterCheckBoxProps } from "./types";
 import { cn } from "@/lib/util";
+import { RegisterCheckBoxProps } from "./types";
 
 export const RegisterFormCheckBox = ({
   form,
@@ -9,6 +9,7 @@ export const RegisterFormCheckBox = ({
   values,
   name,
   isShow,
+  isMobile = false,
 }: RegisterCheckBoxProps) => {
   return (
     <FormField
@@ -19,8 +20,8 @@ export const RegisterFormCheckBox = ({
         <FormItem
           className={cn(
             "transition duration-1000",
-            isShow && "pointer-events-auto translate-y-0 opacity-100",
-            !isShow && "pointer-events-none translate-y-3 opacity-0",
+            isMobile && isShow && "pointer-events-auto translate-y-0 opacity-100",
+            isMobile && !isShow && "pointer-events-none translate-y-3 opacity-0",
           )}
         >
           <div className="mb-4 text-xs font-semibold">{label}</div>

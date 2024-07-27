@@ -1,5 +1,13 @@
-import { toast, useToast } from "@/hook";
+import { useToast } from "@/hook";
+import { env } from "@/lib/config/env";
+import { IMAGE_TEMP_PATH } from "@/lib/const";
+import { postsAPI } from "@/service/posts/PostsService";
 import { DragEvent, useCallback, useEffect, useRef, useState } from "react";
+
+const baseURL =
+  env.NODE_ENV === "development"
+    ? env.NEXT_PUBLIC_LOCAL_SERVER_URL
+    : env.NEXT_PUBLIC_BASE_URL;
 
 export const useUploader = ({ onUpload }: { onUpload: (url: string) => void }) => {
   const [loading, setLoading] = useState(false);
@@ -8,12 +16,14 @@ export const useUploader = ({ onUpload }: { onUpload: (url: string) => void }) =
     async (file: File) => {
       setLoading(true);
       try {
-        // const url = await API.uploadImage()
-        const url = "/assets/images/test.jpg";
-        onUpload(url);
+        const res = await postsAPI.postUploadImageAsTemp(file);
+
+        if ("filename" in res) {
+          onUpload(baseURL + IMAGE_TEMP_PATH + "/" + res.filename);
+        }
       } catch (errPayload: any) {
         const error = errPayload?.response?.data?.error || "Something went wrong";
-        toast(error);
+        toast({ description: error });
       }
       setLoading(false);
     },

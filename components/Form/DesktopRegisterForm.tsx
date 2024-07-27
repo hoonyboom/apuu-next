@@ -5,7 +5,7 @@ import { CardTitle } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { useToast } from "@/hook/useToast";
 import { CHECK_BOX_LIST, SELECT_BOX_LIST } from "@/lib/const";
-import { useCreatePostMutation } from "@/service/posts/usePostsService";
+import { usePostsMutation } from "@/service/posts/usePostsService";
 import { useEditorStore } from "@/store/editor.store";
 import { registerFormSchema } from "@/types/zod.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,7 +17,7 @@ import { RegisterFormSelectBox } from "./RegisterSelectBox";
 import { RegisterTitleInput } from "./RegisterTitleInput";
 import { RegisterFormDataType } from "./types";
 
-export default function RegisterForm({ children }: PropsWithChildren) {
+export default function DesktopRegisterForm({ children }: PropsWithChildren) {
   const { toast } = useToast();
   const form = useForm<RegisterFormDataType>({
     resolver: zodResolver(registerFormSchema),
@@ -28,14 +28,25 @@ export default function RegisterForm({ children }: PropsWithChildren) {
       goal: [],
     },
   });
-  const { mutate } = useCreatePostMutation();
+  const { mutate, data } = usePostsMutation();
   const { editor } = useEditorStore();
-
   const onSubmit = useCallback(
     (data: RegisterFormDataType) => {
+      if (!editor) return;
+
+      const images: string[] = [];
+      const content = editor
+        .getHTML()
+        .replace(/\/public\/temp\/([^"]*)/g, (original, src) => {
+          const newSrc = `/public/posts/${src}`;
+          images.push(src);
+          return newSrc;
+        });
+
       mutate({
         ...data,
-        content: editor?.getHTML() || "",
+        content,
+        images,
       });
 
       toast({
@@ -43,7 +54,7 @@ export default function RegisterForm({ children }: PropsWithChildren) {
         description: (
           <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
             <code className="text-white">
-              {JSON.stringify({ ...data, content: editor?.getHTML() }, null, 2)}
+              {JSON.stringify({ ...data, content: editor?.getHTML(), images }, null, 2)}
             </code>
           </pre>
         ),
@@ -52,10 +63,12 @@ export default function RegisterForm({ children }: PropsWithChildren) {
     [mutate, editor, toast],
   );
 
+  console.log(data);
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-        <div className="mb-14 grid gap-6 sm:grid-cols-2">
+        <div className="mb-14 grid gap-6 md:grid-cols-2">
           {SELECT_BOX_LIST.map(s => (
             <RegisterFormSelectBox
               key={s.name}
@@ -82,7 +95,9 @@ export default function RegisterForm({ children }: PropsWithChildren) {
           <CardTitle className="mb-6">모임에 대해 소개해주세요</CardTitle>
           <RegisterTitleInput form={form} />
           {children}
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="w-full" variant="default">
+            저장
+          </Button>
         </div>
       </form>
     </Form>

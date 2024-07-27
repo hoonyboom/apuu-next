@@ -46,4 +46,4 @@ export const registerFormSchema = z.object({
 export type SignUpFormType = z.infer<typeof signUpFormSchema>;
 export type LoginFormType = Pick<SignUpFormType, "email" | "password">;
 export type UserType = z.infer<typeof userSchema>;
-export type CreatePostBodyType = z.infer<typeof registerFormSchema> & { content: string };
+export type CreatePostBodyType = z.infer<typeof registerFormSchema> & { content: string, images?: string[] };
