@@ -5,9 +5,7 @@ import { postsAPI } from "@/service/posts/PostsService"
 import { DragEvent, useCallback, useEffect, useRef, useState } from "react"
 
 const baseURL =
-  env.NODE_ENV === "development"
-    ? process.env.LOCAL_SERVER_URL
-    : env.NEXT_PUBLIC_BASE_URL
+  env.NODE_ENV === "development" ? process.env.LOCAL_SERVER_URL : env.NEXT_PUBLIC_BASE_URL
 
 export const useUploader = ({ onUpload }: { onUpload: (url: string) => void }) => {
   const [loading, setLoading] = useState(false)
