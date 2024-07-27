@@ -18,19 +18,14 @@ jobs:
         run: sudo docker rm -f apuu-next-container || true
       - name: Run Docker Container
         env:
-          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
-          NEXT_PUBLIC_COLLAB_DOC_PREFIX: ${{ secrets.NEXT_PUBLIC_COLLAB_DOC_PREFIX }}
-          NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID: ${{ secrets.NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID }}
-          TIPTAP_COLLAB_SECRET: ${{ secrets.TIPTAP_COLLAB_SECRET }}
           PORT: ${{ secrets.PORT }}
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
         run: >-
           sudo docker run -d
           -p $PORT:$PORT
           -e PORT=$PORT
           -e NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
-          -e NEXT_PUBLIC_COLLAB_DOC_PREFIX=$NEXT_PUBLIC_COLLAB_DOC_PREFIX
-          -e NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID=$NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID
-          -e TIPTAP_COLLAB_SECRET=$TIPTAP_COLLAB_SECRET
+          -e NEXT_PUBLIC_LOCAL_SERVER_URL="localhost:3002"
           --network server
           --name apuu-next-container hyezoprk/apuu-next
       - name: Check Network Connection
