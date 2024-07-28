@@ -104,6 +104,6 @@
     "vitest": "^2.0.3"
   },
   "lint-staged": {
-    "**/*{ts,tsx,js,jsx}": "eslint --ignore-path .gitignore \"**/*{ts,tsx}\" --fix"
+    "**/*{ts,tsx,js,jsx}": "pnpm run eslint"
   }
 }
