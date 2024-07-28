@@ -27,7 +27,9 @@ export default function LoginModal() {
     <Dialog open={open} onOpenChange={setOpen}>
       {user ? null : (
         <DialogTrigger asChild>
-          <Button variant="ghost">로그인</Button>
+          <Button type="button" variant="ghost">
+            로그인
+          </Button>
         </DialogTrigger>
       )}
       <DialogContent className="sm:max-w-[425px]">

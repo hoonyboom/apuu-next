@@ -52,9 +52,6 @@ jobs:
         run: pnpm run build
         env:
           NEXT_PUBLIC_BASE_URL: ${{secrets.NEXT_PUBLIC_BASE_URL}}
-          NEXT_PUBLIC_COLLAB_DOC_PREFIX: ${{secrets.NEXT_PUBLIC_COLLAB_DOC_PREFIX}}
-          NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID: ${{secrets.NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID}}
-          TIPTAP_COLLAB_SECRET: ${{secrets.TIPTAP_COLLAB_SECRET}}
 
       - name: Run Playwright tests
         run: pnpm run test
@@ -62,9 +59,6 @@ jobs:
           HOME: /root
           CI: true
           NEXT_PUBLIC_BASE_URL: ${{secrets.NEXT_PUBLIC_BASE_URL}}
-          NEXT_PUBLIC_COLLAB_DOC_PREFIX: ${{secrets.NEXT_PUBLIC_COLLAB_DOC_PREFIX}}
-          NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID: ${{secrets.NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID}}
-          TIPTAP_COLLAB_SECRET: ${{secrets.TIPTAP_COLLAB_SECRET}}
           TIPTAP_PRO_TOKEN: ${{secrets.TIPTAP_PRO_TOKEN}}
 
       - uses: actions/upload-artifact@v4

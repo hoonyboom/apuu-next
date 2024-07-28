@@ -35,7 +35,7 @@ class Service {
   constructor() {
     this.baseURL =
       env.NODE_ENV === "development"
-        ? process.env.LOCAL_SERVER_URL!
+        ? "http://localhost:3002"
         : `${env.NEXT_PUBLIC_BASE_URL}/api`
     this.headers = {}
     this.http = {

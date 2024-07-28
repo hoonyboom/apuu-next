@@ -16,7 +16,7 @@ const processEnv = {
 }
 
 // --------------------------
-type ServerEnv = z.input<typeof server>
+type ServerEnv = z.input<typeof server> 
 
 let env: ServerEnv
 
