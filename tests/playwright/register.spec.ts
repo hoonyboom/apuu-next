@@ -13,7 +13,7 @@ test("다음 버튼이 있나요", async ({ page, isMobile }) => {
   await expect(nextButton).toBeInViewport()
   await expect(nextButton).toBeDisabled()
 
-  const select = page.getByRole("combobox")
+  const select = page.getByRole("combobox");
   await select.click();
 })
 // await page.locator(select).selectOption({ label: "수친자" });
