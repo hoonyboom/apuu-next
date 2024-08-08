@@ -1,4 +1,4 @@
-import useIso from "@/hook/useIso"
+import { useToast } from "@/hook"
 import { cn } from "@/lib/util"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
@@ -9,7 +9,9 @@ import {
   createContext,
   forwardRef,
   useContext,
+  useEffect,
   useId,
+  useMemo,
 } from "react"
 import {
   Controller,
@@ -144,20 +146,25 @@ const FormMessage = forwardRef<
   HTMLAttributes<HTMLParagraphElement>
 >(({ className, children, ...props }, ref) => {
   const { error, formMessageId } = useFormField()
+  const { toast } = useToast()
 
-  const body = error ? String(error?.message) : children
-  if (!body) return null
+  const message = useMemo(() => error?.message, [error])
 
-  return (
-    <p
-      ref={ref}
-      id={formMessageId}
-      className={cn("text-[0.8rem] font-medium text-destructive", className)}
-      {...props}
-    >
-      {body}
-    </p>
-  )
+  useEffect(() => {
+    if (message) toast({ description: message })
+  }, [message, toast])
+
+  if (!error) return null
+  // return (
+  //   <p
+  //     ref={ref}
+  //     id={formMessageId}
+  //     className={cn("text-[0.8rem] font-medium text-destructive", className)}
+  //     {...props}
+  //   >
+  //     {body}
+  //   </p>
+  // )
 })
 FormMessage.displayName = "FormMessage"
 

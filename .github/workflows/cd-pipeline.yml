@@ -14,8 +14,10 @@ jobs:
     steps:
       - name: Pull Docker image
         run: sudo docker pull hyezoprk/apuu-next:latest
-      - name: Delete Old docker container
+
+      - name: Clean up Old docker container
         run: sudo docker rm -f apuu-next-container || true
+
       - name: Run Docker Container
         env:
           PORT: ${{ secrets.PORT }}
@@ -27,5 +29,9 @@ jobs:
           -e NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
           --network server
           --name apuu-next-container hyezoprk/apuu-next
+
       - name: Check Network Connection
         run: sudo docker network connect server apuu-next-container || true
+
+      - name: Clean up Old docker images
+        run: sudo docker image prune -af || true

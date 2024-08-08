@@ -11,6 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useToast } from "@/hook"
 import { authAPI } from "@/service/auth/AuthService"
 import { useUserStore } from "@/store/user.store"
 import { LoginFormType, UserType, loginFormSchema, userSchema } from "@/types/zod.schema"
@@ -21,6 +22,7 @@ import { useForm } from "react-hook-form"
 import { LoginFormProps } from "./types"
 
 export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
+  const { toast } = useToast()
   const form = useForm<LoginFormType>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -32,7 +34,7 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
 
   const submitForm = useCallback(
     async ({ email, password }: LoginFormType) => {
-      const data = await authAPI.postLogin<UserType>(email, password)
+      const data = await authAPI.postLogin(email, password)
 
       if ("id" in data) {
         const user = userSchema.parse(data)
@@ -40,10 +42,14 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
         setLoginUser(user)
         setOpen(false)
       } else if (data.error) {
-        return alert(data.message)
+        return toast({
+          title: data.message,
+          description: "확인 후 다시 시도해주세요",
+          variant: "destructive",
+        })
       }
     },
-    [setOpen, setLoginUser],
+    [setOpen, setLoginUser, toast],
   )
 
   return (
@@ -84,6 +90,7 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
                       className="border-none bg-transparent px-2 py-4 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                     />
                   </FormControl>
+                  <FormMessage />
                 </div>
               </FormItem>
             )

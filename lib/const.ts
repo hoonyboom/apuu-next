@@ -1,13 +1,40 @@
-import { RegisterFormFieldProps } from "@/components/Form/types"
+import { RegisterFormDataType, RegisterFormFieldProps } from "@/components/Form/types"
+import { DefaultValues } from "react-hook-form"
 
 export const IMAGE_TEMP_PATH = "/public/temp"
 
 export const PASSWORD_REGEX =
   /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*?])[A-Za-z\d!@#$%^&*?]{8,15}$/
 
+export const DEFAULT_REGISTER_VALUE: DefaultValues<RegisterFormDataType> = {
+  title: "",
+  level: [],
+  style: [],
+  goal: [],
+}
+
 export const MEMBER_SIZE = Array.from({ length: 10 }, (_, i) => i + 1)
 export const SORT = ["챌린지", "수친", "스윔클럽"] as const
 export const METHOD = ["온라인", "오프라인", "온/오프라인"] as const
+export const AREA = [
+  "서울",
+  "부산",
+  "인천",
+  "대전",
+  "대구",
+  "울산",
+  "광주",
+  "세종",
+  "경기",
+  "강원",
+  "충북",
+  "충남",
+  "경북",
+  "경남",
+  "전북",
+  "전남",
+  "제주",
+] as const
 export const PERIOD = [
   "1주 미만",
   "1주~1개월",

@@ -32,15 +32,15 @@ const config = {
     fontSize: {
       "2xs": "clamp(0.7595rem, 0.7563rem + 0.0165vi, 0.768rem)",
       xs: "clamp(0.9115rem, 0.8925rem + 0.0947vi, 0.96rem)",
-      sm: "clamp(1.0938rem, 1.0523rem + 0.2073vi, 1.2rem)",
-      base: "clamp(1.3125rem, 1.2393rem + 0.3659vi, 1.5rem)",
-      lg: "clamp(1.575rem, 1.4579rem + 0.5854vi, 1.875rem)",
-      xl: "clamp(1.89rem, 1.7129rem + 0.8854vi, 2.3438rem)",
-      "2xl": "clamp(2.268rem, 2.0098rem + 1.2911vi, 2.9297rem)",
-      "3xl": "clamp(2.7216rem, 2.3546rem + 1.8351vi, 3.6621rem)",
-      "4xl": "clamp(3.2659rem, 2.754rem + 2.5594vi, 4.5776rem)",
-      "5xl": "clamp(3.9191rem, 3.2155rem + 3.5179vi, 5.722rem)",
-      "6xl": "clamp(4.7029rem, 3.747rem + 4.7798vi, 7.1526rem)",
+      sm: "clamp(1.0027rem, 0.9724rem + 0.151vi, 1.08rem)",
+      base: "clamp(1.0938rem, 1.0523rem + 0.2073vi, 1.2rem)",
+      lg: "clamp(1.3125rem, 1.2393rem + 0.3659vi, 1.5rem)",
+      xl: "clamp(1.575rem, 1.4579rem + 0.5854vi, 1.875rem)",
+      "2xl": "clamp(1.89rem, 1.7129rem + 0.8854vi, 2.3438rem)",
+      "3xl": "clamp(2.268rem, 2.0098rem + 1.2911vi, 2.9297rem)",
+      "4xl": "clamp(2.7216rem, 2.3546rem + 1.8351vi, 3.6621rem)",
+      "5xl": "clamp(3.2659rem, 2.754rem + 2.5594vi, 4.5776rem)",
+      "6xl": "clamp(3.9191rem, 3.2155rem + 3.5179vi, 5.722rem)",
     },
     extend: {
       height: {
@@ -52,9 +52,9 @@ const config = {
         form: "var(--register-form)",
       },
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+        sans: [...defaultTheme.fontFamily.sans],
         pretendard: ["Pretendard", ...defaultTheme.fontFamily.sans],
-        SUITE: ["SUITE", ...defaultTheme.fontFamily.sans],
+        dovemayo: ["Dovemayo", ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         landing: "url(/assets/svgs/landing.svg)",

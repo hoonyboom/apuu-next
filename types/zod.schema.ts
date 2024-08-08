@@ -1,8 +1,8 @@
-import { METHOD, PASSWORD_REGEX, PERIOD, SORT } from "@/lib/const"
+import { AREA, METHOD, PASSWORD_REGEX, PERIOD, SORT } from "@/lib/const"
 import { z } from "zod"
 
 export const signUpFormSchema = z.object({
-  email: z.string().email({ message: "올바른 이메일을 입력해 주세요" }),
+  email: z.string().email({ message: "이메일이 필요해요" }),
   password: z
     .string()
     .min(8, { message: "8자리 이상 입력해 주세요" })
@@ -41,6 +41,7 @@ export const registerFormSchema = z.object({
   }),
   deadline: z.date(),
   title: z.string().min(1),
+  area: z.enum(AREA),
 })
 
 export type SignUpFormType = z.infer<typeof signUpFormSchema>
@@ -49,4 +50,12 @@ export type UserType = z.infer<typeof userSchema>
 export type CreatePostBodyType = z.infer<typeof registerFormSchema> & {
   content: string
   images?: string[]
+}
+
+export type PostEntity = CreatePostBodyType & BaseEntity
+
+export type BaseEntity = {
+  id: number
+  createdAt: Date
+  updatedAt: Date
 }

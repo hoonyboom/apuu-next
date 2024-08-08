@@ -6,11 +6,12 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/util"
 import { format } from "date-fns"
 import { ko } from "date-fns/locale"
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
 import { DateFormatter } from "react-day-picker"
 import { RegisterDefaultProps } from "./types"
 
 export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
+  const [calendarOpen, setCalendarOpen] = useState(false)
   const onDisabled = useCallback((date: Date) => {
     const today = new Date()
     const thirtyDaysFromNow = new Date()
@@ -26,13 +27,13 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
       render={({ field }) => (
         <FormItem className="flex flex-col">
           <FormLabel>모집 마감일</FormLabel>
-          <Popover>
+          <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
             <PopoverTrigger asChild>
               <FormControl>
                 <Button
                   variant={"outline"}
                   className={cn(
-                    "w-64 pl-3 text-left font-normal",
+                    "pl-3 text-left text-xs font-normal",
                     !field.value && "text-muted-foreground",
                   )}
                 >
@@ -51,7 +52,10 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
                 formatters={{ formatCaption }}
                 mode="single"
                 selected={field.value}
-                onSelect={field.onChange}
+                onSelect={e => {
+                  field.onChange(e)
+                  setCalendarOpen(false)
+                }}
                 disabled={onDisabled}
                 initialFocus
               />

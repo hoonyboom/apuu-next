@@ -32,22 +32,22 @@ export const RegisterFormSelectBox = ({
           )}
         >
           <FormLabel className={"mb-3 text-xs font-semibold"}>{label}</FormLabel>
-          <Select
-            onValueChange={field.onChange}
-            defaultValue={field.value?.toString() ?? ""}
-          >
+          <Select onValueChange={field.onChange}>
             <FormControl>
               <SelectTrigger
                 unit-value={unit}
                 className={cn(
-                  "relative focus:ring-0",
-                  field.name === "size" &&
-                    unit &&
-                    field.value &&
-                    "after:absolute after:pl-[10px] after:content-[attr(unit-value)]",
+                  "relative text-xs hover:bg-accent hover:text-accent-foreground focus:ring-0",
+                  !field.value && "text-muted-foreground",
                 )}
               >
-                <SelectValue placeholder="Select" />
+                <SelectValue placeholder="Select">
+                  {!form.getFieldState(field.name).isDirty
+                    ? "Select"
+                    : field.name === "size" && unit
+                      ? field.value + unit
+                      : field.value}
+                </SelectValue>
               </SelectTrigger>
             </FormControl>
             <SelectContent>

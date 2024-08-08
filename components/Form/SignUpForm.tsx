@@ -14,9 +14,9 @@ import {
 import { Icon } from "@/components/ui/Icon"
 import { Input } from "@/components/ui/input"
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
-import { useToast } from "@/hook/useToast"
+import { toast, useToast } from "@/hook/useToast"
 import { authAPI } from "@/service/auth/AuthService"
-import { SignUpFormType, UserType, signUpFormSchema } from "@/types/zod.schema"
+import { SignUpFormType, signUpFormSchema } from "@/types/zod.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { MouseEventHandler, useCallback, useState } from "react"
 import { useForm } from "react-hook-form"
@@ -39,7 +39,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
   })
   const submitForm = useCallback(
     async ({ verification_code, ...values }: SignUpFormType) => {
-      const data = await authAPI.postRegister<UserType>(values)
+      const data = await authAPI.postRegister(values)
 
       if ("id" in data) {
         setOpen(false)
@@ -110,7 +110,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
         setIsChecked(true)
         setIsGetCode(false)
       } else if (res.statusCode === 401) {
-        return toast({ description: "인증코드가 일치하지 않습니다" })
+        return toast({ description: res.message })
       }
     } catch (err) {
       console.error(err)

@@ -18,7 +18,7 @@ export type RegisterDefaultProps = {
 }
 
 export type RegisterFormFieldProps = {
-  name: keyof RegisterFormDataType
+  name: keyof Omit<RegisterFormDataType, "deadline">
   label: string
   values?: number[] | readonly string[]
   unit?: string

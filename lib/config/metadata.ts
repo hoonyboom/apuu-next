@@ -20,7 +20,7 @@ export const METADATA: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
   robots: "noindex, nofollow",
   icons: {
-    icon: "/assets/svgs/logo-fish.svg",
+    icon: "/assets/svgs/logo.svg",
   },
   twitter: {
     card: "summary_large_image",

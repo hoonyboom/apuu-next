@@ -6,7 +6,7 @@ import { LogoProps } from "./types"
 export default function Logo({
   className,
   alt = "Apuu Logo",
-  src = "/assets/svgs/logo-fish.svg",
+  src = "/assets/svgs/logo.svg",
   ...props
 }: LogoProps) {
   return (
@@ -20,7 +20,7 @@ export default function Logo({
           src={src}
           {...props}
         />
-        <span className="hidden sm:block">puu</span>
+        <span className="hidden font-dovemayo text-lg sm:block">푸</span>
       </div>
     </Link>
   )

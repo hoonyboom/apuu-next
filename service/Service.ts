@@ -10,10 +10,10 @@ type FetchOptions = {
 }
 
 type Fetcher = {
-  get<T>({ url, config, isPublic }: FetchOptions): Promise<T | TError>
-  post<T = TSuccess>({ url, data, config, isPublic }: FetchOptions): Promise<T | TError>
-  patch<T = TSuccess>({ url, data, config }: FetchOptions): Promise<T | TError>
-  delete<T = TSuccess>({ url, config }: FetchOptions): Promise<T | TError>
+  get<T>({ url, config, isPublic }: FetchOptions): Promise<T>
+  post<T = TSuccess>({ url, data, config, isPublic }: FetchOptions): Promise<T>
+  patch<T = TSuccess>({ url, data, config }: FetchOptions): Promise<T>
+  delete<T = TSuccess>({ url, config }: FetchOptions): Promise<T>
 }
 
 export type TSuccess = {
@@ -97,24 +97,19 @@ class Service {
     }
   }
 
-  private get<T>({ url, config, isPublic = false }: FetchOptions): Promise<T | TError> {
+  private get<T>({ url, config, isPublic = false }: FetchOptions): Promise<T> {
     return this.request("GET", url, undefined, config, isPublic)
   }
 
-  private delete<T>({ url, config }: FetchOptions): Promise<T | TError> {
+  private delete<T>({ url, config }: FetchOptions): Promise<T> {
     return this.request("DELETE", url, undefined, config)
   }
 
-  private post<T>({
-    url,
-    data,
-    config,
-    isPublic = false,
-  }: FetchOptions): Promise<T | TError> {
+  private post<T>({ url, data, config, isPublic = false }: FetchOptions): Promise<T> {
     return this.request("POST", url, data, config, isPublic)
   }
 
-  private patch<T>({ url, data, config }: FetchOptions): Promise<T | TError> {
+  private patch<T>({ url, data, config }: FetchOptions): Promise<T> {
     return this.request("PATCH", url, data, config)
   }
 }

@@ -12,6 +12,7 @@ export const api = {
 
   posts: {
     create_post: "/posts",
+    get_posts: "/posts",
   },
 
   common: {
