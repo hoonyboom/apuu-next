@@ -151,7 +151,7 @@ const FormMessage = forwardRef<
   const message = useMemo(() => error?.message, [error])
 
   useEffect(() => {
-    if (message) toast({ description: message })
+    if (message) toast({ title: error?.type, description: message })
   }, [message, toast])
 
   if (!error) return null
