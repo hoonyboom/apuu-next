@@ -18,7 +18,7 @@ export const userSchema = z.object({
   id: z.number(),
   email: z.string().email(),
   nickname: z.string(),
-  role: z.enum(["admin", "user"]),
+  role: z.enum(["admin", "freetier", "prime"]),
   createdAt: z.string().datetime(),
   updatedAt: z.string().datetime(),
   followerCount: z.number(),
