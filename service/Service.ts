@@ -10,10 +10,10 @@ type FetchOptions = {
 }
 
 type Fetcher = {
-  get<T>({ url, config, isPublic }: FetchOptions): Promise<T>
-  post<T = TSuccess>({ url, data, config, isPublic }: FetchOptions): Promise<T>
-  patch<T = TSuccess>({ url, data, config }: FetchOptions): Promise<T>
-  delete<T = TSuccess>({ url, config }: FetchOptions): Promise<T>
+  get<T>(options: FetchOptions): Promise<T>
+  post<T = TSuccess>(options: FetchOptions): Promise<T>
+  patch<T = TSuccess>(options: FetchOptions): Promise<T>
+  delete<T = TSuccess>(options: FetchOptions): Promise<T>
 }
 
 export type TSuccess = {
@@ -97,7 +97,7 @@ class Service {
     }
   }
 
-  private get<T>({ url, config, isPublic = false }: FetchOptions): Promise<T> {
+  private get<T>({ url, config, isPublic = true }: FetchOptions): Promise<T> {
     return this.request("GET", url, undefined, config, isPublic)
   }
 

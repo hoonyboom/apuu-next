@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 
-export default function useTimer(ms: number) {
-  const [count, setCount] = useState(ms)
-  const [isLoading, setIsLoading] = useState(true)
+export default function useTimer(s: number) {
+  const [count, setCount] = useState(s)
+  const [isShowing, setIsShowing] = useState(true)
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -13,10 +13,10 @@ export default function useTimer(ms: number) {
 
     if (count === 0) {
       clearInterval(id)
-      setIsLoading(false)
+      setIsShowing(false)
     }
     return () => clearInterval(id)
   }, [count])
 
-  return { isLoading }
+  return [isShowing]
 }

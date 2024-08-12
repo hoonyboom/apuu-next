@@ -4,6 +4,7 @@ import { SORT } from "@/lib/const"
 import { usePostsQuery } from "@/service/posts/usePostsService"
 import { useMemo, useState } from "react"
 import { Spinner } from "../ui/spinner"
+import Card from "./Card"
 
 const CATEGORIES = ["전체", ...SORT]
 
@@ -34,7 +35,9 @@ export default function Category() {
       ) : isLoading ? (
         <Spinner />
       ) : (
-        selectedCategory?.map(post => post && <h3 key={post.id}>{post.title}</h3>)
+        <div className="grid grid-cols-1 gap-2 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {selectedCategory?.map(post => post && <Card key={post.id} post={post} />)}
+        </div>
       )}
     </>
   )

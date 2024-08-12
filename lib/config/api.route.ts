@@ -5,6 +5,7 @@ export const api = {
     verify_code: "/auth/register/verify_code",
     register_email: "/auth/register/email",
     login_email: "/auth/login/email",
+    login_kakao: "/auth/login/kakao",
     logout: "/auth/logout",
     revalidate_access_token: "/auth/token/access",
     revalidate_refresh_token: "/auth/token/refresh",

@@ -21,14 +21,12 @@ class PostsService extends Service {
   async getPosts(query?: string) {
     return await this.http.get<paginatePostType>({
       url: `${api.posts.get_posts}?${query}`,
-      isPublic: true,
     })
   }
 
   async getPost(postId: number) {
     return await this.http.get<PostEntity>({
       url: `${api.posts.get_posts}/${postId}`,
-      isPublic: true,
     })
   }
 

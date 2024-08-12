@@ -1,6 +1,6 @@
 import { api } from "@/lib/config/api.route"
 import Service, { TError, TSuccess } from "@/service/Service"
-import { UserType } from "@/types/zod.schema"
+import { UserEntity } from "@/types/zod.schema"
 
 class AuthService extends Service {
   async postSendCode(email: string) {
@@ -28,7 +28,7 @@ class AuthService extends Service {
   }
 
   async postRegister(body: { email: string; password: string; nickname: string }) {
-    return await this.http.post<UserType | TError>({
+    return await this.http.post<UserEntity | TError>({
       url: api.auth.register_email,
       data: body,
       isPublic: true,
@@ -37,7 +37,7 @@ class AuthService extends Service {
 
   async postLogin<T>(email: string, password: string) {
     const token = btoa(`${email}:${password}`)
-    return await this.http.post<UserType | TError>({
+    return await this.http.post<UserEntity | TError>({
       url: api.auth.login_email,
       isPublic: true,
       config: {
@@ -45,6 +45,12 @@ class AuthService extends Service {
           authorization: `Basic ${token}`,
         },
       },
+    })
+  }
+
+  async postLoginKakao() {
+    return await this.http.get<UserEntity | TError>({
+      url: api.auth.login_kakao,
     })
   }
 

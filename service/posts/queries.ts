@@ -1,5 +1,5 @@
 import { paginatePostType } from "@/types"
-import { CreatePostBodyType, PostEntity } from "@/types/zod.schema"
+import { CreatePostBodyType } from "@/types/zod.schema"
 import {
   UseInfiniteQueryOptions,
   UseMutationOptions,
@@ -19,6 +19,12 @@ export const queryOptions = {
       mutationKey: QK.posts,
       mutationFn: async (body: CreatePostBodyType) => await postsAPI.postCreatePost(body),
     }) satisfies UseMutationOptions<CreatePostBodyType, Error, CreatePostBodyType>,
+
+  get_post: (postId: number) =>
+    ({
+      queryKey: QK.detail(postId),
+      queryFn: async () => await postsAPI.getPost(postId),
+    }) satisfies UseQueryOptions,
 
   get_posts: (query?: string) =>
     ({

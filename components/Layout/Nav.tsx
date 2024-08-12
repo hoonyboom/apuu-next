@@ -1,6 +1,7 @@
 import LoginModal from "@/components/Form/LoginModal"
 import Link from "next/link"
-import { Logo, Menu } from "."
+import { Logo } from "."
+import Sidebar from "./Sidebar"
 
 export default function Nav() {
   return (
@@ -8,9 +9,9 @@ export default function Nav() {
       <Logo />
       <div className="flex items-center gap-10">
         <Link href="/register" className="hidden sm:block">
-          팀원 모집하기
+          파티모집
         </Link>
-        <Menu />
+        <Sidebar />
         <LoginModal />
       </div>
     </nav>

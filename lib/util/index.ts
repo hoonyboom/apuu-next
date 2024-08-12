@@ -42,5 +42,16 @@ export function randomElement(array: Array<any>) {
   return array[Math.floor(Math.random() * array.length)]
 }
 
+export function dateFormatter(date: string | Date) {
+  return new Date(date)
+    .toLocaleString("ko-KR", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\.\s/g, ".")
+    .slice(0, -1)
+}
+
 export * from "./cssVar"
 export * from "./isTextSelected"

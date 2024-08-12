@@ -30,7 +30,7 @@
     "**/*.tsx",
     "lib/config/env.ts",
     ".next/types/**/*.ts",
-    "./dist/types/**/*.ts",
+    "./dist/types/**/*.ts", "app/recruit/[id]",
   ],
   "exclude": [
     "node_modules"

@@ -2,6 +2,8 @@
 
 import { Editor } from "@/components/Editor"
 import { DesktopRegisterForm, MobileRegisterForm } from "@/components/Form"
+import SignupModal from "@/components/Form/SignupModal"
+import { useUserStore } from "@/store/user.store"
 
 export default function Page() {
   return (

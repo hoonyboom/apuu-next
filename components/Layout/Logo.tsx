@@ -1,7 +1,8 @@
 import { cn } from "@/lib/util"
-import Image from "next/image"
+import Image, { ImageProps } from "next/image"
 import Link from "next/link"
-import { LogoProps } from "./types"
+
+export type LogoProps = Partial<ImageProps>
 
 export default function Logo({
   className,
@@ -18,6 +19,7 @@ export default function Logo({
           className={cn("size-10", className)}
           alt={alt}
           src={src}
+          priority
           {...props}
         />
         <span className="hidden font-dovemayo text-lg sm:block">푸</span>

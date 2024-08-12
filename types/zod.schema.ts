@@ -1,6 +1,7 @@
 import { AREA, METHOD, PASSWORD_REGEX, PERIOD, SORT } from "@/lib/const"
 import { z } from "zod"
 
+/* 회원가입폼 스키마 */
 export const signUpFormSchema = z.object({
   email: z.string().email({ message: "이메일이 필요해요" }),
   password: z
@@ -13,18 +14,11 @@ export const signUpFormSchema = z.object({
   verification_code: z.string().length(6, { message: "6자리를 입력해 주세요" }),
   nickname: z.string().min(2, { message: "2자리 이상 입력해 주세요" }),
 })
-export const loginFormSchema = signUpFormSchema.pick({ email: true, password: true })
-export const userSchema = z.object({
-  id: z.number(),
-  email: z.string().email(),
-  nickname: z.string(),
-  role: z.enum(["admin", "freetier", "prime"]),
-  createdAt: z.string().datetime(),
-  updatedAt: z.string().datetime(),
-  followerCount: z.number(),
-  followeeCount: z.number(),
-})
 
+/* 로그인폼 스키마 */
+export const loginFormSchema = signUpFormSchema.pick({ email: true, password: true })
+
+/* 모집폼 스키마 */
 export const registerFormSchema = z.object({
   sort: z.enum(SORT),
   method: z.enum(METHOD),
@@ -44,18 +38,56 @@ export const registerFormSchema = z.object({
   area: z.enum(AREA),
 })
 
+/* BASE 엔티티 모델 */
+export const baseEntitySchema = z.object({
+  id: z.number(),
+  createdAt: z.string().datetime(),
+  updatedAt: z.string().datetime(),
+})
+
+/**
+ * Image 엔티티 모델
+ * - Relation(post, user)은 제외했음
+ */
+export const imageEntitySchema = z.object({
+  order: z.number(),
+  type: z.enum(["POST_IMAGE", "USER_IMAGE"]),
+  src: z.string(),
+})
+
+export const imageSchema = baseEntitySchema.merge(imageEntitySchema)
+
+/* User 엔티티 모델 */
+export const userEntitySchema = z.object({
+  email: z.string().email(),
+  nickname: z.string(),
+  role: z.enum(["admin", "freetier", "prime"]),
+  followerCount: z.number(),
+  followeeCount: z.number(),
+  image: imageSchema.nullable(),
+})
+
+export const userSchema = baseEntitySchema.merge(userEntitySchema)
+
+/* Post 엔티티 모델 */
+export const postEntitySchema = z.object({
+  content: z.string(),
+  images: z.array(imageSchema),
+  deadline: z.string().datetime(),
+  author: userSchema,
+})
+
+export const postSchema = baseEntitySchema
+  .merge(postEntitySchema)
+  .merge(registerFormSchema.omit({ deadline: true }))
+
+/* Export as Type */
 export type SignUpFormType = z.infer<typeof signUpFormSchema>
 export type LoginFormType = Pick<SignUpFormType, "email" | "password">
-export type UserType = z.infer<typeof userSchema>
 export type CreatePostBodyType = z.infer<typeof registerFormSchema> & {
   content: string
   images?: string[]
 }
-
-export type PostEntity = CreatePostBodyType & BaseEntity
-
-export type BaseEntity = {
-  id: number
-  createdAt: Date
-  updatedAt: Date
-}
+export type UserEntity = z.infer<typeof userSchema>
+export type PostEntity = z.infer<typeof postSchema>
+export type ImageEntity = z.infer<typeof imageSchema>

@@ -1,6 +1,5 @@
 "use client"
 
-import { Timer } from "@/components/Transition"
 import { Button } from "@/components/ui/button"
 import { DialogFooter } from "@/components/ui/dialog"
 import {
@@ -14,12 +13,14 @@ import {
 import { Icon } from "@/components/ui/Icon"
 import { Input } from "@/components/ui/input"
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
-import { toast, useToast } from "@/hook/useToast"
+import { useToast } from "@/hook/useToast"
 import { authAPI } from "@/service/auth/AuthService"
 import { SignUpFormType, signUpFormSchema } from "@/types/zod.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { MouseEventHandler, useCallback, useState } from "react"
 import { useForm } from "react-hook-form"
+import { FloatingLabelInput } from "../ui/floating-input"
+import Timer from "./Timer"
 import { RegisterFormProps } from "./types"
 
 export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
@@ -44,11 +45,12 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
       if ("id" in data) {
         setOpen(false)
         return toast({
+          title: data.nickname + "님!",
           description: "회원가입이 완료되었습니다",
         })
       } else if (data.error) {
         return toast({
-          title: "회원가입에 실패했습니다.",
+          title: data.message,
           description: "다시 시도해주세요.",
         })
       }
@@ -98,7 +100,6 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
   )
 
   const verifyCode = useCallback(async () => {
-    // e.preventDefault();
     try {
       const res = await authAPI.postVerifyCode(
         form.getValues("email"),
@@ -125,14 +126,15 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
           name="email"
           // eslint-disable-next-line react/jsx-no-bind
           render={({ field }) => (
-            <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
-              <FormLabel>이메일</FormLabel>
-              <div className="col-span-4 flex items-center rounded-md border p-1 focus-within:ring-2 focus-within:ring-blue-300">
+            <FormItem className="space-y-0">
+              <div className="flex h-14 w-full items-center justify-between gap-2 rounded-md border p-1 pr-2 focus-within:ring-1 focus-within:ring-blue-700">
                 <FormControl>
-                  <Input
+                  <FloatingLabelInput
                     {...field}
-                    className="border-none bg-transparent py-4 pl-2 pr-10 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
-                    disabled={isChecked}
+                    id="email"
+                    label="이메일"
+                    className="border-none bg-transparent px-2 pt-5 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
+                    disabled={isChecked || isTimer}
                   />
                 </FormControl>
                 {isChecked ? (
@@ -140,7 +142,8 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                 ) : (
                   <Button
                     disabled={isChecked || isTimer}
-                    className={`min-w-20 bg-primary ${isTimer && "bg-emerald-600"}`}
+                    variant="outline"
+                    className={`min-w-20 text-2xs hover:bg-black hover:text-white focus-visible:ring-1 focus-visible:ring-black ${isTimer && "text-emerald-600"}`}
                     type="button"
                     onClick={sendVerificationCode}
                   >
@@ -167,10 +170,6 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                   <FormLabel>인증코드</FormLabel>
                   <div className="col-span-4 flex items-center justify-stretch gap-2 rounded-md pr-1 focus-within:ring-0">
                     <FormControl>
-                      {/* <Input
-                        {...field}
-                        className="border-none bg-transparent py-4 pl-2 pr-10 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
-                      /> */}
                       <InputOTP maxLength={6} {...field}>
                         <InputOTPGroup>
                           <InputOTPSlot index={0} />
@@ -184,14 +183,15 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                     </FormControl>
                     <Button
                       type="button"
+                      variant="default"
                       disabled={field.value.length !== 6}
-                      className="w-full bg-primary"
+                      className="w-full"
                       onClick={verifyCode}
                     >
                       확인
                     </Button>
                   </div>
-                  <FormMessage className="shrink-0" />
+                  <FormMessage />
                 </FormItem>
               )
             }}
@@ -208,15 +208,16 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                 return (
                   <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
                     <FormLabel>비밀번호</FormLabel>
-                    <div className="col-span-4 flex items-center rounded-md border p-1 focus-within:ring-2 focus-within:ring-blue-300">
+                    <div className="col-span-4 flex items-center rounded-md border p-1 focus-within:ring-1 focus-within:ring-blue-700">
                       <FormControl>
                         <Input
                           {...field}
                           type="password"
-                          className="border-none bg-transparent px-2 py-4 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
+                          className="border-none bg-transparent px-1 py-3 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                           placeholder="영문, 숫자, 특수문자를 섞어서 만들어주세요"
                         />
                       </FormControl>
+                      <FormMessage />
                     </div>
                   </FormItem>
                 )
@@ -230,7 +231,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                 return (
                   <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
                     <FormLabel>닉네임</FormLabel>
-                    <div className="col-span-4 flex items-center rounded-md border p-1 focus-within:ring-2 focus-within:ring-blue-300">
+                    <div className="col-span-4 flex items-center rounded-md border p-1 focus-within:ring-1 focus-within:ring-blue-700">
                       <FormControl>
                         <Input
                           {...field}
@@ -238,7 +239,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                           className="border-none bg-transparent px-2 py-4 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                         />
                       </FormControl>
-                      <FormMessage className="shrink-0" />
+                      <FormMessage />
                     </div>
                   </FormItem>
                 )
@@ -248,8 +249,7 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
         ) : null}
         <DialogFooter className="flex-row !justify-between">
           <Button
-            variant="ghost"
-            className="justify-start p-0 text-2xs text-blue-500 hover:bg-transparent hover:text-accent"
+            className="justify-start p-0 text-2xs text-primary hover:text-amber-400/80"
             onClick={switchMode}
             tabIndex={-1}
             type="button"
@@ -257,7 +257,12 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
             이미 계정이 있으신가요?
           </Button>
           {isChecked && (
-            <Button type="submit" className="min-w-28">
+            <Button
+              type="submit"
+              variant="default"
+              className="min-w-28"
+              disabled={!form.getValues("nickname") || !form.getValues("password")}
+            >
               확인
             </Button>
           )}

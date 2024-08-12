@@ -1,5 +1,4 @@
 import { Nav } from "@/components/Layout"
-import Initializer from "@/components/Layout/Initializer"
 import { Toaster } from "@/components/ui/toaster"
 import { ReactQueryProvider } from "@/context"
 import { METADATA, VIEWPORT } from "@/lib/config/metadata"
@@ -18,7 +17,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Initializer />
         <ReactQueryProvider>
           <Nav />
           <main>{children}</main>

@@ -1,7 +1,14 @@
+"use client"
+
+import SignupModal from "@/components/Form/SignupModal"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useUserStore } from "@/store/user.store"
 import { PropsWithChildren } from "react"
 
 export default function Layout({ children }: PropsWithChildren) {
+  const { user } = useUserStore()
+  if (!user) return <SignupModal />
+
   return (
     <div className="h-fullscreen w-full overflow-hidden px-3 pb-2 @container/register">
       <Card className="mx-auto size-full max-h-full overflow-y-hidden pb-10 @lg/register:max-h-none @lg/register:max-w-5xl @lg/register:overflow-auto @lg/register:pb-0">

@@ -120,6 +120,18 @@ const config = {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
+        "page-outside-layer": {
+          from: { transform: "translateY(100%)" },
+          "20%": { transform: "translateY(-10%)" },
+          "85%": { transform: "translateY(0)" },
+          to: { transform: "translateY(-100%)" },
+        },
+        "page-inside-layer": {
+          "0%": { transform: "translateY(100%)" },
+          "23%": { transform: "translateY(0)" },
+          "75%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-100%)" },
+        },
       },
       animation: {
         marquee: "marquee var(--marquee-duration) linear infinite",
@@ -127,6 +139,8 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
+        "page-outside-layer": "page-outside-layer 3s ease-in-out forwards",
+        "page-inside-layer": "page-inside-layer 2.9s ease-in-out 100ms forwards",
       },
     },
   },
@@ -187,6 +201,13 @@ const config = {
           borderLeft: "3px solid darkgray",
           margin: "1.5rem 0",
           paddingLeft: "1rem",
+        },
+
+        ".page-transition": {
+          opacity: "0",
+          backgroundColor: "black",
+          transform: "translateY(40px)",
+          filter: "blur(12px)",
         },
       })
     }),

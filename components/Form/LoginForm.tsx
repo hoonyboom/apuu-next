@@ -2,23 +2,16 @@
 
 import { Button } from "@/components/ui/button"
 import { DialogFooter } from "@/components/ui/dialog"
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { useToast } from "@/hook"
 import { authAPI } from "@/service/auth/AuthService"
 import { useUserStore } from "@/store/user.store"
-import { LoginFormType, UserType, loginFormSchema, userSchema } from "@/types/zod.schema"
+import { LoginFormType, loginFormSchema, userSchema } from "@/types/zod.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { setCookie } from "cookies-next"
 import { useCallback } from "react"
 import { useForm } from "react-hook-form"
+import { FloatingLabelInput } from "../ui/floating-input"
 import { LoginFormProps } from "./types"
 
 export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
@@ -54,22 +47,23 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(submitForm)} className="grid gap-4 py-4">
+      <form onSubmit={form.handleSubmit(submitForm)} className="py-4">
         <FormField
           control={form.control}
           name="email"
           // eslint-disable-next-line react/jsx-no-bind
           render={({ field }) => (
-            <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
-              <FormLabel>이메일</FormLabel>
-              <div className="col-span-4 flex items-center rounded-md border p-1 focus-within:ring-2 focus-within:ring-blue-300">
+            <FormItem className="space-y-0">
+              <div className="h-14 rounded-t-md border px-1 py-2 focus-within:border focus-within:border-blue-700">
                 <FormControl>
-                  <Input
+                  <FloatingLabelInput
                     {...field}
-                    className="border-none bg-transparent py-4 pl-2 pr-10 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
+                    id="email"
+                    label="이메일"
+                    className="border-none bg-transparent px-2 pt-5 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                   />
                 </FormControl>
-                <FormMessage className="shrink-0" />
+                <FormMessage />
               </div>
             </FormItem>
           )}
@@ -80,14 +74,15 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
           // eslint-disable-next-line react/jsx-no-bind
           render={({ field }) => {
             return (
-              <FormItem className="grid grid-cols-5 items-center gap-4 space-y-0">
-                <FormLabel>비밀번호</FormLabel>
-                <div className="col-span-4 flex items-center rounded-md border p-1 focus-within:ring-2 focus-within:ring-blue-300">
+              <FormItem className="space-y-0">
+                <div className="h-14 rounded-b-md border border-t-transparent px-1 py-2 focus-within:border focus-within:border-blue-700">
                   <FormControl>
-                    <Input
+                    <FloatingLabelInput
                       {...field}
+                      id="password"
+                      label="비밀번호"
                       type="password"
-                      className="border-none bg-transparent px-2 py-4 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
+                      className="border-none bg-transparent px-2 pt-5 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                     />
                   </FormControl>
                   <FormMessage />
@@ -96,10 +91,9 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
             )
           }}
         />
-        <DialogFooter className="flex-row !justify-between">
+        <DialogFooter className="mt-4 flex-row !justify-between">
           <Button
-            variant="ghost"
-            className="justify-start p-0 text-2xs text-blue-500 hover:bg-transparent hover:text-accent"
+            className="justify-start p-0 text-2xs text-primary hover:text-amber-400/80"
             onClick={switchMode}
             tabIndex={-1}
             type="button"
@@ -107,8 +101,9 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
             아직 계정이 없으신가요?
           </Button>
           <Button
+            variant="default"
             type="submit"
-            className="min-w-28"
+            className="min-w-24"
             disabled={!form.getValues("email") || !form.getValues("password")}
           >
             확인

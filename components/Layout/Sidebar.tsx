@@ -13,7 +13,7 @@ import { MouseEventHandler, useCallback, useState } from "react"
 import { createPortal } from "react-dom"
 import { Button } from "../ui/button"
 
-export default function Menu() {
+export default function Sidebar() {
   const { user, setLogoutUser } = useUserStore()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -74,13 +74,13 @@ export default function Menu() {
               </div>
               <Separator />
               <div className="flex flex-col items-start justify-around gap-4 px-4">
-                <Link href="/register">
+                <Link href="/dashboard">
                   <span>대시보드</span>
                 </Link>
                 <Link href="/register" onClick={toggleMenu}>
                   <span>파티모집</span>
                 </Link>
-                <Link href="/register">
+                <Link href="/profile">
                   <span>프로필</span>
                 </Link>
               </div>

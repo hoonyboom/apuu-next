@@ -1,7 +1,12 @@
 "use client"
 
-import { useEffect } from "react"
-import { TimerProps } from "./types"
+import { Dispatch, SetStateAction, useEffect } from "react"
+
+export type TimerProps = {
+  count: number
+  setCount: Dispatch<SetStateAction<number>>
+  setIsTimer: Dispatch<SetStateAction<boolean>>
+}
 
 const formatTime = (time: number) => {
   const minutes = Math.floor(time / 60)

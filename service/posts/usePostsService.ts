@@ -3,9 +3,16 @@ import {
   QueryClient,
   useInfiniteQuery,
   useMutation,
+  useQuery,
   useQueryClient,
 } from "@tanstack/react-query"
 import { QK, queryOptions } from "./queries"
+
+export function usePostQuery(postId: number) {
+  return useQuery({
+    ...queryOptions.get_post(postId),
+  })
+}
 
 export function usePostsQuery(query?: string) {
   const { data: rawData, ...props } = useInfiniteQuery({

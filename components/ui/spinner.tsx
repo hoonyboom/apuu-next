@@ -1,19 +1,45 @@
-import { cn } from "@/lib/util"
-import { HTMLProps, forwardRef } from "react"
+import { cn } from '@/lib/util';
+import { VariantProps, cva } from 'class-variance-authority';
+import { Loader2 } from 'lucide-react';
+import React from 'react';
 
-export const Spinner = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
-  ({ className, ...rest }, ref) => {
-    return (
-      <div
-        className={cn(
-          "animate-spin h-4 w-4 rounded-full border-2 border-current border-t-transparent",
-          className,
-        )}
-        ref={ref}
-        {...rest}
-      />
-    )
+const spinnerVariants = cva('flex-col items-center justify-center', {
+  variants: {
+    show: {
+      true: 'flex',
+      false: 'hidden',
+    },
   },
-)
+  defaultVariants: {
+    show: true,
+  },
+});
 
-Spinner.displayName = "Spinner"
+const loaderVariants = cva('animate-spin text-primary', {
+  variants: {
+    size: {
+      small: 'size-6',
+      medium: 'size-8',
+      large: 'size-12',
+    },
+  },
+  defaultVariants: {
+    size: 'medium',
+  },
+});
+
+interface SpinnerContentProps
+  extends VariantProps<typeof spinnerVariants>,
+    VariantProps<typeof loaderVariants> {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export function Spinner({ size, show, children, className }: SpinnerContentProps) {
+  return (
+    <span className={spinnerVariants({ show })}>
+      <Loader2 className={cn(loaderVariants({ size }), className)} />
+      {children}
+    </span>
+  );
+}
