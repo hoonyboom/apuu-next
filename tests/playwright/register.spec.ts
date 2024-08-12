@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test"
 
 test("타이틀이 있나요?", async ({ page }) => {
   await page.goto("http://localhost:3000/register")
-  await expect(page.getByText(/Apuu/)).toBeInViewport()
+  await expect(page.getByText(/Apuu에 오신 것을 환영/)).toBeInViewport()
 })
 
 test("카카오 로그인 버튼이 있나요?", async ({ page }) => {
