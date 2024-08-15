@@ -1,3 +1,4 @@
+import { useToast } from "@/hook"
 import { CreatePostBodyType } from "@/types/zod.schema"
 import {
   QueryClient,
@@ -33,6 +34,7 @@ export async function usePostsPrefetchQuery(query?: string) {
 }
 
 export function usePostsMutation() {
+  const { toast } = useToast()
   const queryClient = useQueryClient()
 
   return useMutation({
@@ -50,7 +52,9 @@ export function usePostsMutation() {
       queryClient.setQueryData(QK.posts, context?.previousPosts)
     },
     onSuccess: async () => {
-      console.log("invalidate [posts] query")
+      toast({
+        title: "새로운 포스트를 등록했어요!",
+      })
       await queryClient.invalidateQueries({ queryKey: QK.posts })
     },
   })

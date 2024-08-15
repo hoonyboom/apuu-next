@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button"
 import { CardTitle } from "@/components/ui/card"
 import { Form } from "@/components/ui/form"
 import useResetFormValue from "@/hook/useResetFormValue"
-import { useToast } from "@/hook/useToast"
 import { CHECK_BOX_LIST, DEFAULT_REGISTER_VALUE, SELECT_BOX_LIST } from "@/lib/const"
 import { usePostsMutation } from "@/service/posts/usePostsService"
 import { useEditorStore } from "@/store/editor.store"
 import { registerFormSchema } from "@/types/zod.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
 import { PropsWithChildren, useCallback } from "react"
 import { useForm } from "react-hook-form"
 import { AreaCombobox } from "./AreaCombobox"
@@ -20,7 +20,7 @@ import { RegisterTitleInput } from "./RegisterTitleInput"
 import { RegisterFormDataType } from "./types"
 
 export default function DesktopRegisterForm({ children }: PropsWithChildren) {
-  const { toast } = useToast()
+  const router = useRouter()
   const form = useForm<RegisterFormDataType>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: DEFAULT_REGISTER_VALUE,
@@ -46,18 +46,9 @@ export default function DesktopRegisterForm({ children }: PropsWithChildren) {
         images,
       })
 
-      toast({
-        title: "You submitted the following values:",
-        description: (
-          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-            <code className="text-white">
-              {JSON.stringify({ ...data, content: editor?.getHTML(), images }, null, 2)}
-            </code>
-          </pre>
-        ),
-      })
+      router.push("/")
     },
-    [mutate, editor, toast],
+    [mutate, editor, router],
   )
 
   useResetFormValue<RegisterFormDataType>(form, DEFAULT_REGISTER_VALUE)

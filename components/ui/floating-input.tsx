@@ -36,10 +36,18 @@ type FloatingLabelInputProps = InputProps & { label?: string }
 const FloatingLabelInput = React.forwardRef<
   React.ElementRef<typeof FloatingInput>,
   React.PropsWithoutRef<FloatingLabelInputProps>
->(({ id, label, ...props }, ref) => {
+>(({ id, label, className, ...props }, ref) => {
   return (
     <div className="relative w-full">
-      <FloatingInput ref={ref} id={id} {...props} />
+      <FloatingInput
+        ref={ref}
+        id={id}
+        className={cn(
+          "border-none bg-transparent px-2 pt-5 shadow-none autofill:!remove-autofill-bg focus-visible:bg-transparent focus-visible:ring-0",
+          className,
+        )}
+        {...props}
+      />
       <FloatingLabel htmlFor={id}>{label}</FloatingLabel>
     </div>
   )

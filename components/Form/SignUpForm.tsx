@@ -133,7 +133,6 @@ export default function SignUpForm({ setOpen, switchMode }: RegisterFormProps) {
                     {...field}
                     id="email"
                     label="이메일"
-                    className="border-none bg-transparent px-2 pt-5 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
                     disabled={isChecked || isTimer}
                   />
                 </FormControl>

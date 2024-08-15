@@ -29,14 +29,14 @@ export type TError = {
 
 class Service {
   public http: Fetcher
+  public baseURL: string
   private headers: Record<string, string>
-  private readonly baseURL: string
 
   constructor() {
     this.baseURL =
       env.NODE_ENV === "development"
-        ? "http://localhost:3002/api"
-        : `${env.NEXT_PUBLIC_BASE_URL}/api`
+        ? "http://localhost:3002/api/"
+        : `${env.NEXT_PUBLIC_BASE_URL}/api/`
     this.headers = {}
     this.http = {
       // 화살표함수로 선언하지 않아서 바인드

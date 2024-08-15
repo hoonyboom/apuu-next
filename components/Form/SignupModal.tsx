@@ -8,27 +8,24 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { authAPI } from "@/service/auth/AuthService"
+import { oauthURL } from "@/service/auth/const"
 import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function SignupModal() {
-  const [open, setOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(true)
   const router = useRouter()
 
   useEffect(() => {
-    if (!open) {
+    if (!isOpen) {
       router.back()
     }
-  }, [open, router])
-
-  const kakaoLogin = useCallback(async () => {
-    await authAPI.postLoginKakao()
-  }, [])
+  }, [isOpen, router])
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="flex flex-col items-center py-12 sm:max-w-[30rem]">
         <DialogHeader className="flex flex-col items-center gap-5">
           <Image
@@ -52,15 +49,11 @@ export default function SignupModal() {
           <Button className="w-full rounded-3xl py-5 text-sm" variant="outline">
             이메일 로그인
           </Button>
-          <Button
-            className="w-full rounded-3xl py-5 text-sm"
-            onClick={kakaoLogin}
-            variant="outline"
-          >
-            카카오 로그인
+          <Button className="w-full rounded-3xl py-5 text-sm" variant="outline">
+            <Link href={oauthURL.kakao}>카카오 로그인</Link>
           </Button>
           <Button className="w-full rounded-3xl py-5 text-sm" variant="outline">
-            네이버 로그인
+            <Link href={oauthURL.naver}>네이버 로그인</Link>
           </Button>
         </div>
       </DialogContent>

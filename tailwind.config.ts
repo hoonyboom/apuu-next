@@ -6,28 +6,12 @@ const config = {
   darkMode: ["class"],
   content: ["./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"],
   safelist: ["ProseMirror"],
-  prefix: "",
   theme: {
     container: {
       center: true,
       screens: {
         "2xl": "1200px",
       },
-    },
-    keyframes: {
-      wiggle: {
-        "0%, 100%": { transform: "rotate(-10deg)" },
-        "50%": { transform: "rotate(10deg)" },
-      },
-      up: {
-        from: { transform: "translateY(0)" },
-        "80%": { transform: "translateY(0)" },
-        to: { transform: "translateY(-40%)" },
-      },
-    },
-    animation: {
-      wiggle: "wiggle 2.5s ease-in-out forwards",
-      up: "up 2.5s ease-in-out forwards",
     },
     fontSize: {
       "2xs": "clamp(0.7595rem, 0.7563rem + 0.0165vi, 0.768rem)",
@@ -120,6 +104,15 @@ const config = {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-10deg)" },
+          "50%": { transform: "rotate(10deg)" },
+        },
+        up: {
+          from: { transform: "translateY(0)" },
+          "80%": { transform: "translateY(0)" },
+          to: { transform: "translateY(-40%)" },
+        },
         "page-outside-layer": {
           from: { transform: "translateY(100%)" },
           "20%": { transform: "translateY(-10%)" },
@@ -134,6 +127,8 @@ const config = {
         },
       },
       animation: {
+        wiggle: "wiggle 2.5s ease-in-out forwards",
+        up: "up 2.5s ease-in-out forwards",
         marquee: "marquee var(--marquee-duration) linear infinite",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -148,7 +143,7 @@ const config = {
     require("tailwindcss-animate"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/container-queries"),
-    plugin(function ({ addComponents }: PluginAPI) {
+    plugin(function ({ addComponents, addUtilities }: PluginAPI) {
       addComponents({
         ".stacked": {
           display: "grid",
@@ -182,32 +177,27 @@ const config = {
           "backdrop-filter": "blur(4px)",
         },
 
-        ".character-count": {
-          alignItems: "center",
-          color: "var(--gray-5)",
-          display: "flex",
-          fontSize: "0.75rem",
-          gap: ".5rem",
-          margin: "1.5rem",
-          svg: {
-            color: "var(--purple)",
-          },
-          "&--warning, &--warning svg": {
-            color: "var(--red)",
-          },
-        },
-
-        blockquote: {
-          borderLeft: "3px solid darkgray",
-          margin: "1.5rem 0",
-          paddingLeft: "1rem",
-        },
-
-        ".page-transition": {
-          opacity: "0",
-          backgroundColor: "black",
-          transform: "translateY(40px)",
-          filter: "blur(12px)",
+        // ".character-count": {
+        //   alignItems: "center",
+        //   color: "var(--gray-5)",
+        //   display: "flex",
+        //   fontSize: "0.75rem",
+        //   gap: ".5rem",
+        //   margin: "1.5rem",
+        //   svg: {
+        //     color: "var(--purple)",
+        //   },
+        //   "&--warning, &--warning svg": {
+        //     color: "var(--red)",
+        //   },
+        // },
+      })
+      addUtilities({
+        ".remove-autofill-bg": {
+          // "-webkit-text-fill-color": "#000",
+          // "-webkit-box-shadow": "none",
+          // "box-shadow": "none",
+          transition: "background-color 9999s ease-in-out 0s",
         },
       })
     }),

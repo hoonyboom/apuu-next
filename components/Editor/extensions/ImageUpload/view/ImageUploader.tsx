@@ -43,7 +43,7 @@ export const ImageUploader = ({ onUpload }: { onUpload: (url: string) => void })
       />
       <div className="flex flex-col items-center justify-center gap-2">
         <div className="text-center text-sm font-medium text-neutral-400 dark:text-neutral-500">
-          {draggedInside ? "Drop image here" : "Drag and drop or"}
+          {draggedInside ? "Drop image here" : "이미지를 드래그하거나"}
         </div>
         <div>
           <Button
@@ -52,8 +52,8 @@ export const ImageUploader = ({ onUpload }: { onUpload: (url: string) => void })
             onClick={handleUploadClick}
             size="sm"
           >
-            <Icon name="Upload" />
-            Upload an image
+            <Icon name="Upload" className="pr-2" />
+            여기를 클릭하여 추가하세요
           </Button>
         </div>
       </div>

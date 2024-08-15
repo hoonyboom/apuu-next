@@ -29,8 +29,8 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
     async ({ email, password }: LoginFormType) => {
       const data = await authAPI.postLogin(email, password)
 
-      if ("id" in data) {
-        const user = userSchema.parse(data)
+      if ("user" in data) {
+        const user = userSchema.parse(data.user)
         setCookie("user", user)
         setLoginUser(user)
         setOpen(false)
@@ -60,7 +60,7 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
                     {...field}
                     id="email"
                     label="이메일"
-                    className="border-none bg-transparent px-2 pt-5 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
+                    autoComplete="email"
                   />
                 </FormControl>
                 <FormMessage />
@@ -79,10 +79,10 @@ export default function LoginForm({ setOpen, switchMode }: LoginFormProps) {
                   <FormControl>
                     <FloatingLabelInput
                       {...field}
-                      id="password"
                       label="비밀번호"
+                      id="password"
                       type="password"
-                      className="border-none bg-transparent px-2 pt-5 shadow-none focus-visible:bg-transparent focus-visible:ring-0"
+                      autoComplete="current-password"
                     />
                   </FormControl>
                   <FormMessage />

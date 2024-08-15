@@ -10,7 +10,11 @@ import { useCallback, useState } from "react"
 import { DateFormatter } from "react-day-picker"
 import { RegisterDefaultProps } from "./types"
 
-export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
+export const RegisterDatePicker = ({
+  form,
+  isShow,
+  isMobile = false,
+}: RegisterDefaultProps) => {
   const [calendarOpen, setCalendarOpen] = useState(false)
   const onDisabled = useCallback((date: Date) => {
     const today = new Date()
@@ -25,8 +29,14 @@ export const RegisterDatePicker = ({ form }: RegisterDefaultProps) => {
       name="deadline"
       // eslint-disable-next-line react/jsx-no-bind
       render={({ field }) => (
-        <FormItem className="flex flex-col">
-          <FormLabel>모집 마감일</FormLabel>
+        <FormItem
+          className={cn(
+            "flex flex-col transition duration-1000",
+            isMobile && isShow && "pointer-events-auto translate-y-0 opacity-100",
+            isMobile && !isShow && "pointer-events-none translate-y-3 opacity-0",
+          )}
+        >
+          <FormLabel className="text-xs font-semibold">모집 마감일</FormLabel>
           <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
             <PopoverTrigger asChild>
               <FormControl>

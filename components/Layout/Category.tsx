@@ -24,9 +24,9 @@ export default function Category() {
     <>
       <div className="my-10 flex gap-8 px-8">
         {CATEGORIES.map(v => (
-          <h3 key={v} className="cursor-pointer" onClick={() => setCategory(v)}>
+          <h4 key={v} className="cursor-pointer" onClick={() => setCategory(v)}>
             {v}
-          </h3>
+          </h4>
         ))}
       </div>
 

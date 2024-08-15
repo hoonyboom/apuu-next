@@ -25,7 +25,7 @@ import { CaretSortIcon } from "@radix-ui/react-icons"
 import { useState } from "react"
 import { RegisterDefaultProps } from "./types"
 
-export function AreaCombobox({ form }: RegisterDefaultProps) {
+export function AreaCombobox({ form, isShow, isMobile = false }: RegisterDefaultProps) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -33,7 +33,13 @@ export function AreaCombobox({ form }: RegisterDefaultProps) {
       control={form.control}
       name="area"
       render={({ field }) => (
-        <FormItem className="flex w-full flex-col">
+        <FormItem
+          className={cn(
+            "flex w-full flex-col transition duration-1000",
+            isMobile && isShow && "pointer-events-auto translate-y-0 opacity-100",
+            isMobile && !isShow && "pointer-events-none translate-y-3 opacity-0",
+          )}
+        >
           <FormLabel className="text-xs font-semibold">교류 지역</FormLabel>
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>

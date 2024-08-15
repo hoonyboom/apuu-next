@@ -7,8 +7,9 @@ export default async function Home() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      {/* <Landing /> */}
-      <Category />
+      <div className="mb-5 flex-1">
+        <Category />
+      </div>
       <Footer />
     </HydrationBoundary>
   )

@@ -4,23 +4,25 @@ import Avatar from "@/components/ui/Avatar"
 import { Icon } from "@/components/ui/Icon"
 import { Separator } from "@/components/ui/separator"
 import useScrollLock from "@/hook/useScrollLock"
-import { stopPropagation } from "@/lib/util"
+import { cn, stopPropagation } from "@/lib/util"
 import { authAPI } from "@/service/auth/AuthService"
 import { useUserStore } from "@/store/user.store"
-import clsx from "clsx"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { MouseEventHandler, useCallback, useState } from "react"
 import { createPortal } from "react-dom"
 import { Button } from "../ui/button"
+import SidebarLink from "./SidebarLink"
 
 export default function Sidebar() {
   const { user, setLogoutUser } = useUserStore()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
 
   const logoutHandler = useCallback(async () => {
     await authAPI.postLogout()
     setLogoutUser()
-  }, [setLogoutUser])
+    router.push("/")
+  }, [setLogoutUser, router])
 
   const toggleMenu: MouseEventHandler = useCallback(() => {
     setIsMenuOpen(prev => !prev)
@@ -34,7 +36,7 @@ export default function Sidebar() {
       <div>
         <Icon
           name="Menu"
-          className={clsx("size-7 transition-opacity", {
+          className={cn("size-7 transition-opacity", {
             "opacity-0": isMenuOpen,
             "opacity-100": !isMenuOpen,
           })}
@@ -43,7 +45,7 @@ export default function Sidebar() {
 
         {createPortal(
           <div
-            className={clsx(
+            className={cn(
               "fixed inset-0 z-10 h-full w-screen transition-all duration-300",
               {
                 "blurred bg-black/10": isMenuOpen,
@@ -53,8 +55,8 @@ export default function Sidebar() {
             onClick={toggleMenu}
           >
             <div
-              className={clsx(
-                "absolute right-0 top-0 flex size-full max-w-64 flex-col gap-6 bg-white py-6 transition-transform duration-300 ease-in-out sm:max-w-96",
+              className={cn(
+                "absolute right-0 top-0 flex size-full max-w-56 flex-col items-start justify-start gap-1 bg-white px-4 py-6 transition-transform duration-300 ease-in-out sm:max-w-80",
                 {
                   "translate-x-0": isMenuOpen,
                   "translate-x-full": !isMenuOpen,
@@ -62,34 +64,35 @@ export default function Sidebar() {
               )}
               onClick={stopPropagation}
             >
-              <div className="flex items-center justify-between px-4">
+              <div className="flex w-full items-center justify-between">
                 <div className="flex items-center gap-2">
                   {/* TODO: user에 profileImg 로우 추가 */}
                   <Avatar className="size-12" onClick={toggleMenu} />
                   <span>{user.nickname}</span>
                 </div>
-                <Button size="icon">
+                <Button
+                  size="icon"
+                  className="rounded-xl transition duration-300 hover:bg-accent hover:font-semibold hover:text-accent-foreground"
+                >
                   <Icon name="X" className="size-6" onClick={toggleMenu} />
                 </Button>
               </div>
-              <Separator />
-              <div className="flex flex-col items-start justify-around gap-4 px-4">
-                <Link href="/dashboard">
-                  <span>대시보드</span>
-                </Link>
-                <Link href="/register" onClick={toggleMenu}>
-                  <span>파티모집</span>
-                </Link>
-                <Link href="/profile">
-                  <span>프로필</span>
-                </Link>
-              </div>
-              <Separator />
-              <div className="flex flex-col items-start justify-around px-4">
-                <Link href="/">
-                  <span onClick={logoutHandler}>로그아웃</span>
-                </Link>
-              </div>
+              <Separator className="my-3" />
+              <SidebarLink href="/dashboard" text="대시보드" icon="Gauge" />
+              <SidebarLink
+                href="/register"
+                text="파티모집"
+                icon="UsersRound"
+                onClick={toggleMenu}
+              />
+              <SidebarLink href="/profile" text="프로필" icon="UserRoundCog" />
+              <Separator className="my-3" />
+              <SidebarLink
+                href="/"
+                text="로그아웃"
+                icon="LogOut"
+                onClick={logoutHandler}
+              />
             </div>
           </div>,
           document.body,

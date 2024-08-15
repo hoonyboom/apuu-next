@@ -1,16 +1,27 @@
 import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/util"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import { RegisterDefaultProps } from "./types"
 
-export const RegisterTitleInput = ({ form }: RegisterDefaultProps) => {
+export const RegisterTitleInput = ({
+  form,
+  isShow,
+  isMobile = false,
+}: RegisterDefaultProps) => {
   return (
     <FormField
       control={form.control}
       name="title"
       // eslint-disable-next-line react/jsx-no-bind
       render={({ field }) => (
-        <FormItem className="flex items-center space-y-0 rounded-md border focus-within:ring-2 focus-within:ring-blue-300">
+        <FormItem
+          className={cn(
+            "flex items-center space-y-0 rounded-md border focus-within:ring-2 focus-within:ring-blue-300",
+            isMobile && isShow && "pointer-events-auto translate-y-0 opacity-100",
+            isMobile && !isShow && "pointer-events-none translate-y-3 opacity-0",
+          )}
+        >
           <VisuallyHidden>
             <FormLabel>제목</FormLabel>
           </VisuallyHidden>

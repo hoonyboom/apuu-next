@@ -1,11 +1,7 @@
 import { useToast } from "@/hook"
-import { env } from "@/lib/config/env"
-import { IMAGE_TEMP_PATH } from "@/lib/const"
+import { baseURL, IMAGE_TEMP_PATH } from "@/lib/const"
 import { postsAPI } from "@/service/posts/PostsService"
 import { DragEvent, useCallback, useEffect, useRef, useState } from "react"
-
-const baseURL =
-  env.NODE_ENV === "development" ? "http://localhost:3002" : env.NEXT_PUBLIC_BASE_URL
 
 export const useUploader = ({ onUpload }: { onUpload: (url: string) => void }) => {
   const [loading, setLoading] = useState(false)

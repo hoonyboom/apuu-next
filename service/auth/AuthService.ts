@@ -37,7 +37,9 @@ class AuthService extends Service {
 
   async postLogin<T>(email: string, password: string) {
     const token = btoa(`${email}:${password}`)
-    return await this.http.post<UserEntity | TError>({
+    return await this.http.post<
+      { user: UserEntity; tokens: { accessToken: string; refreshToken: string } } | TError
+    >({
       url: api.auth.login_email,
       isPublic: true,
       config: {
@@ -45,12 +47,6 @@ class AuthService extends Service {
           authorization: `Basic ${token}`,
         },
       },
-    })
-  }
-
-  async postLoginKakao() {
-    return await this.http.get<UserEntity | TError>({
-      url: api.auth.login_kakao,
     })
   }
 

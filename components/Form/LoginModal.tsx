@@ -27,13 +27,16 @@ export default function LoginModal() {
     <Dialog open={open} onOpenChange={setOpen}>
       {user ? null : (
         <DialogTrigger asChild>
-          <Button type="button">로그인</Button>
+          <Button type="button" className="rounded-xl">
+            로그인
+          </Button>
         </DialogTrigger>
       )}
       <DialogContent
         className="pb-2 sm:max-w-[425px]"
         onInteractOutside={e => e.preventDefault()}
       >
+        
         <DialogHeader>
           <DialogTitle className="text-lg">
             {mode === "login" ? "로그인" : "회원가입"}

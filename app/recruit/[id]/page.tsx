@@ -12,7 +12,7 @@ export default function Page() {
   if (isLoading) return <Spinner size="large" />
 
   return (
-    <div className="container">
+    <div>
       <h1>{post?.title}</h1>
     </div>
   )

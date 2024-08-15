@@ -1,7 +1,10 @@
 import { RegisterFormDataType, RegisterFormFieldProps } from "@/components/Form/types"
 import { DefaultValues } from "react-hook-form"
+import { env } from "./config/env"
 
 export const IMAGE_TEMP_PATH = "/public/temp"
+export const baseURL =
+  env.NODE_ENV === "development" ? "http://localhost:3002" : env.NEXT_PUBLIC_BASE_URL
 
 export const PASSWORD_REGEX =
   /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*?])[A-Za-z\d!@#$%^&*?]{8,15}$/

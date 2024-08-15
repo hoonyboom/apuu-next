@@ -2,8 +2,6 @@
 
 import { Editor } from "@/components/Editor"
 import { DesktopRegisterForm, MobileRegisterForm } from "@/components/Form"
-import SignupModal from "@/components/Form/SignupModal"
-import { useUserStore } from "@/store/user.store"
 
 export default function Page() {
   return (
@@ -13,7 +11,7 @@ export default function Page() {
           <Editor />
         </DesktopRegisterForm>
       </div>
-      <div className="@lg/register:hidden">
+      <div className="h-full @lg/register:hidden">
         <MobileRegisterForm>
           <Editor />
         </MobileRegisterForm>
