@@ -85,7 +85,7 @@ export default function Sidebar() {
                 icon="UsersRound"
                 onClick={toggleMenu}
               />
-              <SidebarLink href="/profile" text="프로필" icon="UserRoundCog" />
+              <SidebarLink href="/dashboard/profile" text="프로필" icon="UserRoundCog" />
               <Separator className="my-3" />
               <SidebarLink
                 href="/"
