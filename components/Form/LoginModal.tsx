@@ -36,7 +36,6 @@ export default function LoginModal() {
         className="pb-2 sm:max-w-[425px]"
         onInteractOutside={e => e.preventDefault()}
       >
-        
         <DialogHeader>
           <DialogTitle className="text-lg">
             {mode === "login" ? "로그인" : "회원가입"}
