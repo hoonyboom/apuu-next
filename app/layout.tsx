@@ -1,5 +1,4 @@
 import { Nav } from "@/components/Layout"
-import OauthLogin from "@/components/Layout/OauthLogin"
 import { Toaster } from "@/components/ui/toaster"
 import { ReactQueryProvider } from "@/context"
 import { METADATA, VIEWPORT } from "@/lib/config/metadata"
@@ -19,7 +18,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ReactQueryProvider>
-          <OauthLogin />
           <Nav />
           <main>{children}</main>
         </ReactQueryProvider>
